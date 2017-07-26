@@ -1,47 +1,31 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 using csv;
 
-public enum ExternalEnemyType {
+public class ExternalEnemyInfo : ScriptableObject, ICsvConfigurable
+{
+	public System.String ID;
 
-	Permanent,
-	Temp,
-	Event
+	public System.String Type;
 
-}
+	public System.String Target;
 
-public class ExternalEnemyInfo : ScriptableObject, ICsvConfigurable {
+	public System.Single Damage;
 
-	public ExternalEnemyType Type;
-	public string Target;
-	public int Damage;
+	public System.Single AttackCooldown;
 
-	public float AttackCooldown;
-	public string ProjectileType;
-	public int Hp;
+	public System.String Proj;
 
-	public int SpawnRange;
-	public int SpeedPenalty;
+	public System.Single HP;
 
-	public string ActivatedEffect;
-	public int TimeToActivateEffect;
+	public System.Single SpawnRange;
 
-	public void Configure( Values values ) {
+	public System.Single SpeedSlow;
 
-		values.GetEnum( "Type", out Type );
-		values.Get( "Target", out Target );
-		values.Get( "Damage", out Damage );
+	public System.String Effect;
 
-		values.Get( "AttackCooldown", out AttackCooldown );
-		values.Get( "Proj", out ProjectileType );
-		values.Get( "HP", out Hp );
+	public System.Single EffectTimerMax;
 
-		values.Get( "SpawnRange", out SpawnRange );
-		values.Get( "SpeedSlow", out SpeedPenalty );
-
-		values.Get( "Effect", out ActivatedEffect );
-		values.Get( "EffectTimerMax", out TimeToActivateEffect );
-
+	public void Configure(Values values)
+	{
 	}
-
 }

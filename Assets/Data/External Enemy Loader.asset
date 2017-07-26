@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _url: https://docs.google.com/spreadsheets/d/1sqE231nr9gCzP_bsQFBDiQk84vmNZb-D7HyJbZKWNZU/export?format=csv
   _pageId: 530717842
-  type: ExternalEnemyInfo
-  postfix: 
-  _regime: 0
+  _type: ExternalEnemyInfo
+  _postfix: 
+  _mode: 0
+  _generateInfoClass: 0

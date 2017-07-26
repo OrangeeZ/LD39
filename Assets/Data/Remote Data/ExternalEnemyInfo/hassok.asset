@@ -11,13 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4289a1747466e4694eeeca9cde18c2, type: 3}
   m_Name: hassok
   m_EditorClassIdentifier: 
-  Type: 1
+  ID: 
+  Type: 
   Target: all
   Damage: 1
   AttackCooldown: 15
-  ProjectileType: hass
-  Hp: 5
+  Proj: 
+  HP: 0
   SpawnRange: 37
-  SpeedPenalty: 5
-  ActivatedEffect: 
-  TimeToActivateEffect: 0
+  SpeedSlow: 0
+  Effect: 
+  EffectTimerMax: 0
