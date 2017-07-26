@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: f70e53292f1e0524694c87eef7636ee1
+timeCreated: 1472410336
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BezierCurve
+    100002: //RootNode
+    100004: Plane.010
+    100006: Plane.014
+    100008: Plane.015
+    100010: Plane.016
+    400000: BezierCurve
+    400002: //RootNode
+    400004: Plane.010
+    400006: Plane.014
+    400008: Plane.015
+    400010: Plane.016
+    4300000: Plane.014
+    4300002: Plane.015
+    4300004: Plane.010
+    4300006: Plane.016
+    4300008: BezierCurve
+    7400000: Plane.014|Plane.016Action.000
+    7400002: Plane.014|Plane.016Action.001
+    7400004: Plane.014|Plane.016Action.002
+    7400006: Plane.014|Plane.016Action.008
+    7400008: Plane.014|Plane.017|Plane.015|Plane.016Action.001|Plane.015|Plane.016Acti
+    7400010: Plane.014|Plane.017|Plane.015|Plane.016Action.008|Plane.015|Plane.016Acti
+    7400012: Plane.014|Plane.017|Plane.015|Plane.016Action.009|Plane.015|Plane.016Acti
+    7400014: Plane.014|Plane.017|Plane.015|Plane.016Action.010|Plane.015|Plane.016Acti
+    7400016: Plane.014|Plane.018|Plane.014|Plane.016Action.001|Plane.014|Plane.016Acti
+    7400018: Plane.014|Plane.018|Plane.014|Plane.016Action.008|Plane.014|Plane.016Acti
+    7400020: Plane.014|Plane.018|Plane.014|Plane.016Action.009|Plane.014|Plane.016Acti
+    7400022: Plane.014|Plane.018|Plane.014|Plane.016Action.010|Plane.014|Plane.016Acti
+    7400024: Plane.014|Plane.019|Plane.010|Plane.016Action.001|Plane.010|Plane.016Acti
+    7400026: Plane.014|Plane.019|Plane.010|Plane.016Action.008|Plane.010|Plane.016Acti
+    7400028: Plane.014|Plane.019|Plane.010|Plane.016Action.009|Plane.010|Plane.016Acti
+    7400030: Plane.014|Plane.019|Plane.010|Plane.016Action.010|Plane.010|Plane.016Acti
+    7400032: Plane.014|Plane.020|Plane.016|Plane.016Action.001|Plane.016|Plane.016Acti
+    7400034: Plane.014|Plane.020|Plane.016|Plane.016Action.008|Plane.016|Plane.016Acti
+    7400036: Plane.014|Plane.020|Plane.016|Plane.016Action.009|Plane.016|Plane.016Acti
+    7400038: Plane.014|Plane.020|Plane.016|Plane.016Action.010|Plane.016|Plane.016Acti
+    7400040: Plane.015|Plane.016Action.000
+    7400042: Plane.015|Plane.016Action.001
+    7400044: Plane.015|Plane.016Action.002
+    7400046: Plane.015|Plane.016Action.008
+    7400048: Plane.015|Plane.017|Plane.015|Plane.016Action.001|Plane.015|Plane.016Acti
+    7400050: Plane.015|Plane.017|Plane.015|Plane.016Action.008|Plane.015|Plane.016Acti
+    7400052: Plane.015|Plane.017|Plane.015|Plane.016Action.009|Plane.015|Plane.016Acti
+    7400054: Plane.015|Plane.017|Plane.015|Plane.016Action.010|Plane.015|Plane.016Acti
+    7400056: Plane.015|Plane.018|Plane.014|Plane.016Action.001|Plane.014|Plane.016Acti
+    7400058: Plane.015|Plane.018|Plane.014|Plane.016Action.008|Plane.014|Plane.016Acti
+    7400060: Plane.015|Plane.018|Plane.014|Plane.016Action.009|Plane.014|Plane.016Acti
+    7400062: Plane.015|Plane.018|Plane.014|Plane.016Action.010|Plane.014|Plane.016Acti
+    7400064: Plane.015|Plane.019|Plane.010|Plane.016Action.001|Plane.010|Plane.016Acti
+    7400066: Plane.015|Plane.019|Plane.010|Plane.016Action.008|Plane.010|Plane.016Acti
+    7400068: Plane.015|Plane.019|Plane.010|Plane.016Action.009|Plane.010|Plane.016Acti
+    7400070: Plane.015|Plane.019|Plane.010|Plane.016Action.010|Plane.010|Plane.016Acti
+    7400072: Plane.015|Plane.020|Plane.016|Plane.016Action.001|Plane.016|Plane.016Acti
+    7400074: Plane.015|Plane.020|Plane.016|Plane.016Action.008|Plane.016|Plane.016Acti
+    7400076: Plane.015|Plane.020|Plane.016|Plane.016Action.009|Plane.016|Plane.016Acti
+    7400078: Plane.015|Plane.020|Plane.016|Plane.016Action.010|Plane.016|Plane.016Acti
+    7400080: Plane.010|Plane.016Action.000
+    7400082: Plane.010|Plane.016Action.001
+    7400084: Plane.010|Plane.016Action.002
+    7400086: Plane.010|Plane.016Action.008
+    7400088: Plane.010|Plane.017|Plane.015|Plane.016Action.001|Plane.015|Plane.016Acti
+    7400090: Plane.010|Plane.017|Plane.015|Plane.016Action.008|Plane.015|Plane.016Acti
+    7400092: Plane.010|Plane.017|Plane.015|Plane.016Action.009|Plane.015|Plane.016Acti
+    7400094: Plane.010|Plane.017|Plane.015|Plane.016Action.010|Plane.015|Plane.016Acti
+    7400096: Plane.010|Plane.018|Plane.014|Plane.016Action.001|Plane.014|Plane.016Acti
+    7400098: Plane.010|Plane.018|Plane.014|Plane.016Action.008|Plane.014|Plane.016Acti
+    7400100: Plane.010|Plane.018|Plane.014|Plane.016Action.009|Plane.014|Plane.016Acti
+    7400102: Plane.010|Plane.018|Plane.014|Plane.016Action.010|Plane.014|Plane.016Acti
+    7400104: Plane.010|Plane.019|Plane.010|Plane.016Action.001|Plane.010|Plane.016Acti
+    7400106: Plane.010|Plane.019|Plane.010|Plane.016Action.008|Plane.010|Plane.016Acti
+    7400108: Plane.010|Plane.019|Plane.010|Plane.016Action.009|Plane.010|Plane.016Acti
+    7400110: Plane.010|Plane.019|Plane.010|Plane.016Action.010|Plane.010|Plane.016Acti
+    7400112: Plane.010|Plane.020|Plane.016|Plane.016Action.001|Plane.016|Plane.016Acti
+    7400114: Plane.010|Plane.020|Plane.016|Plane.016Action.008|Plane.016|Plane.016Acti
+    7400116: Plane.010|Plane.020|Plane.016|Plane.016Action.009|Plane.016|Plane.016Acti
+    7400118: Plane.010|Plane.020|Plane.016|Plane.016Action.010|Plane.016|Plane.016Acti
+    7400120: Plane.016|Plane.016Action.000
+    7400122: Plane.016|Plane.016Action.001
+    7400124: Plane.016|Plane.016Action.002
+    7400126: Plane.016|Plane.016Action.008
+    7400128: Plane.016|Plane.017|Plane.015|Plane.016Action.001|Plane.015|Plane.016Acti
+    7400130: Plane.016|Plane.017|Plane.015|Plane.016Action.008|Plane.015|Plane.016Acti
+    7400132: Plane.016|Plane.017|Plane.015|Plane.016Action.009|Plane.015|Plane.016Acti
+    7400134: Plane.016|Plane.017|Plane.015|Plane.016Action.010|Plane.015|Plane.016Acti
+    7400136: Plane.016|Plane.018|Plane.014|Plane.016Action.001|Plane.014|Plane.016Acti
+    7400138: Plane.016|Plane.018|Plane.014|Plane.016Action.008|Plane.014|Plane.016Acti
+    7400140: Plane.016|Plane.018|Plane.014|Plane.016Action.009|Plane.014|Plane.016Acti
+    7400142: Plane.016|Plane.018|Plane.014|Plane.016Action.010|Plane.014|Plane.016Acti
+    7400144: Plane.016|Plane.019|Plane.010|Plane.016Action.001|Plane.010|Plane.016Acti
+    7400146: Plane.016|Plane.019|Plane.010|Plane.016Action.008|Plane.010|Plane.016Acti
+    7400148: Plane.016|Plane.019|Plane.010|Plane.016Action.009|Plane.010|Plane.016Acti
+    7400150: Plane.016|Plane.019|Plane.010|Plane.016Action.010|Plane.010|Plane.016Acti
+    7400152: Plane.016|Plane.020|Plane.016|Plane.016Action.001|Plane.016|Plane.016Acti
+    7400154: Plane.016|Plane.020|Plane.016|Plane.016Action.008|Plane.016|Plane.016Acti
+    7400156: Plane.016|Plane.020|Plane.016|Plane.016Action.009|Plane.016|Plane.016Acti
+    7400158: Plane.016|Plane.020|Plane.016|Plane.016Action.010|Plane.016|Plane.016Acti
+    9500000: //RootNode
+    13700000: BezierCurve
+    13700002: Plane.010
+    13700004: Plane.014
+    13700006: Plane.015
+    13700008: Plane.016
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

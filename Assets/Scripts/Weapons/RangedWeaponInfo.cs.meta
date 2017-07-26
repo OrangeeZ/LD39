@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: dd52a18b43b396c4499e1df91ec30071
+timeCreated: 1450000503
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
+  - inventoryIcon: {instanceID: 0}
+  - _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295,
+      type: 2}
+  - _sound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5c6add67d6f4645bba6aa7c2e33249, type: 3}
+  m_Name: Player Character
+  m_EditorClassIdentifier: 
+  statusInfo: {fileID: 11400000, guid: 37bcd00dc954b9d41bf88d1485b6dc9d, type: 2}
+  stateControllerInfo: {fileID: 11400000, guid: c64e3268d93ac6d419cfd3ab6fd3a24e,
+    type: 2}
+  weaponStateControllerInfo: {fileID: 11400000, guid: c1cef3596b0e0c14c96b8d5052943a80,
+    type: 2}
+  pawnPrefab: {fileID: 114000011334223692, guid: 3204f04fb383c444da0561262364f4fd,
+    type: 2}
+  teamId: 0
+  applyColor: 1

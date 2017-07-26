@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c6887649bbe1c43a5a4fcc05c922f8, type: 3}
+  m_Name: 'Enemy Character Info #1'
+  m_EditorClassIdentifier: 
+  statusInfo: {fileID: 0}
+  stateControllerInfo: {fileID: 11400000, guid: 69e5bc9ee740a3948ad33c64b4708cbd,
+    type: 2}
+  weaponStateControllerInfo: {fileID: 11400000, guid: ca39cc5e84c2b3f43bb2345be11797cb,
+    type: 2}
+  pawnPrefab: {fileID: 11467564, guid: 28903826c6f753e42a8d2f5e9ea10c8d, type: 2}
+  teamId: 1
+  applyColor: 1
+  EnemyStatusInfo: {fileID: 11400000, guid: c9bdb39aae301c44490a2119a2a3b7d9, type: 2}
+  GambitListInfo: {fileID: 11400000, guid: 8cd6ffe1cfad9b949b40efc94068f904, type: 2}

@@ -1,0 +1,787 @@
+fileFormatVersion: 2
+guid: 5dcb23c64836c004f8dea36e3998a05a
+timeCreated: 1472382238
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: MadMachinaMockup_0
+    21300002: MadMachinaMockup_1
+    21300004: MadMachinaMockup_2
+    21300006: MadMachinaMockup_3
+    21300008: MadMachinaMockup_4
+    21300010: MadMachinaMockup_5
+    21300012: MadMachinaMockup_6
+    21300014: MadMachinaMockup_7
+    21300016: MadMachinaMockup_8
+    21300018: MadMachinaMockup_9
+    21300020: MadMachinaMockup_10
+    21300022: MadMachinaMockup_11
+    21300024: MadMachinaMockup_12
+    21300026: MadMachinaMockup_13
+    21300028: MadMachinaMockup_14
+    21300030: MadMachinaMockup_15
+    21300032: MadMachinaMockup_16
+    21300034: MadMachinaMockup_17
+    21300036: MadMachinaMockup_18
+    21300038: MadMachinaMockup_19
+    21300040: MadMachinaMockup_20
+    21300042: MadMachinaMockup_21
+    21300044: MadMachinaMockup_22
+    21300046: MadMachinaMockup_23
+    21300048: MadMachinaMockup_24
+    21300050: MadMachinaMockup_25
+    21300052: MadMachinaMockup_26
+    21300054: MadMachinaMockup_27
+    21300056: MadMachinaMockup_28
+    21300058: MadMachinaMockup_29
+    21300060: MadMachinaMockup_30
+    21300062: MadMachinaMockup_31
+    21300064: MadMachinaMockup_32
+    21300066: MadMachinaMockup_33
+    21300068: MadMachinaMockup_34
+    21300070: MadMachinaMockup_35
+    21300072: MadMachinaMockup_36
+    21300074: MadMachinaMockup_37
+    21300076: MadMachinaMockup_38
+    21300078: MadMachinaMockup_39
+    21300080: MadMachinaMockup_40
+    21300082: MadMachinaMockup_41
+    21300084: MadMachinaMockup_42
+    21300086: MadMachinaMockup_43
+    21300088: MadMachinaMockup_44
+    21300090: MadMachinaMockup_45
+    21300092: MadMachinaMockup_46
+    21300094: MadMachinaMockup_47
+    21300096: MadMachinaMockup_48
+    21300098: MadMachinaMockup_49
+    21300100: MadMachinaMockup_50
+    21300102: MadMachinaMockup_51
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MadMachinaMockup_0
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 607
+        width: 81
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_1
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 619
+        width: 50
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_2
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 619
+        width: 81
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_3
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 499
+        width: 324
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_4
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 536
+        width: 95
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_5
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 557
+        width: 118
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_6
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 505
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_7
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 551
+        width: 47
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_8
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 531
+        width: 167
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_9
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 532
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_10
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 511
+        width: 59
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_11
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 433
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_12
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 458
+        width: 66
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_13
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 340
+        width: 87
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_14
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 446
+        width: 158
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_15
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 442
+        width: 44
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_16
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 459
+        width: 187
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_17
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 396
+        width: 79
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_18
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 431
+        width: 132
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_19
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 369
+        width: 50
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_20
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 216
+        width: 132
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_21
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 278
+        width: 104
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_22
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 280
+        width: 119
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_23
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 368
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_24
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 346
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_25
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 310
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_26
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 236
+        width: 78
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_27
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 299
+        width: 60
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_28
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 337
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_29
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 307
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_30
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 307
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_31
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 217
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_32
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 218
+        width: 52
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_33
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 217
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_34
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 219
+        width: 20
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_35
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 217
+        width: 51
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_36
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 217
+        width: 54
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_37
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_38
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 274
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_39
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 206
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_40
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 179
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_41
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 179
+        width: 8
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_42
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 178
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_43
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 179
+        width: 7
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 180
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_45
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 180
+        width: 33
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_46
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 180
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_47
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 179
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_48
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 180
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_49
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 180
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_50
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 180
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MadMachinaMockup_51
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 128
+        width: 323
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

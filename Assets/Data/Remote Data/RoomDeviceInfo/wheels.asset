@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e24dc44ddbd24478c2f4e5172e54ea, type: 3}
+  m_Name: wheels
+  m_EditorClassIdentifier: 
+  Id: 
+  Effect: Wheel
+  CanWork: 1
+  CanBeActive: 0
+  RechargeTime: 0
+  EffectValue: 3
+  HasSupercharge: 0
+  SuperchargeChance: 0
+  SuperchargeTime: 0
+  SuperchargeValue: 0
+  SuperchargeHits: 0
+  CanBeBroken: 1
+  Durability: 100
