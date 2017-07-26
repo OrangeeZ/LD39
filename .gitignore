@@ -5,7 +5,7 @@
 /Builds
 /Art
 /Omnom-csharp.v12.suo
-/.*
+/.idea
 
 *.csproj
 *.unityproj

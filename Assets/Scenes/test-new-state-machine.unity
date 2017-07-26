@@ -140,7 +140,7 @@ MonoBehaviour:
   startingItems: []
   startingWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
-  cameraBehaviour: {fileID: 0}
+  cameraBehaviour: {fileID: 11456982, guid: b0d70a7b03f08794794ffb6b7959ba27, type: 2}
   _initializeOnStart: 1
 --- !u!4 &50915625
 Transform:
@@ -257,7 +257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1278626701
 AudioListener:
   m_ObjectHideFlags: 0
