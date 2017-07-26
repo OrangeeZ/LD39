@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="676bcf10-c54a-4f1e-82d5-845735851c71" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.LD39/.idea/contentModel.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.LD39/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.LD39/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.LD39/riderModule.iml" />
-    </list>
+    <list default="true" id="676bcf10-c54a-4f1e-82d5-845735851c71" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +17,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
               <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-              <folding />
+              <folding>
+                <marker date="1460972447831" expanded="false" signature="6:79" ph="..." />
+                <marker date="1460972447831" expanded="true" signature="122:465" ph="{...}" />
+                <marker date="1460972447831" expanded="true" signature="224:402" ph="{...}" />
+                <marker date="1460972447831" expanded="true" signature="267:358" ph="{...}" />
+                <marker date="1460972447831" expanded="true" signature="457:463" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -32,7 +33,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1450135989824" expanded="false" signature="6:125" ph="..." />
+                <marker date="1450135989824" expanded="true" signature="155:1934" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="199:255" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="385:712" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="810:900" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="1006:1931" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="1234:1452" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="1273:1294" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="1394:1448" ph="{...}" />
+                <marker date="1450135989824" expanded="true" signature="1456:1928" ph="/* var affectedBuildings = Building.instances.Where( _ =&gt; _.sphereCollider.Intersects( point, radius ) ).ToList() ... */" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,9 +52,19 @@
       <file leaf-file-name="EnemySpawner.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawner/EnemySpawner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
+            <state relative-caret-position="418">
               <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-              <folding />
+              <folding>
+                <marker date="1461026794895" expanded="false" signature="6:92" ph="..." />
+                <marker date="1461026794895" expanded="true" signature="134:1535" ph="{...}" />
+                <marker date="1461026794895" expanded="true" signature="172:208" ph="{...}" />
+                <marker date="1461026794895" expanded="true" signature="636:710" ph="{...}" />
+                <marker date="1461026794895" expanded="true" signature="747:763" ph="{...}" />
+                <marker date="1461026794895" expanded="true" signature="809:835" ph="{...}" />
+                <marker date="1461026794895" expanded="true" signature="859:1532" ph="{...}" />
+                <marker date="1461026794895" expanded="true" signature="886:960" ph="/* if ( SpawnLimit &gt; 0 &amp;&amp; _spawnCount &gt;= SpawnLimit ) { ... */" />
+                <marker date="1461026794895" expanded="true" signature="1147:1461" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,6 +76,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/GameStarter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawner/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -103,6 +127,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -129,7 +154,49 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="false" name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug">
@@ -142,6 +209,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="676bcf10-c54a-4f1e-82d5-845735851c71" name="Default" comment="" />
@@ -149,12 +219,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501094910442</updated>
-      <workItem from="1501094913738" duration="164000" />
+      <workItem from="1501094913738" duration="269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164000" />
+    <option name="totallyTimeSpent" value="269000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -206,7 +276,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1460972447831" expanded="false" signature="6:79" ph="..." />
+            <marker date="1460972447831" expanded="true" signature="122:465" ph="{...}" />
+            <marker date="1460972447831" expanded="true" signature="224:402" ph="{...}" />
+            <marker date="1460972447831" expanded="true" signature="267:358" ph="{...}" />
+            <marker date="1460972447831" expanded="true" signature="457:463" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -214,15 +290,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1450135989824" expanded="false" signature="6:125" ph="..." />
+            <marker date="1450135989824" expanded="true" signature="155:1934" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="199:255" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="385:712" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="810:900" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="1006:1931" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="1234:1452" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="1273:1294" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="1394:1448" ph="{...}" />
+            <marker date="1450135989824" expanded="true" signature="1456:1928" ph="/* var affectedBuildings = Building.instances.Where( _ =&gt; _.sphereCollider.Intersects( point, radius ) ).ToList() ... */" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawner/EnemySpawner.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
+        <state relative-caret-position="418">
           <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-          <folding />
+          <folding>
+            <marker date="1461026794895" expanded="false" signature="6:92" ph="..." />
+            <marker date="1461026794895" expanded="true" signature="134:1535" ph="{...}" />
+            <marker date="1461026794895" expanded="true" signature="172:208" ph="{...}" />
+            <marker date="1461026794895" expanded="true" signature="636:710" ph="{...}" />
+            <marker date="1461026794895" expanded="true" signature="747:763" ph="{...}" />
+            <marker date="1461026794895" expanded="true" signature="809:835" ph="{...}" />
+            <marker date="1461026794895" expanded="true" signature="859:1532" ph="{...}" />
+            <marker date="1461026794895" expanded="true" signature="886:960" ph="/* if ( SpawnLimit &gt; 0 &amp;&amp; _spawnCount &gt;= SpawnLimit ) { ... */" />
+            <marker date="1461026794895" expanded="true" signature="1147:1461" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
