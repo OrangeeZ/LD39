@@ -58,9 +58,9 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 	public void Trace( Vector3 position, int radius ) {
 
-		Profiler.BeginSample( "WarFogSpaceMap::Clear" );
+		UnityEngine.Profiling.Profiler.BeginSample( "WarFogSpaceMap::Clear" );
 		//ClearVisible();
-		Profiler.EndSample();
+		UnityEngine.Profiling.Profiler.EndSample();
 
 		var scaledRadius = Mathf.RoundToInt( radius / _cellSize );
 
@@ -83,7 +83,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		//_mooreNeighbourhoodVisibilityBuffer2 = _mooreNeighbourhoodVisibilityBuffer2 ?? new List<byte>();
 		//_mooreNeighbourhoodVisibilityBuffer2.Capacity = GetMooreNeighbourhoodLength( scaledRadius + 1 );
 
-		Profiler.BeginSample( "WarFogSpaceMap::Trace" );
+		UnityEngine.Profiling.Profiler.BeginSample( "WarFogSpaceMap::Trace" );
 		for ( var i = 1; i <= scaledRadius; ++i ) {
 
 			//if ( i % 2 == 0 ) {
@@ -100,9 +100,9 @@ public class WarFogSpaceMap : MonoBehaviour {
 
 			TraceMooreNeighbourhood( centerX, centerY, i, OnTracePoint );
 		}
-		Profiler.EndSample();
+		UnityEngine.Profiling.Profiler.EndSample();
 
-		Profiler.BeginSample( "WarFogSpaceMap::PrepareTexture" );
+		UnityEngine.Profiling.Profiler.BeginSample( "WarFogSpaceMap::PrepareTexture" );
 	}
 
 	public void SubmitTexture() {
@@ -127,7 +127,7 @@ public class WarFogSpaceMap : MonoBehaviour {
 		_warFogTexture.SetPixels32( _warFogColors );
 		_warFogTexture.Apply();
 
-		Profiler.EndSample();
+		UnityEngine.Profiling.Profiler.EndSample();
 
 		if ( WarFogPostEffectRenderer.Instance != null ) {
 

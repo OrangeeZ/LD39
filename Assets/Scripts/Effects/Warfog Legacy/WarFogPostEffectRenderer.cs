@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets.ImageEffects;
 
 public class WarFogPostEffectRenderer : MonoBehaviour {
 
@@ -8,9 +7,6 @@ public class WarFogPostEffectRenderer : MonoBehaviour {
 
 	[SerializeField]
 	private Shader _shader;
-
-	[SerializeField]
-	private BlurOptimized _blurOptimized;
 
 	private Material _material;
 	private Texture2D _warFogTexture;

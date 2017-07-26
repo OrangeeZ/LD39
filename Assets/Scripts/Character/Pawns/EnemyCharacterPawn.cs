@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyCharacterPawn : CharacterPawn {
 
 	[SerializeField]
-	private NavMeshAgent _navMeshAgent;
+	private UnityEngine.AI.NavMeshAgent _navMeshAgent;
 
 	[SerializeField]
 	private SpriteRenderer _spriteRenderer;

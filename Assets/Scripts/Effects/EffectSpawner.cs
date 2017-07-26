@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using Packages.EventSystem;
 using UniRx;
-using UnityStandardAssets.Effects;
 
 public class EffectSpawner : AObject {
 
