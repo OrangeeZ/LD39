@@ -6,8 +6,9 @@ using System.Collections;
 [System.Serializable]
 public class CharacterStateController {
 
-	public bool debug = false;
-    public bool updateAnimation = false;
+	public bool IsDebug = false;
+	
+    public bool UpdateAnimation = false;
 
     [HideInInspector]
 	public Character character;
@@ -47,9 +48,9 @@ public class CharacterStateController {
 			currentState = states.FirstOrDefault( that => that.CanBeSet() );
 		}
 
-		if ( debug && oldState != currentState ) {
+		if ( IsDebug && oldState != currentState ) {
 
-			Debug.Log( string.Format( "{0}->{1}", oldState == null ? null : oldState.ToString(), currentState ) );
+			UnityEngine.Debug.Log( string.Format( "{0}->{1}", oldState == null ? null : oldState.ToString(), currentState ) );
 		}
 
 		UpdateEvaluationBlock();
@@ -68,7 +69,7 @@ public class CharacterStateController {
 
 			evaluationBlock.MoveNext();
 
-		    if ( updateAnimation ) {
+		    if ( UpdateAnimation ) {
 
                 currentState.UpdateAnimator();
 		    }
@@ -89,9 +90,9 @@ public class CharacterStateController {
 			}
 		}
 
-		if ( debug ) {
+		if ( IsDebug ) {
 
-			Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
+			UnityEngine.Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
 		}
 		
 		currentState = newState;
@@ -101,9 +102,9 @@ public class CharacterStateController {
 
 	public void ForceSetState( CharacterState newState ) {
 
-		if ( debug ) {
+		if ( IsDebug ) {
 
-			Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
+			UnityEngine.Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
 		}
 
 		currentState = newState;
