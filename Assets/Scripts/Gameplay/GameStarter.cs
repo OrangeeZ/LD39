@@ -2,26 +2,20 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class GameStarter : MonoBehaviour {
+public class GameStarter : MonoBehaviour
+{
+    [SerializeField]
+    private string[] _scenesToLoad;
 
-	[SerializeField]
-	private string[] _scenesToLoad;
+    void Start()
+    {
+        foreach (var each in _scenesToLoad)
+        {
+            SceneManager.LoadScene(each, LoadSceneMode.Additive);
 
-	// Use this for initialization
-	void Start () {
+            Debug.Log(each);
+        }
 
-		foreach ( var each in _scenesToLoad ) {
-			
-			SceneManager.LoadScene( each, LoadSceneMode.Additive );
-
-			Debug.Log( each );
-		}
-
-		SceneManager.UnloadScene( "Loader" );
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        SceneManager.UnloadSceneAsync("Loader");
+    }
 }
