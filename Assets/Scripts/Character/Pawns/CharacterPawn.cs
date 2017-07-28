@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CharacterPawn : CharacterPawnBase
 {
-    public bool canFollowDestination;
+    public bool CanFollowDestination;
 
     [SerializeField]
     private float _gunYOffset = 0.5f;
@@ -15,20 +15,11 @@ public class CharacterPawn : CharacterPawnBase
     private float _isGroundedChangeDelay = 0.2f;
 
     [SerializeField]
-    private SimpleSphereCollider _sphereCollider;
-
-    [SerializeField]
     private CharacterController _characterController;
 
     private Vector3? _destination;
 
     private Transform _turretTarget;
-
-    [SerializeField]
-    private Transform _subTransform;
-
-    [SerializeField]
-    private WarFogTracer _warFogTracer;
 
     [SerializeField]
     private CharacterSpriteAnimationController _spriteAnimationController;
