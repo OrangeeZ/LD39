@@ -15,9 +15,6 @@ public class CharacterPawn : CharacterPawnBase
     private float _isGroundedChangeDelay = 0.2f;
 
     [SerializeField]
-    private float _rotationToDirectionSpeed = 100;
-
-    [SerializeField]
     private SimpleSphereCollider _sphereCollider;
 
     [SerializeField]

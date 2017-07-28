@@ -3,11 +3,14 @@ using System.Collections;
 
 public class EnemyCharacterPawn : CharacterPawn
 {
-    [SerializeField] private UnityEngine.AI.NavMeshAgent _navMeshAgent;
+    [SerializeField]
+    private UnityEngine.AI.NavMeshAgent _navMeshAgent;
 
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
 
-    [SerializeField] private float _fadeSpeed = 0.25f;
+    [SerializeField]
+    private float _fadeSpeed = 0.25f;
 
     public override void SetSpeed(float newSpeed)
     {
@@ -73,7 +76,6 @@ public class EnemyCharacterPawn : CharacterPawn
         base.Update();
 
         var direction = _navMeshAgent.velocity;
-        direction.x *= -1;
         UpdateSpriteAnimationDirection(direction);
     }
 }

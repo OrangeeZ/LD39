@@ -1,5 +1,6 @@
 ﻿using Packages.EventSystem;
 using UniRx;
+using UnityEngine;
 
 public class EnemySpawner : SpawnerBase
 {
@@ -33,6 +34,18 @@ public class EnemySpawner : SpawnerBase
         }
     }
 
+    void Update()
+    {
+        if (SpawnInterval > 0 && Time.time - _startTime < SpawnInterval)
+        {
+            return;
+        }
+
+        _startTime = Time.time;
+        
+        Spawn();
+    }
+
     public override void Initialize()
     {
         Spawn();
@@ -51,11 +64,10 @@ public class EnemySpawner : SpawnerBase
         {
             return;
         }
-
+        
         _spawnCount += 1;
 
-        _character = characterInfo.GetCharacter(startingPosition: transform.position,
-            replacementStatusInfo: characterStatusInfo);
+        _character = characterInfo.GetCharacter(startingPosition: transform.position, replacementStatusInfo: characterStatusInfo);
 
         if (characterStatusInfo != null)
         {
