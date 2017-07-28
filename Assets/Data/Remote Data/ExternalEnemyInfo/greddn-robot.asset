@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: greddn-robot
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Temp
   Target: roket
   Damage: 10
   AttackCooldown: 5
-  Proj: 
-  HP: 0
+  Proj: bomb
+  HP: 5
   SpawnRange: 12
   SpeedSlow: 0
   Effect: 

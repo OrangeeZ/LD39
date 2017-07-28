@@ -1,32 +1,33 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 using csv;
 
-public class GlobalGameInfo : ScriptableObject, ICsvConfigurable {
+public class GlobalGameInfo : ScriptableObject, ICsvConfigurable
+{
+	[RemoteProperty]
+	public string MaxSpeed;
 
-	public float MaxSpeed;
+	[RemoteProperty]
 	public float StartSpeed;
+
+	[RemoteProperty]
 	public float GlobalSpeedLow;
 
-	public float EnterpriseSpeedStart;
-	public float EnterpriseSpeedStop;
+	[RemoteProperty]
+	public float EnterpriseSpeedEnable;
 
+	[RemoteProperty]
+	public float EnterpriseSpeedDisable;
+
+	[RemoteProperty]
 	public float HeroSpeed;
-	public float JumpHeight;
+
+	[RemoteProperty]
+	public float Jump;
+
+	[RemoteProperty]
 	public float RepairCount;
 
-	public void Configure( Values values ) {
-
-		values.Get( "MaxSpeed", out MaxSpeed );
-		values.Get( "StartSpeed", out StartSpeed );
-		values.Get( "GlobalSpeedLow", out GlobalSpeedLow );
-
-		values.Get( "EnterpriseSpeedEnable", out EnterpriseSpeedStart );
-		values.Get( "EnterpriseSpeedDisable", out EnterpriseSpeedStop );
-
-		values.Get( "HeroSpeed", out HeroSpeed );
-		values.Get( "Jump", out JumpHeight );
-		values.Get( "RepairCount", out RepairCount );
+	public void Configure(Values values)
+	{
 	}
-
 }

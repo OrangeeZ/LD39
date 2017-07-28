@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: hassok
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Temp
   Target: all
   Damage: 1
   AttackCooldown: 15
-  Proj: 
-  HP: 0
+  Proj: hass
+  HP: 5
   SpawnRange: 37
-  SpeedSlow: 0
+  SpeedSlow: 5
   Effect: 
   EffectTimerMax: 0

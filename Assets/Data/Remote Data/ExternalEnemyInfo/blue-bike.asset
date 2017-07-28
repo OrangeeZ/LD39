@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: blue-bike
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Permanent
   Target: wheel
   Damage: 2
-  AttackCooldown: 15
-  Proj: 
-  HP: 0
+  AttackCooldown: 1.5
+  Proj: spear
+  HP: 5
   SpawnRange: 16
   SpeedSlow: 0
   Effect: 

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: yellow-bike
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Permanent
   Target: control
   Damage: 2
-  AttackCooldown: 15
-  Proj: 
-  HP: 0
+  AttackCooldown: 1.5
+  Proj: spear
+  HP: 5
   SpawnRange: 18
   SpeedSlow: 0
   Effect: 

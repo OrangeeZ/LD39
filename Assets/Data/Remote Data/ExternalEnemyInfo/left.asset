@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: left
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Event
   Target: all
   Damage: 0
   AttackCooldown: 0
-  Proj: 
-  HP: 0
+  Proj: Left
+  HP: 5
   SpawnRange: 100
-  SpeedSlow: 0
-  Effect: 
-  EffectTimerMax: 0
+  SpeedSlow: 50
+  Effect: Left
+  EffectTimerMax: 15

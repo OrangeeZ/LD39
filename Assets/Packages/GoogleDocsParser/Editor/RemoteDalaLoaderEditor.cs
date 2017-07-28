@@ -56,12 +56,14 @@ public class RemoteDalaLoaderEditor : Editor
 
         if (GUILayout.Button("Load"))
         {
-            var fieldNames = new List<string>();
-            var fieldTypes = new List<Type>();
+            var remoteDataLoader = target as RemoteDataLoader;
             
-            ((RemoteDataLoader) target).ParseRemoteObjectData(fieldNames, fieldTypes);
+            remoteDataLoader.ParseRemoteObjectData();
 
-            ((RemoteDataLoader) target).LoadRemoteData();
+            if (!EditorApplication.isCompiling)
+            {
+                remoteDataLoader.LoadRemoteData();
+            }
         }
     }
 }

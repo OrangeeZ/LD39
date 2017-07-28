@@ -1,23 +1,39 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using csv;
+using Microsoft.CSharp;
+using UnityEngine;
 
 public class ObjectInfoCodeGenerator
 {
     public static void Generate(string path, string className, string[] fieldNames, IList<Type> fieldTypes)
     {
+        if (File.Exists(path))
+        {
+            Debug.Log($"Skipping file generation for {className}; the file already exists");
+            
+            return;
+        }
+        
         using (var fileStream = new FileStream(path, FileMode.Create))
         {
             using (var writer = new StreamWriter(fileStream))
             {
                 WriteHeader(className, writer);
 
+                var compiler = new CSharpCodeProvider();
+                
                 var index = 0;
                 
                 foreach (var each in fieldNames)
                 {
-                    WriteField(fieldTypes[index++], each, writer);
+                    var fieldType = fieldTypes[index++];
+                    var typeReference = new CodeTypeReference(fieldType);
+                    var fieldTypeName = compiler.GetTypeOutput(typeReference);
+                    
+                    WriteField(fieldTypeName, each, writer);
                 }
                 
                 WriteFooter(writer);
@@ -61,9 +77,10 @@ public class ObjectInfoCodeGenerator
         outputFile.WriteLine("{");
     }
 
-    private static void WriteField(Type fieldType, string fieldName, TextWriter outputFile)
+    private static void WriteField(string fieldTypeName, string fieldName, TextWriter outputFile)
     {
-        var result = string.Format("\tpublic {0} {1};", fieldType, fieldName);
+        outputFile.WriteLine("\t[RemoteProperty]");
+        var result = $"\tpublic {fieldTypeName} {fieldName};";
 
         outputFile.WriteLine(result);
         outputFile.WriteLine(string.Empty);

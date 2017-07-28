@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: right
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Event
   Target: all
   Damage: 0
   AttackCooldown: 0
-  Proj: 
-  HP: 0
+  Proj: Right
+  HP: 5
   SpawnRange: 79
-  SpeedSlow: 0
-  Effect: 
-  EffectTimerMax: 0
+  SpeedSlow: 50
+  Effect: Right
+  EffectTimerMax: 15

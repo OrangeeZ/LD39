@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: pink-robot
   m_EditorClassIdentifier: 
   ID: 
-  Type: 
+  Type: Temp
   Target: flame
   Damage: 10
   AttackCooldown: 5
-  Proj: 
-  HP: 0
+  Proj: bomb
+  HP: 5
   SpawnRange: 24
   SpeedSlow: 0
   Effect: 

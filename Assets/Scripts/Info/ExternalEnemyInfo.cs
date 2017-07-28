@@ -3,27 +3,38 @@ using csv;
 
 public class ExternalEnemyInfo : ScriptableObject, ICsvConfigurable
 {
-	public System.String ID;
+	[RemoteProperty]
+	public string ID;
 
-	public System.String Type;
+	[RemoteProperty]
+	public string Type;
 
-	public System.String Target;
+	[RemoteProperty]
+	public string Target;
 
-	public System.Single Damage;
+	[RemoteProperty]
+	public float Damage;
 
-	public System.Single AttackCooldown;
+	[RemoteProperty]
+	public float AttackCooldown;
 
-	public System.String Proj;
+	[RemoteProperty]
+	public string Proj;
 
-	public System.Single HP;
+	[RemoteProperty]
+	public float HP;
 
-	public System.Single SpawnRange;
+	[RemoteProperty]
+	public float SpawnRange;
 
-	public System.Single SpeedSlow;
+	[RemoteProperty]
+	public float SpeedSlow;
 
-	public System.String Effect;
+	[RemoteProperty]
+	public string Effect;
 
-	public System.Single EffectTimerMax;
+	[RemoteProperty]
+	public float EffectTimerMax;
 
 	public void Configure(Values values)
 	{

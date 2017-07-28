@@ -14,8 +14,8 @@ MonoBehaviour:
   MaxSpeed: 350
   StartSpeed: 100
   GlobalSpeedLow: 3
-  EnterpriseSpeedStart: 300
-  EnterpriseSpeedStop: 280
+  EnterpriseSpeedEnable: 300
+  EnterpriseSpeedDisable: 280
   HeroSpeed: 10
-  JumpHeight: 5
+  Jump: 5
   RepairCount: 8
