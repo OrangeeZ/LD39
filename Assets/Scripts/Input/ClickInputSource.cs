@@ -16,7 +16,7 @@ public class ClickInputSource : IInputSource {
 
         //moveInput = .
 
-        moveInput = UIJoystick.instance.ObserveEveryValueChanged( _ => _.GetValue() );
+        Observable.EveryUpdate().Subscribe(Update); //UIJoystick.instance.ObserveEveryValueChanged( _ => _.GetValue() );
         //targets = targetsSubject.ToReadOnlyReactiveProperty( null );
 
         //UIInputPanel.instance.Subscribe( OnClick );

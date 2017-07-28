@@ -2,45 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
+using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 
-[CreateAssetMenu( menuName = "Create/State controller" )]
-public class CharacterStateControllerInfo : ScriptableObject {
+[CreateAssetMenu(menuName = "Create/State controller")]
+public class CharacterStateControllerInfo : ScriptableObject
+{
+    [SerializeField]
+    private AnimatorController _stateController;
 
-	[Serializable]
-	private class StateTransitionEntry {
+    public bool UpdateAnimation = false;
 
-		public CharacterStateInfo stateInfo;
-		public bool[] transitionMask;
-	}
+    public bool IsDebug = false;
 
+    public CharacterStateController GetStateController()
+    {
+        var stateMachine = _stateController.layers[0].stateMachine;
+        var stateBehaviourMapping = new Dictionary<AnimatorState, CharacterState>();
+        var states = stateMachine.states.Select(_ => _.state).ToArray();
+        
+        foreach (var each in states)
+        {
+            var behaviour = each.behaviours.First() as StateMachineStateInfoProvider;
+            stateBehaviourMapping[each] = behaviour.GetState();
+        }
 
-    public bool updateAnimation = false;
+        foreach (var each in states)
+        {
+            var targetStates = each.transitions
+                .Select(_ => _.destinationState)
+                .Select(_ => stateBehaviourMapping[_]);
 
-    public bool isDebug = false;
+            Debug.Log("Transitions from " + each + ":");
+            Debug.Log(targetStates.Aggregate(string.Empty, (total, _) => total + " " + _));
+            
+            stateBehaviourMapping[each].SetTransitionStates(targetStates);
+        }
 
-	[SerializeField]
-	private List<StateTransitionEntry> entries;
+        var result = new CharacterStateController
+        {
+            IsDebug = IsDebug,
+            UpdateAnimation = UpdateAnimation,
+            states = stateBehaviourMapping.Values.ToArray(),
+        };
 
-	public CharacterStateController GetStateController() {
+        Debug.Log(stateBehaviourMapping.Values.Aggregate(string.Empty, (total, each) => total + " " + each));
 
-		var result = new CharacterStateController {
-
-			debug = isDebug,
-            updateAnimation = updateAnimation,
-			states = entries.Select( _ => _.stateInfo.GetState() ).ToArray(),
-		};
-
-		foreach ( var each in result.states ) {
-
-			var transitionEntry = entries[result.states.IndexOf( each )];
-
-			each.SetTransitionStates( result.states
-				.EquiZip( transitionEntry.transitionMask, ( a, b ) => new { item1 = a, item2 = b } )
-				.Where( _ => _.item2 && _.item1 != each )
-				.Select( _ => _.item1 ) );
-		}
-
-		return result;
-	}
+        return result;
+    }
 }

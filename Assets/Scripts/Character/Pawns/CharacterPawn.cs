@@ -1,147 +1,136 @@
 ﻿using UniRx;
 using UnityEngine;
 
-public class CharacterPawn : CharacterPawnBase {
+public class CharacterPawn : CharacterPawnBase
+{
+    public bool CanFollowDestination;
 
-	public bool canFollowDestination;
+    [SerializeField]
+    private float _gunYOffset = 0.5f;
 
-	[SerializeField]
-	private float _gunYOffset = 0.5f;
+    [SerializeField]
+    private float _weight = 1f;
 
-	[SerializeField]
-	private float _weight = 1f;
+    [SerializeField]
+    private float _isGroundedChangeDelay = 0.2f;
 
-	[SerializeField]
-	private float _isGroundedChangeDelay = 0.2f;
+    [SerializeField]
+    private CharacterController _characterController;
 
-	[SerializeField]
-	private float _rotationToDirectionSpeed = 100;
+    private Vector3? _destination;
 
-	[SerializeField]
-	private SimpleSphereCollider _sphereCollider;
+    private Transform _turretTarget;
 
-	[SerializeField]
-	private CharacterController _characterController;
+    [SerializeField]
+    private CharacterSpriteAnimationController _spriteAnimationController;
 
-	private Vector3? _destination;
+    private float _lastGroundedTime = 0f;
 
-	private Transform _turretTarget;
+    protected virtual void Update()
+    {
+        if (_characterController != null)
+        {
+            _characterController.Move(Vector3.down * Time.deltaTime * _weight);
 
-	[SerializeField]
-	private Transform _subTransform;
+            if (_characterController.isGrounded)
+            {
+                _lastGroundedTime = Time.time;
+            }
+        }
+    }
 
-	[SerializeField]
-	private WarFogTracer _warFogTracer;
+    public Vector3 GetWeaponPosition()
+    {
+        return position + Vector3.up * _gunYOffset;
+    }
 
-	[SerializeField]
-	private CharacterSpriteAnimationController _spriteAnimationController;
+    public override void MoveHorizontal(Vector3 direction)
+    {
+        var directionDelta = direction * speed * Time.deltaTime;
 
-	private float _lastGroundedTime = 0f;
+        if (_characterController == null)
+        {
+            position += directionDelta;
+        }
+        else
+        {
+            _characterController.Move(directionDelta);
+        }
 
-	protected virtual void Update() {
+        UpdateSpriteAnimationDirection(direction);
+    }
 
-		if ( _characterController != null ) {
+    public void MoveVertical(ref float impulse, float deltaTime)
+    {
+        impulse += Physics.gravity.y * _weight * deltaTime;
+        var delta = impulse * Vector3.up;
 
-			_characterController.Move( Vector3.down * Time.deltaTime * _weight );
+        if (_characterController == null)
+        {
+            position += delta * deltaTime;
+        }
+        else
+        {
+            _characterController.Move(delta * deltaTime);
+        }
+    }
 
-			if ( _characterController.isGrounded ) {
+    public override void SetDestination(Vector3 destination)
+    {
+        _destination = destination;
+    }
 
-				_lastGroundedTime = Time.time;
-			}
-		}
-	}
+    public override float GetDistanceToDestination()
+    {
+        return _destination.HasValue ? Vector3.Distance(position, _destination.Value) : float.NaN;
+    }
 
-	public Vector3 GetWeaponPosition() {
+    public override Vector3 GetDirectionTo(CharacterPawnBase otherPawn)
+    {
+        return (otherPawn.position - position).normalized;
+    }
 
-		return position + Vector3.up * _gunYOffset;
-	}
+    public virtual void ClearDestination()
+    {
+        _destination = null;
+    }
 
-	public override void MoveHorizontal( Vector3 direction ) {
+    public void SetColor(Color baseColor)
+    {
+        var renderers = GetComponentsInChildren<Renderer>();
+        foreach (var each in renderers)
+        {
+            each.material.SetColor("_Color", baseColor);
+        }
+    }
 
-		var directionDelta = direction * speed * Time.deltaTime;
+    public void SetActive(bool isActive)
+    {
+        enabled = isActive;
+        gameObject.SetActive(isActive);
+    }
 
-		if ( _characterController == null ) {
+    public override void MakeDead()
+    {
+        GetSphereSensor().enabled = false;
+        GetComponent<Collider>().enabled = false;
+    }
 
-			position += directionDelta;
-		} else {
+    public void UpdateSpriteAnimationDirection(Vector3 direction)
+    {
+        if (_spriteAnimationController == null)
+        {
+            return;
+        }
 
-			_characterController.Move( directionDelta );
-		}
+        var directionX = (int) Mathf.Clamp(-direction.x * 100, -1, 1);
+        var directionY = (int) Mathf.Clamp(-direction.z * 100, -1, 1);
 
-		UpdateSpriteAnimationDirection( direction );
-	}
+        _spriteAnimationController.UpdateDirection(directionX, directionY);
+    }
 
-	public void MoveVertical( ref float impulse, float deltaTime ) {
-
-		impulse += Physics.gravity.y * _weight * deltaTime;
-		var delta = impulse * Vector3.up;
-
-		if ( _characterController == null ) {
-
-			position += delta * deltaTime;
-		} else {
-
-			_characterController.Move( delta * deltaTime );
-		}
-	}
-
-	public override void SetDestination( Vector3 destination ) {
-
-		_destination = destination;
-	}
-
-	public override float GetDistanceToDestination() {
-
-		return _destination.HasValue ? Vector3.Distance( position, _destination.Value ) : float.NaN;
-	}
-
-	public override Vector3 GetDirectionTo( CharacterPawnBase otherPawn ) {
-
-		return ( otherPawn.position - position ).normalized;
-	}
-
-	public virtual void ClearDestination() {
-
-		_destination = null;
-	}
-
-	public void SetColor( Color baseColor ) {
-
-		var renderers = GetComponentsInChildren<Renderer>();
-		foreach ( var each in renderers ) {
-
-			each.material.SetColor( "_Color", baseColor );
-		}
-	}
-
-	public void SetActive( bool isActive ) {
-
-		enabled = isActive;
-		gameObject.SetActive( isActive );
-	}
-
-	public override void MakeDead() {
-
-		GetSphereSensor().enabled = false;
-		GetComponent<Collider>().enabled = false;
-	}
-
-	public void UpdateSpriteAnimationDirection( Vector3 direction ) {
-
-		if ( _spriteAnimationController == null ) {
-
-			return;
-		}
-
-		var directionX = (int) Mathf.Clamp( -direction.x * 100, -1, 1 );
-		var directionY = (int) Mathf.Clamp( -direction.z * 100, -1, 1 );
-
-		_spriteAnimationController.UpdateDirection( directionX, directionY );
-	}
-
-	public bool IsGrounded() {
-
-		return Time.time - _lastGroundedTime < _isGroundedChangeDelay;
-	}
-
+    public bool IsGrounded()
+    {
+        return Time.time - _lastGroundedTime < _isGroundedChangeDelay;
+    }
 }

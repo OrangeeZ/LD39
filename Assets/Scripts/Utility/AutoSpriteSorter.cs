@@ -1,44 +1,35 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class AutoSpriteSorter : MonoBehaviour {
+public class AutoSpriteSorter : MonoBehaviour
+{
+    [SerializeField]
+    private Vector3 _sortingAxisMask = new Vector3(0, 0, 1);
 
-	[SerializeField]
-	private Bounds _warFogOccluderBounds;
+    [SerializeField]
+    private float _sortingOrderScale = 100f;
 
-	[SerializeField]
-	private float _warFogOccluderAngle = 45f;
-
-	[ContextMenu( "Sort" )]
-	private void Sort() {
+    [ContextMenu("Sort")]
+    private void Sort()
+    {
 #if UNITY_EDITOR
-		var sprites = GetComponentsInChildren<SpriteRenderer>();
-		foreach ( var each in sprites ) {
+        var sprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (var each in sprites)
+        {
+            var sortingOrder = Vector3.Dot(each.transform.position, _sortingAxisMask);
+            each.sortingOrder = Mathf.RoundToInt(sortingOrder * _sortingOrderScale);
 
-			each.sortingOrder = Mathf.RoundToInt( -each.transform.position.z * 100f );
+            UnityEditor.EditorUtility.SetDirty(each);
+        }
 
-			if ( each.name.ToLower().Contains( "wall" ) ) {
-				
-				DestroyImmediate( each.GetComponent<WarFog.Occluder>() );
+        foreach (var each in GetComponentsInChildren<TileMovement>())
+        {
+            DestroyImmediate(each);
+        }
 
-				var occluder = each.gameObject.AddComponent<WarFog.Occluder>();
-				occluder.SetLocalBounds( _warFogOccluderBounds );
-				occluder.SetAdditionalAngle( _warFogOccluderAngle );
-			}
-
-			UnityEditor.EditorUtility.SetDirty( each );
-		}
-
-		foreach ( var each in GetComponentsInChildren<TileMovement>() ) {
-			
-			DestroyImmediate( each );
-		}
-
-		foreach ( var each in GetComponentsInChildren<IsometricMapGenerator>() ) {
-
-			DestroyImmediate( each );
-		}
+        foreach (var each in GetComponentsInChildren<IsometricMapGenerator>())
+        {
+            DestroyImmediate(each);
+        }
 #endif
-	}
-
+    }
 }

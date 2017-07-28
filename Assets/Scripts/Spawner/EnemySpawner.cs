@@ -1,73 +1,85 @@
-﻿using System;
-using System.Linq;
-using Packages.EventSystem;
-using UnityEngine;
+﻿using Packages.EventSystem;
 using UniRx;
+using UnityEngine;
 
-public class EnemySpawner : SpawnerBase {
+public class EnemySpawner : SpawnerBase
+{
+    public class Spawned : IEventBase
+    {
+        public Character Character;
+    }
 
-	public class Spawned : IEventBase {
+    public EnemyCharacterInfo characterInfo;
+    public EnemyCharacterStatusInfo characterStatusInfo;
 
-		public Character Character;
+    public float SpawnInterval;
+    public int SpawnLimit;
 
-	}
+    private float _startTime;
+    private int _spawnCount;
 
-	public EnemyCharacterInfo characterInfo;
-	public EnemyCharacterStatusInfo characterStatusInfo;
+    private Character _character;
 
-	public float SpawnInterval;
-	public int SpawnLimit;
+    [Expressions.CalculatorExpression]
+    public StringReactiveProperty Activation;
 
-	private float _startTime;
-	private int _spawnCount;
+    [Expressions.CalculatorExpression]
+    public StringReactiveProperty Deactivation;
 
-	private Character _character;
+    private void OnValidate()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            name = $"Spawner [{characterStatusInfo.name}]";
+        }
+    }
 
-	[Expressions.CalculatorExpression]
-	public StringReactiveProperty Activation;
+    void Update()
+    {
+        if (SpawnInterval > 0 && Time.time - _startTime < SpawnInterval)
+        {
+            return;
+        }
 
-	[Expressions.CalculatorExpression]
-	public StringReactiveProperty Deactivation;
+        _startTime = Time.time;
+        
+        Spawn();
+    }
 
-	private void OnValidate() {
+    public override void Initialize()
+    {
+        Spawn();
+    }
 
-		name = string.Format( "Spawner [{0}]", characterStatusInfo.name );
-	}
+    public Character GetLastSpawnedCharacter()
+    {
+        return _character;
+    }
 
-	public override void Initialize() {
+    private void Spawn()
+    {
+        _startTime = 0.0f;
 
-		Spawn();
-	}
+        if (SpawnLimit > 0 && _spawnCount >= SpawnLimit)
+        {
+            return;
+        }
+        
+        _spawnCount += 1;
 
-	public Character GetLastSpawnedCharacter() {
+        _character = characterInfo.GetCharacter(startingPosition: transform.position, replacementStatusInfo: characterStatusInfo);
 
-		return _character;
-	}
+        if (characterStatusInfo != null)
+        {
+            _character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
+            _character.dropProbability = characterStatusInfo.DropChance;
+            _character.speakProbability = characterStatusInfo.SpeakChance;
 
-	private void Spawn() {
+            var weapon = characterStatusInfo.Weapon1.GetItem();
+            _character.Inventory.AddItem(weapon);
+            weapon.Apply();
+        }
 
-		_startTime = 0.0f;
-
-		//if ( SpawnLimit > 0 && _spawnCount >= SpawnLimit ) {
-
-		//	return;
-		//}
-		_spawnCount += 1;
-
-		_character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
-
-		if ( characterStatusInfo != null ) {
-			_character.ItemsToDrop = characterStatusInfo.ItemsToDrop;
-			_character.dropProbability = characterStatusInfo.DropChance;
-			_character.speakProbability = characterStatusInfo.SpeakChance;
-
-			var weapon = characterStatusInfo.Weapon1.GetItem();
-			_character.Inventory.AddItem( weapon );
-			weapon.Apply();
-		}
-
-		EventSystem.RaiseEvent( new Spawned {Character = _character} );
-
-	}
-
+        EventSystem.RaiseEvent(new Spawned {Character = _character});
+    }
 }

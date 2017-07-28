@@ -1,82 +1,81 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyCharacterPawn : CharacterPawn {
+public class EnemyCharacterPawn : CharacterPawn
+{
+    [SerializeField]
+    private UnityEngine.AI.NavMeshAgent _navMeshAgent;
 
-	[SerializeField]
-	private UnityEngine.AI.NavMeshAgent _navMeshAgent;
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
 
-	[SerializeField]
-	private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    private float _fadeSpeed = 0.25f;
 
-	[SerializeField]
-	private float _fadeSpeed = 0.25f;
+    public override void SetSpeed(float newSpeed)
+    {
+        _navMeshAgent.speed = newSpeed;
+    }
 
-	public override void SetSpeed( float newSpeed ) {
+    public override void SetDestination(Vector3 destination)
+    {
+        _navMeshAgent.SetDestination(destination);
+    }
 
-		_navMeshAgent.speed = newSpeed;
-	}
+    public override float GetDistanceToDestination()
+    {
+        return _navMeshAgent.remainingDistance;
+    }
 
-	public override void SetDestination( Vector3 destination ) {
+    public override void ClearDestination()
+    {
+        if (_navMeshAgent.isActiveAndEnabled)
+        {
+            _navMeshAgent.destination = transform.position;
+        }
+    }
 
-		_navMeshAgent.SetDestination( destination );
-	}
+    public override void MakeDead()
+    {
+        base.MakeDead();
 
-	public override float GetDistanceToDestination() {
+        if (_navMeshAgent.isActiveAndEnabled)
+        {
+            _navMeshAgent.isStopped = true;
+        }
+    }
 
-		return _navMeshAgent.remainingDistance;
-	}
+    public IEnumerable Fade(bool isOut)
+    {
+        var duration = _fadeSpeed;
+        var timer = new AutoTimer(duration);
+        var toColor = Color.black;
+        toColor.a = 0;
 
-	public override void ClearDestination() {
-		
-		if ( _navMeshAgent.isActiveAndEnabled ) {
+        while (timer.ValueNormalized < 1)
+        {
+            _spriteRenderer.color = Color.Lerp(Color.white, toColor,
+                isOut ? 1 - timer.ValueNormalized : timer.ValueNormalized);
 
-			_navMeshAgent.destination = transform.position;
-		}
-	}
+            yield return null;
+        }
+    }
 
-	public override void MakeDead() {
+    public void SetPosition(Vector3 position)
+    {
+        if (_navMeshAgent.isActiveAndEnabled)
+        {
+            _navMeshAgent.Warp(position);
+        }
 
-		base.MakeDead();
+        transform.position = position;
+    }
 
-		if ( _navMeshAgent.isActiveAndEnabled ) {
+    protected override void Update()
+    {
+        base.Update();
 
-			_navMeshAgent.Stop();
-		}
-	}
-
-	public IEnumerable Fade( bool isOut ) {
-
-		var duration = _fadeSpeed;
-		var timer = new AutoTimer( duration );
-		var toColor = Color.black;
-		toColor.a = 0;
-
-		while ( timer.ValueNormalized < 1 ) {
-
-			_spriteRenderer.color = Color.Lerp( Color.white, toColor, isOut ? 1 - timer.ValueNormalized : timer.ValueNormalized );
-
-			yield return null;
-		}
-	}
-
-	public void SetPosition( Vector3 position ) {
-
-		if ( _navMeshAgent.isActiveAndEnabled ) {
-
-			_navMeshAgent.Warp( position );
-		}
-
-		transform.position = position;
-	}
-
-	protected override void Update() {
-
-		base.Update();
-
-		var direction = _navMeshAgent.velocity;
-		direction.x *= -1;
-		UpdateSpriteAnimationDirection( direction );
-	}
-
+        var direction = _navMeshAgent.velocity;
+        UpdateSpriteAnimationDirection(direction);
+    }
 }

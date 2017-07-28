@@ -11,12 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b1afa80f0b145a6f9ccf2bf9c62f, type: 3}
   m_Name: Player Weapon State Controller
   m_EditorClassIdentifier: 
-  updateAnimation: 0
-  isDebug: 0
-  entries:
-  - stateInfo: {fileID: 11400000, guid: c39e294ad68cb3540abc6f169ff42fa3, type: 2}
-    transitionMask: 000101
-  - stateInfo: {fileID: 11400000, guid: 0a7db3988906f4847ba5169e250e29a1, type: 2}
-    transitionMask: 010001
-  - stateInfo: {fileID: 11400000, guid: 43f67a45584681b4f99a1a6ba1cbb8a6, type: 2}
-    transitionMask: 000000
+  _stateController: {fileID: 9100000, guid: 00bfa1af442395e4b88c67d4cfc2b811, type: 2}
+  UpdateAnimation: 0
+  IsDebug: 0
