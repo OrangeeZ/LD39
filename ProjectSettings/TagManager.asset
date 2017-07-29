@@ -56,3 +56,6 @@ TagManager:
   - name: Objects
     uniqueID: 1488498939
     locked: 0
+  - name: voodooDoll
+    uniqueID: 885271431
+    locked: 0
