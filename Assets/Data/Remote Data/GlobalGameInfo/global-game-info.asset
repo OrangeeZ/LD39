@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbf10925d488514ba2608fed86aab6d, type: 3}
   m_Name: global-game-info
   m_EditorClassIdentifier: 
-  MaxSpeed: 350
-  StartSpeed: 100
-  GlobalSpeedLow: 3
-  EnterpriseSpeedEnable: 300
-  EnterpriseSpeedDisable: 280
-  HeroSpeed: 10
-  Jump: 5
-  RepairCount: 8
+  MaxSpeed: 
+  StartSpeed: 0
+  GlobalSpeedLow: 0
+  EnterpriseSpeedEnable: 0
+  EnterpriseSpeedDisable: 0
+  HeroSpeed: 0
+  Jump: 0
+  RepairCount: 0

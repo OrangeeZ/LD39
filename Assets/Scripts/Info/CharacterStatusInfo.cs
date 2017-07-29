@@ -12,6 +12,22 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
     [RemoteProperty]
     public float MoveSpeed;
 
+    [RemoteProperty]
+    public float JumpSpeed;
+
+    [RemoteProperty]
+    public float JumpHeight;
+
+    [RemoteProperty]
+    public float RollSpeed;
+
+    [RemoteProperty]
+    public float RollAcceleration;
+
+    [RemoteProperty]
+    public float RollDamage;
+    
+    [Space]
     public AudioClip[] IdleSounds;
     public AudioClip[] DeathSounds;
 

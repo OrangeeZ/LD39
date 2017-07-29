@@ -11,14 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
   m_Name: player-doll
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  MoveSpeed: 0
-  Damage: 0
-  MaxAcorns: 0
+  MaxHealth: 10
+  MoveSpeed: 5
+  JumpSpeed: 20
+  JumpHeight: 5
+  RollSpeed: 5
+  RollAcceleration: 5
+  RollDamage: 5
   IdleSounds: []
   DeathSounds: []
-  status:
-    Strength:
-      value: 0
-    Agility:
-      value: 0

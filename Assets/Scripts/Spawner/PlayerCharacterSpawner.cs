@@ -4,75 +4,74 @@ using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
 
-public class PlayerCharacterSpawner : MonoBehaviour {
+public class PlayerCharacterSpawner : MonoBehaviour
+{
+    public class Spawned : IEventBase
+    {
+        public Character Character;
+    }
 
-	public class Spawned : IEventBase {
+    public CharacterInfo characterInfo;
+    public CharacterStatusInfo CharacterStatusInfo;
 
-		public Character Character;
+    public ItemInfo[] startingItems;
 
-	}
+    public WeaponInfo startingWeapon;
 
-	public CharacterInfo characterInfo;
-	public PlayerCharacterStatusInfo characterStatusInfo;
+    public CharacterStatusEffectInfo startingStatusEffect;
 
-	public ItemInfo[] startingItems;
+    public CameraBehaviour cameraBehaviour;
 
-	public WeaponInfo startingWeapon;
+    public Character character;
 
-	public CharacterStatusEffectInfo startingStatusEffect;
+    [SerializeField]
+    private bool _initializeOnStart;
 
-	public CameraBehaviour cameraBehaviour;
-	
-	public Character character;
+    void Start()
+    {
+        if (_initializeOnStart)
+        {
+            Initialize();
+        }
+    }
 
-	[SerializeField]
-	private bool _initializeOnStart;
+    public void Initialize()
+    {
+        character = characterInfo.GetCharacter(startingPosition: transform.position, replacementStatusInfo: CharacterStatusInfo);
 
-	void Start() {
+        foreach (var each in startingItems.Select(_ => _.GetItem()))
+        {
+            character.Inventory.AddItem(each);
+        }
 
-		if ( _initializeOnStart ) {
-			
-			Initialize();
-		}
-	}
+        var weaponInfo = startingWeapon;
+//		if ( CharacterStatusInfo != null ) {
+//
+//			startingWeapon = startingWeapon ?? CharacterStatusInfo.BaseWeapon;
+//		}
 
-	public void Initialize() {
+        if (weaponInfo != null)
+        {
+            var weapon = weaponInfo.GetItem();
 
-		character = characterInfo.GetCharacter( startingPosition: transform.position, replacementStatusInfo: characterStatusInfo );
+            character.Inventory.AddItem(weapon);
+            weapon.Apply();
+        }
 
-		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
+        if (cameraBehaviour != null)
+        {
+            var cameraBehaviourInstance = Instantiate(cameraBehaviour);
+            cameraBehaviourInstance.transform.position = transform.position;
+            cameraBehaviourInstance.SetTarget(character.Pawn);
+        }
 
-			character.Inventory.AddItem( each );
-		}
-		
-		var weaponInfo = startingWeapon;
-		if ( characterStatusInfo != null ) {
+        if (startingStatusEffect != null)
+        {
+            startingStatusEffect.Add(character);
+        }
 
-			startingWeapon = startingWeapon ?? characterStatusInfo.BaseWeapon;
-		}
+        character.IsPlayerCharacter = true;
 
-		if ( weaponInfo != null ) {
-
-			var weapon = weaponInfo.GetItem();
-
-			character.Inventory.AddItem( weapon );
-			weapon.Apply();
-		}
-
-		if ( cameraBehaviour != null ) {
-
-			var cameraBehaviourInstance = Instantiate( cameraBehaviour );
-			cameraBehaviourInstance.transform.position = transform.position;
-			cameraBehaviourInstance.SetTarget( character.Pawn );
-		}
-
-		if ( startingStatusEffect != null ) {
-
-			startingStatusEffect.Add( character );
-		}
-
-		character.IsPlayerCharacter = true;
-
-		EventSystem.RaiseEvent( new Spawned { Character = character } );
-	}
+        EventSystem.RaiseEvent(new Spawned {Character = character});
+    }
 }

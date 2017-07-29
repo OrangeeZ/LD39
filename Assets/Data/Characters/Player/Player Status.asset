@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 10
   MoveSpeed: 10
-  Damage: 1
-  status:
-    Strength:
-      value: 0
-    Agility:
-      value: 0
+  JumpSpeed: 10
+  JumpHeight: 10
+  RollSpeed: 0
+  RollAcceleration: 0
+  RollDamage: 0
+  IdleSounds: []
+  DeathSounds: []

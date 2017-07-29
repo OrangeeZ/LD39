@@ -23,7 +23,7 @@ MonoBehaviour:
   ClipSize: 1
   ReloadDuration: 1
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
-  _projectileSpeed: 10
+  _projectileSpeed: 20
   _projectilesPerShot: 1
   _shotConeAngle: 0
   _sounds: []

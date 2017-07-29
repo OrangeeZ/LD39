@@ -4,8 +4,6 @@ using System.Collections;
 [CreateAssetMenu(menuName = "Create/States/Jump")]
 public class JumpStateInfo : CharacterStateInfo
 {
-    [SerializeField] private float _jumpImpulse = 5f;
-
     private class State : CharacterState<JumpStateInfo>
     {
         public State(CharacterStateInfo info) : base(info)
@@ -19,12 +17,10 @@ public class JumpStateInfo : CharacterStateInfo
 
         public override IEnumerable GetEvaluationBlock()
         {
-            var impulse = typedInfo._jumpImpulse;
+            var impulse = character.Status.Info.JumpSpeed;
 
             while (impulse > 0)
             {
-                impulse += Physics.gravity.y * deltaTime;
-
                 character.Pawn.MoveHorizontal(GetMoveDirection());
                 character.Pawn.MoveVertical(ref impulse, deltaTime);
 
