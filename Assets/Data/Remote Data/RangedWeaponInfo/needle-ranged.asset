@@ -9,28 +9,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd52a18b43b396c4499e1df91ec30071, type: 3}
-  m_Name: needle-range
+  m_Name: needle-ranged
   m_EditorClassIdentifier: 
   Name: 
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  BaseDamage: 1
-  BaseAttackSpeed: 3
-  AttackRange: 3
+  BaseDamage: 0
+  BaseAttackSpeed: 0
+  AttackRange: 2
   CanFriendlyFire: 0
   SlotType: 0
-  ClipSize: 1
-  ReloadDuration: 3
+  ClipSize: 0
+  ReloadDuration: 0
   _projectilePrefab: {fileID: 11433014, guid: 608acec83ae17a746919b5d8ad070295, type: 2}
   _projectileSpeed: 0
-  _projectilesPerShot: 1
+  _projectilesPerShot: 0
   _shotConeAngle: 0
   _sounds: []
-  _ammoLimit: -1
-  _ammoAmount: -1
-  _projectileLifetime: 1
-  _splashDamageRadius: NaN
-  _weaponBehaviourInfo: {fileID: 11400000, guid: 14eb3dcf64898a6439ff82ebf62ab140,
-    type: 2}
+  _ammoLimit: 100
+  _ammoAmount: 100
+  _projectileLifetime: 0
+  _splashDamageRadius: 0
+  _weaponBehaviourInfo: {fileID: 0}
   _abilityOnPickup: {fileID: 0}
