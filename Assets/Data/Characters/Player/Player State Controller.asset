@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateController: {fileID: 9100000, guid: 00bfa1af442395e4b88c67d4cfc2b811, type: 2}
   UpdateAnimation: 0
-  IsDebug: 1
+  IsDebug: 0

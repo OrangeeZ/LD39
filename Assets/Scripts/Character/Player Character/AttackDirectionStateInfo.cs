@@ -27,7 +27,10 @@ public class AttackDirectionStateInfo : CharacterStateInfo {
 				direction.z = direction.y;
 				direction = direction.Set( y: 0 ).normalized;
 
-				weapon.Attack( direction );
+				if (weapon != null)
+				{
+					weapon.Attack( direction );					
+				}
 				
 				yield return null;
 			}
