@@ -2,94 +2,94 @@
 using System.Linq;
 using System.Collections;
 
-public abstract class CharacterState {
+public abstract class CharacterState
+{
+    public readonly CharacterStateInfo info;
 
-	public readonly CharacterStateInfo info;
+    public IList<CharacterState> PossibleStates => _possibleStates;
 
-	protected Character character {
-		get { return stateController.character; }
-	}
+    private readonly List<CharacterState> _possibleStates = new List<CharacterState>();
 
-	protected HashSet<CharacterState> possibleStates = new HashSet<CharacterState>();
+    protected Character character => stateController.character;
 
-	protected CharacterStateController stateController;
+    protected CharacterStateController stateController;
 
-	protected float deltaTime;
+    protected float deltaTime;
 
-	protected CharacterState( CharacterStateInfo info ) {
+    protected CharacterState(CharacterStateInfo info)
+    {
+        this.info = info;
+    }
 
-		this.info = info;
-	}
+    public void SetDeltaTime(float deltaTime)
+    {
+        this.deltaTime = deltaTime;
+    }
 
-	public void SetDeltaTime( float deltaTime ) {
+    public void SetTransitionStates(IEnumerable<CharacterState> states)
+    {
+        _possibleStates.AddRange(states);
+    }
 
-		this.deltaTime = deltaTime;
-	}
+    public CharacterState GetNextState()
+    {
+        return _possibleStates.FirstOrDefault(which => which.CanBeSet());
+    }
 
-	public void SetTransitionStates( IEnumerable<CharacterState> states ) {
+    public virtual void Initialize(CharacterStateController stateController)
+    {
+        this.stateController = stateController;
+    }
 
-		foreach ( var each in states ) {
+    public virtual bool CanSwitchTo(CharacterState nextState)
+    {
+        return _possibleStates.Contains(nextState);
+    }
 
-			possibleStates.Add( each );
-		}
-	}
+    public virtual bool CanBeSet()
+    {
+        return true;
+    }
 
-	public CharacterState GetNextState() {
+    public virtual bool CheckInterrupPending()
+    {
+        return false;
+    }
 
-		return possibleStates.FirstOrDefault( which => which.CanBeSet() );
-	}
+    public virtual IEnumerable GetEvaluationBlock()
+    {
+        yield return null;
+    }
 
-	public virtual void Initialize( CharacterStateController stateController ) {
+    public void UpdateAnimator()
+    {
+        if (character.Pawn != null)
+        {
+            OnAnimationUpdate(character.Pawn);
+        }
+        //stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
+    }
 
-		this.stateController = stateController;
-	}
+    protected virtual void OnAnimationUpdate(CharacterPawn pawn)
+    {
+        if (pawn._animationController != null)
+        {
+            pawn._animationController.SetBool(info.animatorStateName, true);
+        }
 
-	public virtual bool CanSwitchTo( CharacterState nextState ) {
-
-		return possibleStates.Contains( nextState );
-	}
-
-	public virtual bool CanBeSet() {
-
-		return true;
-	}
-
-	public virtual IEnumerable GetEvaluationBlock() {
-
-		yield return null;
-	}
-
-	public void UpdateAnimator() {
-
-		if ( character.Pawn != null ) {
-
-			OnAnimationUpdate( character.Pawn );
-		}
-		//stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
-	}
-
-	protected virtual void OnAnimationUpdate( CharacterPawn pawn ) {
-
-		if ( pawn._animationController != null ) {
-
-			pawn._animationController.SetBool( info.animatorStateName, true );
-		}
-
-		if ( pawn._weaponAnimationController != null ) {
-
-			pawn._weaponAnimationController.SetBool( info.weaponAnimatorStateName, true );
-		}
-	}
-
+        if (pawn._weaponAnimationController != null)
+        {
+            pawn._weaponAnimationController.SetBool(info.weaponAnimatorStateName, true);
+        }
+    }
 }
 
-public class CharacterState<T> : CharacterState where T : CharacterStateInfo {
+public class CharacterState<T> : CharacterState where T : CharacterStateInfo
+{
+    protected readonly T typedInfo;
 
-	protected readonly T typedInfo;
-
-	public CharacterState( CharacterStateInfo info ) : base( info ) {
-
-		typedInfo = info as T;
-	}
-
+    public CharacterState(CharacterStateInfo info) : base(info)
+    {
+        typedInfo = info as T;
+    }
 }

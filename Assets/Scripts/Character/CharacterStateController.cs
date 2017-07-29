@@ -4,141 +4,161 @@ using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
-public class CharacterStateController {
+public class CharacterStateController
+{
+    public bool IsDebug = false;
 
-	public bool IsDebug = false;
-	
     public bool UpdateAnimation = false;
 
     [HideInInspector]
-	public Character character;
+    public Character character;
 
-	public IList<CharacterState> states = null;
+    public IList<CharacterState> states = null;
 
-	private CharacterState currentState { get; set; }
+    private CharacterState currentState { get; set; }
 
     private IEnumerator evaluationBlock = null;
 
-	private Queue<CharacterState> scheduledStates = new Queue<CharacterState>();
+    private Queue<CharacterState> scheduledStates = new Queue<CharacterState>();
 
-	public void Initialize( Character character ) {
+    public void Initialize(Character character)
+    {
+        this.character = character;
 
-		this.character = character;
+        foreach (var each in states)
+        {
+            each.Initialize(this);
+        }
+    }
 
-		foreach ( var each in states ) {
+    private void GetNextState()
+    {
+        var oldState = currentState;
 
-			each.Initialize( this );
-		}
-	}
+        currentState = scheduledStates.Any() ? scheduledStates.Dequeue() : currentState?.GetNextState();
 
-	private void GetNextState() {
+        if (currentState == null)
+        {
+            currentState = states.FirstOrDefault(that => that.CanBeSet());
+        }
 
-		var oldState = currentState;
+        if (IsDebug && oldState != currentState)
+        {
+            Debug.Log($"{oldState}->{currentState}");
+        }
 
-		if ( scheduledStates.Any() ) {
+        UpdateEvaluationBlock();
+    }
 
-			currentState = scheduledStates.Dequeue();
-		} else if ( currentState != null ) {
+    private void UpdateEvaluationBlock()
+    {
+        evaluationBlock = new PMonad().Add(currentState.GetEvaluationBlock()).Add(GetNextState).ToEnumerator();
+    }
 
-			currentState = currentState.GetNextState();
-		}
+    public void Tick(float deltaTime)
+    {
+        if (CheckInterrupPending())
+        {
+            return;
+        }
 
-		if ( currentState == null ) {
+        if (evaluationBlock != null)
+        {
+            currentState.SetDeltaTime(deltaTime);
 
-			currentState = states.FirstOrDefault( that => that.CanBeSet() );
-		}
+            evaluationBlock.MoveNext();
 
-		if ( IsDebug && oldState != currentState ) {
-
-			UnityEngine.Debug.Log( string.Format( "{0}->{1}", oldState == null ? null : oldState.ToString(), currentState ) );
-		}
-
-		UpdateEvaluationBlock();
-	}
-
-	private void UpdateEvaluationBlock() {
-
-		evaluationBlock = new PMonad().Add( currentState.GetEvaluationBlock() ).Add( GetNextState ).ToEnumerator();
-	}
-
-	public void Tick( float deltaTime ) {
-
-		if ( evaluationBlock != null ) {
-
-			currentState.SetDeltaTime( deltaTime );
-
-			evaluationBlock.MoveNext();
-
-		    if ( UpdateAnimation ) {
-
+            if (UpdateAnimation)
+            {
                 currentState.UpdateAnimator();
-		    }
+            }
+        }
+        else
+        {
+            GetNextState();
+        }
+    }
 
-		} else {
+    public void TrySetState(CharacterState newState, bool allowEnterSameState = false)
+    {
+        if (newState != currentState || !allowEnterSameState)
+        {
+            if ((currentState != null && !currentState.CanSwitchTo(newState)) || !newState.CanBeSet())
+            {
+                return;
+            }
+        }
 
-			GetNextState();
-		}
-	}
+        if (IsDebug)
+        {
+            Debug.Log($"{currentState}->{newState}");
+        }
 
-	public void TrySetState( CharacterState newState, bool allowEnterSameState = false ) {
+        currentState = newState;
 
-		if ( newState != currentState || !allowEnterSameState ) {
+        UpdateEvaluationBlock();
+    }
 
-			if ( ( currentState != null && !currentState.CanSwitchTo( newState ) ) || !newState.CanBeSet() ) {
+    public void ForceSetState(CharacterState newState)
+    {
+        if (IsDebug)
+        {
+            Debug.Log($"{currentState}->{newState}");
+        }
 
-				return;
-			}
-		}
+        currentState = newState;
 
-		if ( IsDebug ) {
+        UpdateEvaluationBlock();
+    }
 
-			UnityEngine.Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
-		}
-		
-		currentState = newState;
+    public void TrySetState(CharacterStateInfo newStateInfo, bool allowEnterSameState = false)
+    {
+        TrySetState(GetStateByInfo(newStateInfo), allowEnterSameState);
+    }
 
-		UpdateEvaluationBlock();
-	}
+    public void SetScheduledStates(IEnumerable<CharacterState> states)
+    {
+        scheduledStates.Clear();
 
-	public void ForceSetState( CharacterState newState ) {
+        foreach (var each in states)
+        {
+            scheduledStates.Enqueue(each);
+        }
+    }
 
-		if ( IsDebug ) {
+    public CharacterState GetStateByInfo(CharacterStateInfo info)
+    {
+        return states.FirstOrDefault(where => where.info == info);
+    }
 
-			UnityEngine.Debug.Log( string.Format( "{0}->{1}", currentState == null ? null : currentState.ToString(), newState ) );
-		}
+    public T GetState<T>() where T : CharacterState
+    {
+        return states.OfType<T>().FirstOrDefault();
+    }
 
-		currentState = newState;
+    private bool CheckInterrupPending()
+    {
+        var possibleStates = currentState != null ? currentState.PossibleStates : null;
+        if (possibleStates == null)
+        {
+            return false;
+        }
+        
+        foreach (var each in possibleStates)
+        {
+            if (each.CheckInterrupPending())
+            {
+                TrySetState(each);
 
-		UpdateEvaluationBlock();
-	}
+                return true;
+            }
+        }
 
-	public void TrySetState( CharacterStateInfo newStateInfo, bool allowEnterSameState = false ) {
+        return false;
+    }
 
-		TrySetState( GetStateByInfo( newStateInfo ), allowEnterSameState );
-	}
+    //public void SetEvaluationBlock( IEnumerator evaluationBlock ) {
 
-	public void SetScheduledStates( IEnumerable<CharacterState> states ) {
-
-		scheduledStates.Clear();
-
-		foreach ( var each in states ) {
-
-			scheduledStates.Enqueue( each );
-		}
-	}
-
-	public CharacterState GetStateByInfo( CharacterStateInfo info ) {
-
-		return states.FirstOrDefault( where => where.info == info );
-	}
-
-	public T GetState<T>() where T : CharacterState {
-
-		return states.OfType<T>().FirstOrDefault();
-	}
-
-	//public void SetEvaluationBlock( IEnumerator evaluationBlock ) {
-
-	//	this.evaluationBlock = evaluationBlock;
-	//}
+    //	this.evaluationBlock = evaluationBlock;
+    //}
 }

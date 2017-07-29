@@ -17,6 +17,9 @@ public class CharacterPawn : CharacterPawnBase
     [SerializeField]
     private CharacterController _characterController;
 
+    [SerializeField]
+    private DamageSphereController _damageSphereController;
+
     private Vector3? _destination;
 
     private Transform _turretTarget;
@@ -61,8 +64,11 @@ public class CharacterPawn : CharacterPawnBase
     }
 
     public void MoveVertical(ref float impulse, float deltaTime)
-    {
+    {       
         impulse += Physics.gravity.y * _weight * deltaTime;
+
+        impulse = impulse < 0 && IsGrounded() ? 0 : impulse;
+        
         var delta = impulse * Vector3.up;
 
         if (_characterController == null)
@@ -132,5 +138,11 @@ public class CharacterPawn : CharacterPawnBase
     public bool IsGrounded()
     {
         return Time.time - _lastGroundedTime < _isGroundedChangeDelay;
+    }
+
+    public void SetDamageSphereActive(bool isActive)
+    {
+        _damageSphereController.SetOwnerCharacter(character);
+        _damageSphereController.SetActive(isActive);
     }
 }

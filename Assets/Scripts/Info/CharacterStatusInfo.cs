@@ -22,7 +22,7 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
     public float RollSpeed;
 
     [RemoteProperty]
-    public float RollAcceleration;
+    public float RollDeceleration;
 
     [RemoteProperty]
     public float RollDamage;
