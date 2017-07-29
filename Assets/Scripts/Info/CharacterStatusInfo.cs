@@ -15,9 +15,6 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
     public AudioClip[] IdleSounds;
     public AudioClip[] DeathSounds;
 
-    [SerializeField]
-    private CharacterStatus status;
-
     public virtual CharacterStatus GetInstance()
     {
         return new CharacterStatus(this);
