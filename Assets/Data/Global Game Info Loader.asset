@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e456ffd01f8c7429c9aebf4741671a, type: 3}
   m_Name: Global Game Info Loader
   m_EditorClassIdentifier: 
-  _url: https://docs.google.com/spreadsheets/d/1sqE231nr9gCzP_bsQFBDiQk84vmNZb-D7HyJbZKWNZU/export?format=csv
-  _pageId: 1192685767
+  _url: https://docs.google.com/spreadsheets/d/1o9AYlc1NCQnbFCEOUCpqycrDmvQbVI5Zi7HSXVUZS9s/export?format=csv
+  _pageId: 0
   _type: GlobalGameInfo
   _postfix: 
   _mode: 1

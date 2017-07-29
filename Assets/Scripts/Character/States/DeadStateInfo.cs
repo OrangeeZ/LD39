@@ -3,58 +3,53 @@ using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
 
-[CreateAssetMenu( menuName = "Create/States/Dead" )]
-public class DeadStateInfo : CharacterStateInfo {
+[CreateAssetMenu(menuName = "Create/States/Dead")]
+public class DeadStateInfo : CharacterStateInfo
+{
+    private class State : CharacterState<DeadStateInfo>
+    {
+        public State(CharacterStateInfo info) : base(info)
+        {
+        }
 
-	private class State : CharacterState<DeadStateInfo> {
+        public override void Initialize(CharacterStateController stateController)
+        {
+            base.Initialize(stateController);
 
-		public State( CharacterStateInfo info ) : base( info ) {
-		}
+            character.Health.Where(_ => _ <= 0).Subscribe(_ => stateController.TrySetState(this));
+        }
 
-		public override void Initialize( CharacterStateController stateController ) {
+        public override bool CanBeSet()
+        {
+            return character.Health.Value <= 0;
+        }
 
-			base.Initialize( stateController );
+        public override IEnumerable GetEvaluationBlock()
+        {
+            character.Pawn.ClearDestination();
 
-			character.Health.Where( _ => _ <= 0 ).Subscribe( _ => stateController.TrySetState( this ) );
-		}
+            if (stateController == character.StateController)
+            {
+                var deathSound = character.Status.Info.DeathSounds.RandomElement();
+                AudioSource.PlayClipAtPoint(deathSound, character.Pawn.position);
 
-		public override bool CanBeSet() {
+                if (1f.Random() <= character.dropProbability && !character.ItemsToDrop.IsNullOrEmpty())
+                {
+                    character.ItemsToDrop.RandomElement().DropItem(character.Pawn.transform);
+                }
 
-			return character.Health.Value <= 0;
-		}
+                character.Pawn.MakeDead();
+            }
 
-		public override IEnumerable GetEvaluationBlock() {
+            while (CanBeSet())
+            {
+                yield return null;
+            }
+        }
+    }
 
-			character.Pawn.ClearDestination();
-
-			character.Pawn.ClearDestination();
-
-			if ( stateController == character.StateController ) {
-
-				character.Pawn.SetActive( false );
-
-				var deathSound = character.Status.Info.DeathSounds.RandomElement();
-				AudioSource.PlayClipAtPoint( deathSound, character.Pawn.position );
-
-				if ( 1f.Random() <= character.dropProbability && !character.ItemsToDrop.IsNullOrEmpty() ) {
-
-					character.ItemsToDrop.RandomElement().DropItem( character.Pawn.transform );
-				}
-
-				character.Pawn.MakeDead();
-			}
-
-			while ( CanBeSet() ) {
-
-				yield return null;
-			}
-		}
-
-	}
-
-	public override CharacterState GetState() {
-
-		return new State( this );
-	}
-
+    public override CharacterState GetState()
+    {
+        return new State(this);
+    }
 }

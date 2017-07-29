@@ -4,162 +4,159 @@ using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
 
-public class Character {
+public class Character
+{
+    public struct Died : IEventBase
+    {
+        public Character Character;
+    }
 
-	public struct Died : IEventBase {
+    public struct RecievedDamage : IEventBase
+    {
+        public Character Character;
+        public float Damage;
+    }
 
-		public Character Character;
+    public struct Speech : IEventBase
+    {
+        public Character Character;
+        public string messageId;
+    }
 
-	}
+    public static List<Character> Instances = new List<Character>();
 
-	public struct RecievedDamage : IEventBase {
+    public readonly FloatReactiveProperty Health;
 
-		public Character Character;
-		public float Damage;
+    public readonly IInputSource InputSource;
 
-	}
+    public readonly IInventory Inventory;
 
-	public struct Speech : IEventBase {
+    public readonly CharacterPawn Pawn;
 
-		public Character Character;
-		public string messageId;
+    public readonly CharacterStateController StateController;
+    public readonly CharacterStateController WeaponStateController;
 
-	}
+    public readonly int TeamId;
+    public readonly CharacterInfo Info;
 
-	public static List<Character> Instances = new List<Character>();
+    public bool IsPlayerCharacter = false;
 
-	public readonly FloatReactiveProperty Health;
+    public readonly CharacterStatus Status;
 
-	public readonly IInputSource InputSource;
+    public ItemInfo[] ItemsToDrop;
+    public float dropProbability = 0.15f;
+    public float speakProbability = 0.15f;
 
-	public readonly IInventory Inventory;
+    private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
-	public readonly CharacterPawn Pawn;
+    public float StatModifier = 1f;
 
-	public readonly CharacterStateController StateController;
-	public readonly CharacterStateController WeaponStateController;
+    public Character(CharacterPawn pawn, IInputSource inputSource, CharacterStatus status,
+        CharacterStateController stateController, CharacterStateController weaponStateController, int teamId,
+        CharacterInfo info)
+    {
+        Status = status;
+        Health = new FloatReactiveProperty(Status.MaxHealth.Value);
+        Pawn = pawn;
+        InputSource = inputSource;
+        StateController = stateController;
+        WeaponStateController = weaponStateController;
+        TeamId = teamId;
+        Info = info;
+        Inventory = new BasicInventory(this);
 
-	public readonly int TeamId;
-	public readonly CharacterInfo Info;
+        pawn.SetCharacter(this);
 
-	public bool IsPlayerCharacter = false;
+        StateController.Initialize(this);
+        WeaponStateController.Initialize(this);
 
-	public readonly CharacterStatus Status;
+        var inputSourceDisposable = inputSource as IDisposable;
+        if (inputSourceDisposable != null)
+        {
+            _compositeDisposable.Add(inputSourceDisposable);
+        }
 
-	public ItemInfo[] ItemsToDrop;
-	public float dropProbability = 0.15f;
-	public float speakProbability = 0.15f;
+        Observable.EveryUpdate().Subscribe(OnUpdate).AddTo(_compositeDisposable);
+        status.MoveSpeed.Subscribe(UpdatePawnSpeed).AddTo(_compositeDisposable);
+        Health.Subscribe(OnHealthChange); //.AddTo( _compositeDisposable );
 
-	private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
+        Instances.Add(this);
 
-	public float StatModifier = 1f;
+        Status.ModifierCalculator.Changed += OnModifiersChange;
+    }
 
-	public Character( CharacterPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
+    private void OnHealthChange(float health)
+    {
+        if (health <= 0)
+        {
+            EventSystem.RaiseEvent(new Died {Character = this});
 
-		Status = status;
-		Health = new FloatReactiveProperty( Status.MaxHealth.Value );
-		Pawn = pawn;
-		InputSource = inputSource;
-		StateController = stateController;
-		WeaponStateController = weaponStateController;
-		TeamId = teamId;
-		Info = info;
-		Inventory = new BasicInventory( this );
+            if (1f.Random() <= speakProbability)
+            {
+                EventSystem.RaiseEvent(new Speech {Character = this});
+            }
 
-		pawn.SetCharacter( this );
+            Instances.Remove(this);
 
-		StateController.Initialize( this );
-		WeaponStateController.Initialize( this );
+            //_compositeDisposable.Dispose();
 
-		var inputSourceDisposable = inputSource as IDisposable;
-		if ( inputSourceDisposable != null ) {
+            Status.ModifierCalculator.Changed -= OnModifiersChange;
+        }
+    }
 
-			_compositeDisposable.Add( inputSourceDisposable );
-		}
+    public void Heal(float amount)
+    {
+        if (Health.Value == Status.MaxHealth.Value)
+        {
+            return;
+        }
 
-		Observable.EveryUpdate().Subscribe( OnUpdate ).AddTo( _compositeDisposable );
-		status.MoveSpeed.Subscribe( UpdatePawnSpeed ).AddTo( _compositeDisposable );
-		Health.Subscribe( OnHealthChange ); //.AddTo( _compositeDisposable );
+        var healAmount = Mathf.Min(Status.MaxHealth.Value - Health.Value, amount);
 
-		Instances.Add( this );
+        if (healAmount > 0)
+        {
+            Health.Value += healAmount;
+        }
+    }
 
-		Status.ModifierCalculator.Changed += OnModifiersChange;
-	}
+    public void Damage(float amount)
+    {
+        if (Health.Value <= 0)
+        {
+            return;
+        }
 
-	private void OnHealthChange( float health ) {
+        Health.Value -= amount;
 
-		if ( health <= 0 ) {
+        EventSystem.RaiseEvent(new RecievedDamage {Character = this, Damage = amount});
+    }
 
-			EventSystem.RaiseEvent( new Died {Character = this} );
+    public bool IsEnemy()
+    {
+        return TeamId != 0;
+    }
 
-			if ( 1f.Random() <= speakProbability ) {
+    public void Dispose()
+    {
+        (InputSource as IDisposable)?.Dispose();
 
-				EventSystem.RaiseEvent( new Speech { Character = this } );
-			}
+        _compositeDisposable.Dispose();
+        
+        Health.Dispose();
+    }
 
-			Instances.Remove( this );
+    private void OnUpdate(long ticks)
+    {
+        StateController.Tick(Time.deltaTime);
+        WeaponStateController.Tick(Time.deltaTime);
+    }
 
-			//_compositeDisposable.Dispose();
+    private void UpdatePawnSpeed(float speed)
+    {
+        Pawn.SetSpeed(speed);
+    }
 
-			Status.ModifierCalculator.Changed -= OnModifiersChange;
-		}
-	}
-
-	public void Heal( float amount ) {
-
-		if ( Health.Value == Status.MaxHealth.Value ) {
-
-			return;
-		}
-
-		var healAmount = Mathf.Min( Status.MaxHealth.Value - Health.Value, amount );
-
-		if ( healAmount > 0 ) {
-			
-			Health.Value += healAmount;
-		}
-	}
-
-	public void Damage( float amount ) {
-
-		if ( Health.Value <= 0 ) {
-
-			return;
-		}
-
-		Health.Value -= amount;
-		
-		EventSystem.RaiseEvent( new RecievedDamage {Character = this, Damage = amount} );
-	}
-
-	public bool IsEnemy() {
-		return TeamId != 0;
-	}
-
-	public void Dispose() {
-
-		if ( InputSource is IDisposable ) {
-
-			(InputSource as IDisposable).Dispose();
-		}
-
-		_compositeDisposable.Dispose();
-		Health.Dispose();
-	}
-
-	private void OnUpdate( long ticks ) {
-
-		StateController.Tick( Time.deltaTime );
-		WeaponStateController.Tick( Time.deltaTime );
-	}
-
-	private void UpdatePawnSpeed( float speed ) {
-
-		Pawn.SetSpeed( speed );
-	}
-
-	private void OnModifiersChange() {
-
-	}
-
+    private void OnModifiersChange()
+    {
+    }
 }

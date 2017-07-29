@@ -25,6 +25,7 @@ public class CharacterStateControllerInfo : ScriptableObject
         var stateMachine = _stateController.layers[0].stateMachine;
         var stateBehaviourMapping = new Dictionary<AnimatorState, CharacterState>();
         var states = stateMachine.states.Select(_ => _.state).ToArray();
+        var anyStateTransitions = stateMachine.anyStateTransitions.Select(_ => _.destinationState).ToArray();
 
         foreach (var each in states)
         {
@@ -36,6 +37,7 @@ public class CharacterStateControllerInfo : ScriptableObject
         {
             var targetStates = each.transitions
                 .Select(_ => _.destinationState)
+                .Concat(anyStateTransitions)
                 .Select(_ => stateBehaviourMapping[_]);
 
             Debug.Log("Transitions from " + each + ":");

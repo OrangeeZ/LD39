@@ -11,12 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b1afa80f0b145a6f9ccf2bf9c62f, type: 3}
   m_Name: Enemy Weapon Controller
   m_EditorClassIdentifier: 
-  updateAnimation: 1
-  isDebug: 0
-  entries:
-  - stateInfo: {fileID: 11400000, guid: b5b0990fa84458643ba7e579303518e9, type: 2}
-    transitionMask: 000101
-  - stateInfo: {fileID: 11400000, guid: 889b87a2f8712a94db419c2d2b4b7aa0, type: 2}
-    transitionMask: 010001
-  - stateInfo: {fileID: 11400000, guid: 43f67a45584681b4f99a1a6ba1cbb8a6, type: 2}
-    transitionMask: 000000
+  _stateController: {fileID: 9100000, guid: ee2c946344decf748bdf277289f98b78, type: 2}
+  UpdateAnimation: 0
+  IsDebug: 0

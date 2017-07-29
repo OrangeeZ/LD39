@@ -3,51 +3,50 @@ using UnityEngine;
 using System.Collections;
 using UniRx;
 
-public class GameplayController : MonoBehaviour {
-	
-	[SerializeField]
-	private PlayerCharacterSpawner _playerSpawner;
+public class GameplayController : MonoBehaviour
+{
+    [SerializeField]
+    private PlayerCharacterSpawner _playerSpawner;
 
     public PlayerCharacterSpawner PlayerSpawner
     {
-        get { return _playerSpawner;}
+        get { return _playerSpawner; }
     }
 
     [SerializeField]
-	private SpawnerBase[] _enemySpawners;
+    private SpawnerBase[] _enemySpawners;
 
-	[SerializeField]
-	private ZoneSpawnController _zoneSpawnController;
+    [SerializeField]
+    private ZoneSpawnController _zoneSpawnController;
 
     public static GameplayController Instance { get; private set; }
 
-	void Awake() {
+    void Awake()
+    {
+        Instance = this;
+    }
 
-		Instance = this;
-	}
+    public IEnumerator Start()
+    {
+        yield return null;
 
-	public IEnumerator Start() {
+        _playerSpawner.Initialize();
 
-		yield return null;
+        foreach (var each in _enemySpawners)
+        {
+            each.Initialize();
+        }
 
-		Room.InitializeAll();
+        if (_zoneSpawnController != null)
+        {
+            _zoneSpawnController.Initialize();
+        }
+    }
 
-		_playerSpawner.Initialize();
-
-		foreach ( var each in _enemySpawners ) {
-			each.Initialize();
-		}
-
-		if ( _zoneSpawnController != null ) {
-
-			_zoneSpawnController.Initialize();
-		}
-	}
-
-	[ContextMenu("Hook dependencies")]
-	private void HookDependencies() {
-
-		_playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
-		_enemySpawners = FindObjectsOfType<SpawnerBase>();
-	}
+    [ContextMenu("Hook dependencies")]
+    private void HookDependencies()
+    {
+        _playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
+        _enemySpawners = FindObjectsOfType<SpawnerBase>();
+    }
 }

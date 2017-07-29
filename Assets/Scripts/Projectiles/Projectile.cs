@@ -2,153 +2,155 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Projectile : AObject {
+public class Projectile : AObject
+{
+    public float Lifetime;
 
-	public float Lifetime;
+    public float Damage { get; protected set; }
 
-	public float Damage { get; protected set; }
+    public float LifeFraction
+    {
+        get { return _timer.ValueNormalized; }
+    }
 
-	public float LifeFraction {
-		get { return _timer.ValueNormalized; }
-	}
+    public float weight = 1f;
 
-	public float weight = 1f;
+    public bool DelayedDestroy = false;
 
-	public bool DelayedDestroy = false;
+    public bool NeedsSplashEffect = false;
 
-	public bool NeedsSplashEffect = false;
+    private AutoTimer _timer;
 
-	private AutoTimer _timer;
+    protected Vector3 Direction;
 
-	protected Vector3 Direction;
+    public Character Owner { get; protected set; }
 
-	public Character Owner { get; protected set; }
+    protected float Speed;
+    protected bool CanFriendlyFire;
+    private float _splashRange;
 
-	protected float Speed;
-	protected bool CanFriendlyFire;
-	private float _splashRange;
+    private bool _isDestroyed = false;
+    private int _frameCountStart;
 
-	private bool _isDestroyed = false;
-	private int _frameCountStart;
+    private void Awake()
+    {
+        enabled = false;
+    }
 
-	private void Awake() {
+    protected virtual void Update()
+    {
+        if (_timer.ValueNormalized >= 1f)
+        {
+            OnLifetimeExpire();
+        }
 
-		enabled = false;
-	}
+        position += Direction * Speed * Time.deltaTime;
 
-	protected virtual void Update() {
+        if (_isDestroyed && Time.frameCount - _frameCountStart >= 4)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-		if ( _timer.ValueNormalized >= 1f ) {
+    public void Launch(Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire,
+        float splashRange)
+    {
+        this.Owner = owner;
+        this.Speed = speed;
+        this.Direction = direction;
+        this.Damage = damage;
+        this.CanFriendlyFire = canFriendlyFire;
 
-			OnLifetimeExpire();
-		}
+        _splashRange = splashRange;
+        _frameCountStart = Time.frameCount;
 
-		position += Direction * Speed * Time.deltaTime;
+        transform.position = this.Owner.Pawn.GetWeaponPosition();
+        transform.rotation = this.Owner.Pawn.rotation;
 
-		if ( _isDestroyed && Time.frameCount - _frameCountStart >= 4 ) {
+        _timer = new AutoTimer(Lifetime);
 
-			Destroy( gameObject );
-		}
-	}
+        var colorer = GetComponent<ProjectileColorer>();
+        if (colorer != null)
+        {
+            colorer.Apply(Owner.IsEnemy());
+        }
 
-	public void Launch( Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire, float splashRange ) {
+        enabled = true;
+    }
 
-		this.Owner = owner;
-		this.Speed = speed;
-		this.Direction = direction;
-		this.Damage = damage;
-		this.CanFriendlyFire = canFriendlyFire;
+    public virtual void OnHit()
+    {
+        Release();
+    }
 
-		_splashRange = splashRange;
-		_frameCountStart = Time.frameCount;
+    public virtual void OnContact(Collider other)
+    {
+    }
 
-		transform.position = this.Owner.Pawn.GetWeaponPosition();
-		transform.rotation = this.Owner.Pawn.rotation;
+    public virtual void OnLifetimeExpire()
+    {
+        Release();
+    }
 
-		_timer = new AutoTimer( Lifetime );
+    protected virtual void Release()
+    {
+        if (!_splashRange.IsNan() && _splashRange > 0f)
+        {
+            Helpers.DoSplashDamage(transform.position, _splashRange, Damage,
+                teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId);
 
-		var colorer = GetComponent<ProjectileColorer>();
-		if ( colorer != null ) {
-			colorer.Apply( Owner.IsEnemy() );
-		}
+            if (NeedsSplashEffect)
+            {
+                EventSystem.RaiseEvent(new Helpers.SplashDamage {position = position, radius = _splashRange * 0.5f});
+            }
+        }
 
-		enabled = true;
-	}
+        _isDestroyed = true;
 
-	public virtual void OnHit() {
+        if (!DelayedDestroy)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-		Release();
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_isDestroyed)
+        {
+            return;
+        }
 
-	public virtual void OnContact( Collider other ) {
+        var otherPawn = other.GetComponent<CharacterPawnBase>();
 
-	}
+        if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null)
+        {
+            var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
 
-	public virtual void OnLifetimeExpire() {
+            if (canAttackTarget)
+            {
+                otherPawn.character.Damage(Damage);
 
-		Release();
-	}
+                OnContact(other);
+                OnHit();
+            }
 
-	protected virtual void Release() {
+            return;
+        }
 
-		if ( !_splashRange.IsNan() && _splashRange > 0f ) {
+        OnContact(other);
 
-			Helpers.DoSplashDamage( transform.position, _splashRange, Damage, teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId );
+        //if ( other.transform.parent != null ) 
+        {
+            var environmentObject = other.GetComponent<EnvironmentObjectSpot>();
+            if (environmentObject != null)
+            {
+                environmentObject.Destroy(Owner);
+            }
+        }
 
-			if ( NeedsSplashEffect ) {
-
-				EventSystem.RaiseEvent( new Helpers.SplashDamage {position = position, radius = _splashRange * 0.5f} );
-			}
-		}
-
-		_isDestroyed = true;
-
-		if ( !DelayedDestroy ) {
-
-			Destroy( gameObject );
-		}
-	}
-
-	private void OnTriggerEnter( Collider other ) {
-
-		if ( _isDestroyed ) {
-
-			return;
-		}
-
-		var otherPawn = other.GetComponent<CharacterPawnBase>();
-
-		if ( otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null ) {
-
-			var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
-
-			if ( canAttackTarget ) {
-
-				otherPawn.character.Damage( Damage );
-
-				OnContact( other );
-				OnHit();
-			}
-
-			return;
-		}
-
-		OnContact( other );
-
-		//if ( other.transform.parent != null ) 
-			{
-
-			var environmentObject = other.GetComponent<EnvironmentObjectSpot>();
-			if ( environmentObject != null ) {
-
-				environmentObject.Destroy( Owner );
-			}
-		}
-
-		if ( other.tag == "Environment" ) {
-
-			OnHit();
-		}
-	}
-
+        if (other.tag == "Environment")
+        {
+            OnHit();
+        }
+    }
 }
