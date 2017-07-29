@@ -5,9 +5,6 @@ using UniRx;
 [Serializable]
 public class CharacterStatus {
 
-	public IntReactiveProperty Strength;
-	public IntReactiveProperty Agility;
-
 	public IReactiveProperty<float> MaxHealth;
 	public IReactiveProperty<float> MoveSpeed;
 
@@ -20,9 +17,6 @@ public class CharacterStatus {
 	public CharacterStatus( CharacterStatusInfo info ) {
 
 		Info = info;
-
-		Strength = new IntReactiveProperty( 0 );
-		Agility = new IntReactiveProperty( 0 );
 
 		MaxHealth = new ReactiveProperty<float>( Info.MaxHealth );
 		MoveSpeed = new ReactiveProperty<float>( Info.MoveSpeed );

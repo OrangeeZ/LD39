@@ -73,6 +73,7 @@ public class ObjectInfoCodeGenerator
         outputFile.WriteLine("using csv;");
         outputFile.WriteLine(string.Empty);
         
+        outputFile.WriteLine($"[CreateAssetMenu(menuName = \"Info/{className}\")]");
         outputFile.WriteLine("public class " + className + " : ScriptableObject, ICsvConfigurable");
         outputFile.WriteLine("{");
     }

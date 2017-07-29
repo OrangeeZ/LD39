@@ -164,23 +164,23 @@ public class GoogleDocsCsvParser
         _fieldNames = fieldNames.ToArray();
     }
 
-    private static Values CreateValues(IList<string> fieldNames, IList<string> row, int startingIndex)
+    private static Values CreateValues(IList<string> fieldNames, IList<string> fieldValues, int startingIndex)
     {
         var valuesDictionary = new Dictionary<string, string>();
 
-        for (var i = startingIndex; i < row.Count; i++)
+        for (var i = startingIndex; i < fieldValues.Count; i++)
         {
             if (valuesDictionary.ContainsKey(fieldNames[i]))
             {
-                Debug.LogFormat("They key is duplicate: {0}:{1}", fieldNames[i], row[i]);
+                Debug.LogFormat("They key is duplicate: {0}:{1}", fieldNames[i], fieldValues[i]);
                 continue;
             }
 
-            var lowerRow = row[i].ToLower();
-            if (lowerRow == "yes") row[i] = "true";
-            if (lowerRow == "no") row[i] = "false";
+            var lowerRow = fieldValues[i].ToLower();
+            if (lowerRow == "yes") fieldValues[i] = "true";
+            if (lowerRow == "no") fieldValues[i] = "false";
 
-            valuesDictionary[fieldNames[i].TrimEnd(' ')] = row[i];
+            valuesDictionary[fieldNames[i].TrimEnd(' ')] = fieldValues[i];
         }
 
         return new Values(valuesDictionary);
