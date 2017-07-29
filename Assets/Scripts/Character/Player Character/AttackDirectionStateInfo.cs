@@ -24,14 +24,11 @@ public class AttackDirectionStateInfo : CharacterStateInfo {
 				var weapon = character.Inventory.GetArmSlotItem( ArmSlotType.Primary ) as Weapon;
 
 				var direction = ( Input.mousePosition - Camera.main.WorldToScreenPoint( character.Pawn.position ) );
-				direction.z = direction.y;
-				direction = direction.Set( y: 0 ).normalized;
+//				direction.z = direction.y;
+				direction = direction.Set( z: 0 ).normalized;
 
-				if (weapon != null)
-				{
-					weapon.Attack( direction );					
-				}
-				
+				weapon?.Attack( direction );
+
 				yield return null;
 			}
 		}

@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Create/Weapons/Ranged")]
 public class RangedWeaponInfo : WeaponInfo
 {
+    public int ClipSize;
+    public float ReloadDuration;
+    
     [SerializeField]
     private Projectile _projectilePrefab;
 
     [SerializeField]
     private float _projectileSpeed;
-
-    public int ClipSize;
-    public float ReloadDuration;
 
     [SerializeField]
     private int _projectilesPerShot;
@@ -170,8 +170,7 @@ public class RangedWeaponInfo : WeaponInfo
             {
                 var projectile = GetProjectileInstance();
                 var projectileDirection = GetOffsetDirection(direction, i);
-                var finalDamage =
-                    ModifierCalculator.CalculateFinalValue(ModifierType.BaseDamage, _typedInfo.BaseDamage);
+                var finalDamage = ModifierCalculator.CalculateFinalValue(ModifierType.BaseDamage, _typedInfo.BaseDamage);
 
                 projectile.Launch(Character, projectileDirection,
                     _typedInfo._projectileSpeed, finalDamage, _typedInfo.CanFriendlyFire,
@@ -237,16 +236,19 @@ public class RangedWeaponInfo : WeaponInfo
     {
         base.Configure(values);
 
-        ReloadDuration = BaseAttackSpeed;
+        ReloadDuration = 1f / BaseAttackSpeed;
+        
         _ammoLimit = values.Get("AmmoLimit", -1);
         _ammoAmount = values.Get("AmmoAmount", -1);
-        _projectileSpeed = values.Get("Projectile Speed", 0f);
+        _projectileSpeed = values.Get("ProjectileSpeed", 0f);
         _projectilesPerShot = values.Get("BulletsPerBurst", 1);
         _projectileLifetime = values.Get("ProjectileLifetime", 1f);
         _shotConeAngle = values.Get("BurstAngle", 0);
         _splashDamageRadius = values.Get("SplashRadius", float.NaN);
         _abilityOnPickup = values.GetScriptableObject<BuffItemInfo>("AbilityOnPickup");
+        
         ClipSize = values.Get("Clip Size", _projectilesPerShot);
+        
         _projectilePrefab = values.GetPrefabWithComponent<Projectile>("Projectile", fixName: false);
     }
 }

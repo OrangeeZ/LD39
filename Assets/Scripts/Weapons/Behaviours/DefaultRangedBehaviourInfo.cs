@@ -2,62 +2,66 @@
 using System.Collections;
 
 [CreateAssetMenu(menuName = "Create/Weapon/Behaviours/Default")]
-public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo {
+public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo
+{
+    private class DefaultRangedBehaviour : RangedWeaponBehaviour
+    {
+        public int AmmoInClip { get; private set; }
 
-	private class DefaultRangedBehaviour : RangedWeaponBehaviour {
+        public override bool IsReloading
+        {
+            get
+            {
+                if (_isReloading && Time.timeSinceLevelLoad > _nextAttackTime)
+                {
+                    _isReloading = false;
+                }
 
-		public int AmmoInClip { get; private set; }
+                return _isReloading;
+            }
 
-		public override bool IsReloading {
+            protected set { _isReloading = value; }
+        }
 
-			get {
+        private bool _isReloading;
+        private float _nextAttackTime;
+        private RangedWeaponInfo.RangedWeapon _ownerWeapon;
 
-				if ( _isReloading && Time.timeSinceLevelLoad > _nextAttackTime ) {
+        public override void Initialize(IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon)
+        {
+            _ownerWeapon = ownerWeapon;
 
-					_isReloading = false;
-				}
+            AmmoInClip = _ownerWeapon.ClipSize;
+        }
 
-				return _isReloading;
-			}
+        public override bool TryShoot()
+        {
+            if (IsReloading)
+            {
+                return false;
+            }
+            
+            AmmoInClip--;
 
-			protected set { _isReloading = value; }
-		}
+            if (AmmoInClip == 0)
+            {
+                AmmoInClip = _ownerWeapon.ClipSize;
 
-		private bool _isReloading;
-		private float _nextAttackTime;
-		private RangedWeaponInfo.RangedWeapon _ownerWeapon;
+                _nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.ReloadDuration;
 
-		public override void Initialize( IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon ) {
+                IsReloading = true;
 
-			_ownerWeapon = ownerWeapon;
+                return false;
+            }
 
-			AmmoInClip = _ownerWeapon.ClipSize;
-		}
+            _nextAttackTime = Time.timeSinceLevelLoad + 1f / _ownerWeapon.BaseAttackSpeed;
 
-		public override bool TryShoot() {
+            return true;
+        }
+    }
 
-			AmmoInClip--;
-
-			if ( AmmoInClip == 0 ) {
-
-				AmmoInClip = _ownerWeapon.ClipSize;
-
-				
-				_nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.ReloadDuration;
-
-				IsReloading = true;
-
-			    return false;
-			}
-		    _nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.BaseAttackSpeed;
-		    return true;
-		}
-
-	}
-
-	public override RangedWeaponBehaviour GetBehaviour() {
-		
-		return new DefaultRangedBehaviour();
-	}
-
+    public override RangedWeaponBehaviour GetBehaviour()
+    {
+        return new DefaultRangedBehaviour();
+    }
 }
