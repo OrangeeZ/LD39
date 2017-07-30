@@ -59,3 +59,6 @@ TagManager:
   - name: voodooDoll
     uniqueID: 885271431
     locked: 0
+  - name: enemy
+    uniqueID: 3474604261
+    locked: 0
