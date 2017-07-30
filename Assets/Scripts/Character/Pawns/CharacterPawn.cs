@@ -30,6 +30,9 @@ public class CharacterPawn : CharacterPawnBase
     [SerializeField]
     private CharacterSpriteAnimationController _spriteAnimationController;
 
+    [SerializeField]
+    private RotatingTransform _rollSpriteRoot;
+
     private float _lastGroundedTime = 0f;
 
     private float _animatorDirection = 1f;
@@ -49,8 +52,7 @@ public class CharacterPawn : CharacterPawnBase
 
     public Vector3 GetWeaponPosition()
     {
-        Debug.Log(Vector3.Scale(_gunTransform.right, _gunOffset));
-        return _gunTransform.position + _gunOffset * _animatorDirection;//Vector3.Scale(_gunTransform.right, _gunOffset);
+        return _gunTransform.position + _gunOffset * _animatorDirection;
     }
 
     public override void MoveHorizontal(Vector3 direction)
@@ -67,6 +69,11 @@ public class CharacterPawn : CharacterPawnBase
         }
 
         _animatorDirection = Mathf.Sign(direction.x);
+
+        if (_rollSpriteRoot != null)
+        {
+            _rollSpriteRoot.RotateByLinearMotion(-_animatorDirection * directionDelta.magnitude);
+        }
 
         UpdateSpriteAnimationDirection(direction);
     }

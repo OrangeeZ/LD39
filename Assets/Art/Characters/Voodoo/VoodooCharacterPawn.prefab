@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 4380551602526708}
   - component: {fileID: 212969024841469980}
   m_Layer: 0
-  m_Name: t_rex_head
+  m_Name: rollSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1131,6 +1131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783603807005250}
   - component: {fileID: 114787380537586088}
+  - component: {fileID: 114566294238012324}
   m_Layer: 0
   m_Name: rollState
   m_TagString: Untagged
@@ -1527,8 +1528,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977397604520196}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45, y: -0.54, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4783603807005250}
@@ -1876,7 +1877,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982498805895260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4380551602526708}
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   _damageSphereController: {fileID: 114418294711578278}
   _gunTransform: {fileID: 4263817401389432}
   _spriteAnimationController: {fileID: 0}
+  _rollSpriteRoot: {fileID: 114566294238012324}
 --- !u!114 &114015173003529264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2793,6 +2795,18 @@ MonoBehaviour:
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4570449820123096}
+--- !u!114 &114566294238012324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982498805895260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f1021c8dea36c4d903fd3cb9123c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0.52
 --- !u!114 &114591026093292920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3909,7 +3923,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: 726d2784a87b044f182b7487b3b8ebb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 371ecf3b0e1b44a49b90d7923555ec6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
