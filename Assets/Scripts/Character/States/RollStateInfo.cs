@@ -56,8 +56,6 @@ public class RollStateInfo : CharacterStateInfo
                 character.Pawn.MoveHorizontal(moveDirection);
                 character.Pawn.MoveVertical(ref impulse, deltaTime);
                 
-                Debug.Log($"{moveDirection} {speed}");
-                
                 yield return null;
             }
             
