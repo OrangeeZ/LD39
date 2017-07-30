@@ -9,17 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
-  m_Name: player-doll
+  m_Name: weak-muchacho
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  MoveSpeed: 10
-  JumpSpeed: 20
-  JumpHeight: 5
-  RollSpeed: 5
-  RollDeceleration: 10
-  RollDamage: 5
-  PawnPrefab: {fileID: 114000011334223692, guid: 635257717330ac049b6bdbbd85e5b50f,
-    type: 2}
-  AggroRadius: 0
+  MaxHealth: 3
+  MoveSpeed: 3
+  JumpSpeed: 0
+  JumpHeight: 0
+  RollSpeed: 0
+  RollDeceleration: 0
+  RollDamage: 0
+  PawnPrefab: {fileID: 11467564, guid: 6638cd8cc6b20ae40b5ffd82959fb911, type: 2}
+  AggroRadius: 3
   IdleSounds: []
   DeathSounds: []

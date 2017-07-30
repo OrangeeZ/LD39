@@ -2,34 +2,37 @@
 using System.Collections;
 using AI.Gambits;
 
-[CreateAssetMenu( menuName = "Create/Enemy Character Info" )]
-public class EnemyCharacterInfo : CharacterInfo {
+[CreateAssetMenu(menuName = "Create/Enemy Character Info")]
+public class EnemyCharacterInfo : CharacterInfo
+{
+    public EnemyCharacterStatusInfo EnemyStatusInfo;
 
-	public EnemyCharacterStatusInfo EnemyStatusInfo;
+    public GambitListInfo GambitListInfo;
 
-	public GambitListInfo GambitListInfo;
+    public override Character GetCharacter(Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null)
+    {
+        var inputSource = GambitListInfo.GetGambitList();
+        var pawn = Instantiate(
+            replacementStatusInfo == null ? EnemyStatusInfo.PawnPrefab : replacementStatusInfo.PawnPrefab,
+            startingPosition, Quaternion.identity);
 
-	public override Character GetCharacter( Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null ) {
+        var status = replacementStatusInfo == null
+            ? EnemyStatusInfo.GetInstance()
+            : replacementStatusInfo.GetInstance();
 
-		var inputSource = GambitListInfo.GetGambitList();
-		var pawn = Instantiate( replacementStatusInfo == null ? pawnPrefab : ( replacementStatusInfo as EnemyCharacterStatusInfo ).PawnPrefab, startingPosition, Quaternion.identity ) as CharacterPawn;
+        var result = new Character(
+            pawn,
+            inputSource,
+            status,
+            stateControllerInfo.GetStateController(),
+            weaponStateControllerInfo.GetStateController(),
+            teamId,
+            this);
 
-		var status = replacementStatusInfo == null ? EnemyStatusInfo.GetInstance() : replacementStatusInfo.GetInstance();
+        pawn.GetSphereSensor().SetRadius(status.Info.AggroRadius);
 
-		var result = new Character(
-			pawn,
-			inputSource,
-			status,
-			stateControllerInfo.GetStateController(),
-			weaponStateControllerInfo.GetStateController(),
-			teamId,
-			this );
+        inputSource.Initialize(result);
 
-		pawn.GetSphereSensor().SetRadius( ( status.Info as EnemyCharacterStatusInfo ).AggroRadius );
-
-		inputSource.Initialize( result );
-
-		return result;
-	}
-
+        return result;
+    }
 }

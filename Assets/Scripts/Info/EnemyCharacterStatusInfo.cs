@@ -4,10 +4,9 @@ using System.Collections;
 [CreateAssetMenu( menuName = "Create/Enemy Status Info" )]
 public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 
-	public float AggroRadius;
+//	public float AggroRadius;
 	public RangedWeaponInfo Weapon1;
 	public ItemInfo[] ItemsToDrop;
-	public EnemyCharacterPawn PawnPrefab;
 	public float DropChance;
 	public AudioClip[] EnemySpottedSound;
 
@@ -28,7 +27,6 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 
 		base.Configure( values );
 
-		AggroRadius = values.Get( "AgroRadius", 0 );
 		Weapon1 = values.GetScriptableObject<RangedWeaponInfo>( "Weapon1" );
 		ItemsToDrop = values.GetScriptableObjects<ItemInfo>( "DroppedItems" );
 		DropChance = values.Get( "DropChance", 0f );
@@ -36,7 +34,6 @@ public class EnemyCharacterStatusInfo : CharacterStatusInfo {
 		SpeakChance = values.Get( "SpeakChance", 0.2f );
 
 		MaxLiveEnemiesPerSpawner = values.Get( "MaxRespCount", 1f );
-		PawnPrefab = values.GetPrefabWithComponent<EnemyCharacterPawn>( "Visual", fixName: false );
 	}
 
 }

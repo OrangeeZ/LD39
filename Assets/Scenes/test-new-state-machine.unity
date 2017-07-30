@@ -441,7 +441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  CharacterStatusInfo: {fileID: 0}
+  CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
+    type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
   startingStatusEffect: {fileID: 0}

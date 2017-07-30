@@ -244,20 +244,43 @@ public class GoogleDocsCsvParser
         if (attribute != null)
         {
             var propertyName = string.IsNullOrEmpty(attribute.PropertyName) ? fieldInfo.Name : attribute.PropertyName;
-            var value = values.Get(propertyName, string.Empty);
 
-            var fieldValue = default(object);
-
-            if (value == string.Empty && fieldInfo.FieldType.IsValueType)
+            var fieldType = fieldInfo.FieldType;
+            var unityTypes = new[] {typeof(Component), typeof(GameObject), typeof(ScriptableObject)};
+            
+            if (unityTypes.Any(_ => fieldType.IsSubclassOf(_)))
             {
-                fieldValue = Activator.CreateInstance(fieldInfo.FieldType);
+                LoadUnityTypeValue(target, fieldInfo, values, propertyName);
             }
             else
             {
-                fieldValue = Convert.ChangeType(value, fieldInfo.FieldType);
+                LoadSimpleValue(target, fieldInfo, values, propertyName);                
             }
-
-            fieldInfo.SetValue(target, fieldValue);
         }
+    }
+
+    private static void LoadSimpleValue(ICsvConfigurable target, FieldInfo fieldInfo, Values values, string propertyName)
+    {
+        var value = values.Get(propertyName, string.Empty);
+
+        var fieldValue = default(object);
+
+        if (value == string.Empty && fieldInfo.FieldType.IsValueType)
+        {
+            fieldValue = Activator.CreateInstance(fieldInfo.FieldType);
+        }
+        else
+        {
+            fieldValue = Convert.ChangeType(value, fieldInfo.FieldType);
+        }
+
+        fieldInfo.SetValue(target, fieldValue);
+
+    }
+
+    private static void LoadUnityTypeValue(ICsvConfigurable target, FieldInfo fieldInfo, Values values, string propertyName)
+    {
+        var unityObjectInstance = values.FindUnityAsset(propertyName, fieldInfo.FieldType);
+        fieldInfo.SetValue(target, unityObjectInstance);
     }
 }

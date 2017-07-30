@@ -7,7 +7,6 @@ public class CharacterInfo : ScriptableObject
 
     public CharacterStateControllerInfo stateControllerInfo;
     public CharacterStateControllerInfo weaponStateControllerInfo;
-    public CharacterPawn pawnPrefab;
 
     public int teamId = 0;
 
@@ -15,13 +14,14 @@ public class CharacterInfo : ScriptableObject
 
     public virtual Character GetCharacter(Vector3 startingPosition, CharacterStatusInfo replacementStatusInfo = null)
     {
+        var currentStatusInfo = replacementStatusInfo == null ? statusInfo : replacementStatusInfo;
         var inputSource = new ClickInputSource();
-        var pawn = Instantiate(pawnPrefab, startingPosition, Quaternion.identity) as CharacterPawn;
+        var pawn = Instantiate(currentStatusInfo.PawnPrefab, startingPosition, Quaternion.identity);
 
         var result = new Character(
             pawn,
             inputSource,
-            replacementStatusInfo == null ? statusInfo.GetInstance() : replacementStatusInfo.GetInstance(),
+            currentStatusInfo.GetInstance(),
             stateControllerInfo.GetStateController(),
             weaponStateControllerInfo.GetStateController(),
             teamId,

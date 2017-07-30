@@ -22,7 +22,7 @@ MonoBehaviour:
   SlotType: 0
   ClipSize: 1
   ReloadDuration: 1
-  _projectilePrefab: {fileID: 11433014, guid: 48862396712465c409d8375150370077, type: 2}
+  ProjectilePrefab: {fileID: 11433014, guid: 48862396712465c409d8375150370077, type: 2}
   _projectileSpeed: 0
   _projectilesPerShot: 1
   _shotConeAngle: 0

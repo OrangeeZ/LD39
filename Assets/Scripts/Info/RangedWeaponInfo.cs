@@ -8,8 +8,8 @@ public class RangedWeaponInfo : WeaponInfo
     public int ClipSize;
     public float ReloadDuration;
     
-    [SerializeField]
-    private Projectile _projectilePrefab;
+    [RemoteProperty]
+    public Projectile ProjectilePrefab;
 
     [SerializeField]
     private float _projectileSpeed;
@@ -221,7 +221,7 @@ public class RangedWeaponInfo : WeaponInfo
 
         private Projectile GetProjectileInstance()
         {
-            var result = Instantiate(_typedInfo._projectilePrefab);
+            var result = Instantiate(_typedInfo.ProjectilePrefab);
             result.Lifetime = _typedInfo._projectileLifetime;
             return result;
         }
@@ -247,8 +247,6 @@ public class RangedWeaponInfo : WeaponInfo
         _splashDamageRadius = values.Get("SplashRadius", float.NaN);
         _abilityOnPickup = values.GetScriptableObject<BuffItemInfo>("AbilityOnPickup");
         
-        ClipSize = values.Get("Clip Size", _projectilesPerShot);
-        
-        _projectilePrefab = values.GetPrefabWithComponent<Projectile>("Projectile", fixName: false);
+        ClipSize = values.Get("Clip Size", _projectilesPerShot);        
     }
 }

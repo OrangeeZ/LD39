@@ -134,20 +134,32 @@ namespace csv
             var names = Get(name, string.Empty).Split(',', ' ');
 
 #if UNITY_EDITOR
-            return names.Select(LoadScriptableObject<T>).Where(_ => _ != null).ToArray();
+            return names.Select(_ => LoadScriptableObject(_, typeof(T))).Where(_ => _ != null).OfType<T>().ToArray();
 #else
             return null;
 #endif
         }
 
-        public T GetScriptableObject<T>(string name) where T : ScriptableObject
+        public UnityEngine.Object FindUnityAsset(string fieldName, Type objectType)
         {
-            var assetName = Get(name, string.Empty);
-
-            return LoadScriptableObject<T>(assetName);
+            if (objectType.IsSubclassOf(typeof(ScriptableObject)))
+            {
+                return LoadScriptableObject(Get(fieldName, string.Empty), objectType);
+            }
+            else
+            {
+                return GetPrefabWithComponent(fieldName, objectType, false);
+            }
         }
 
-        public T GetPrefabWithComponent<T>(string name, bool fixName) where T : Component
+        public T GetScriptableObject<T>(string fieldName) where T : ScriptableObject
+        {
+            var assetName = Get(fieldName, string.Empty);
+
+            return LoadScriptableObject(assetName, typeof(T)) as T;
+        }
+
+        public UnityEngine.Object GetPrefabWithComponent(string name, Type objectType, bool fixName)
         {
             var assetName = Get(name, string.Empty);
 
@@ -160,13 +172,13 @@ namespace csv
             var guids = AssetDatabase.FindAssets("t: prefab " + assetName);
             var paths = guids.Select(AssetDatabase.GUIDToAssetPath);
 
-            return paths.Select(AssetDatabase.LoadAssetAtPath<T>).FirstOrDefault();
+            return paths.Select(_ => AssetDatabase.LoadAssetAtPath(_, objectType)).FirstOrDefault();
 #else
             return null;
 #endif
         }
 
-        private T LoadScriptableObject<T>(string name) where T : ScriptableObject
+        private UnityEngine.Object LoadScriptableObject(string name, Type objectType)
         {
             name = Utility.FixName(name);
 
@@ -177,9 +189,9 @@ namespace csv
 
 #if UNITY_EDITOR
             var foundObjects = AssetDatabase
-                .FindAssets("t:" + typeof(T).Name + " " + name)
+                .FindAssets("t:" + objectType.Name + " " + name)
                 .Select(AssetDatabase.GUIDToAssetPath)
-                .Select(AssetDatabase.LoadAssetAtPath<T>);
+                .Select(_ => AssetDatabase.LoadAssetAtPath(_, objectType));
 
             return foundObjects.FirstOrDefault(where => where.name == name);
 #else

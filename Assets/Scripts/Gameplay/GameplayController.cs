@@ -16,9 +16,6 @@ public class GameplayController : MonoBehaviour
     [SerializeField]
     private SpawnerBase[] _enemySpawners;
 
-    [SerializeField]
-    private ZoneSpawnController _zoneSpawnController;
-
     public static GameplayController Instance { get; private set; }
 
     void Awake()
@@ -35,11 +32,6 @@ public class GameplayController : MonoBehaviour
         foreach (var each in _enemySpawners)
         {
             each.Initialize();
-        }
-
-        if (_zoneSpawnController != null)
-        {
-            _zoneSpawnController.Initialize();
         }
     }
 

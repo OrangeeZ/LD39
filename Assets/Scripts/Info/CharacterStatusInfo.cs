@@ -26,6 +26,13 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
 
     [RemoteProperty]
     public float RollDamage;
+       
+    [RemoteProperty]
+    public CharacterPawn PawnPrefab;
+    
+    [Space]
+    [RemoteProperty]
+    public float AggroRadius;
     
     [Space]
     public AudioClip[] IdleSounds;
