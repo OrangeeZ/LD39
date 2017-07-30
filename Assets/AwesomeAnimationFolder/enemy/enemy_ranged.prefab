@@ -1920,7 +1920,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43246094864569448, guid: 8909ee323b6c27148b72ea058d116667, type: 2}
   m_Bones:
   - {fileID: 4336250200548184}
   - {fileID: 4411708252119660}
@@ -1967,7 +1967,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43657268980799142, guid: a47037593657fe6409d7f6c527ea18b6, type: 2}
   m_Bones:
   - {fileID: 4874816892829468}
   - {fileID: 4994671853329398}
@@ -2013,7 +2013,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43281169291698818, guid: 10ae4acdff794c24189ff512f76020dd, type: 2}
   m_Bones:
   - {fileID: 4432671086317404}
   - {fileID: 4564141377107828}
@@ -2060,7 +2060,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43154597915642462, guid: cf3d31e5a3a68d54aa4c1f6239f5d105, type: 2}
   m_Bones:
   - {fileID: 4739087746085126}
   m_BlendShapeWeights: []
@@ -2105,7 +2105,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43385419970544758, guid: 4345629255e92944dba0ba8a6910a17d, type: 2}
   m_Bones:
   - {fileID: 4831640979212108}
   - {fileID: 4880058647978874}
@@ -2151,7 +2151,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43206753456111296, guid: e542563ca04b67c44a5c23cdc579da00, type: 2}
   m_Bones:
   - {fileID: 4871706627097412}
   - {fileID: 4054858390811638}
@@ -2197,7 +2197,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43946066770619230, guid: a3be7858e669a6c49a5a0f363bac9233, type: 2}
   m_Bones:
   - {fileID: 4751518882138652}
   - {fileID: 4664055732650096}

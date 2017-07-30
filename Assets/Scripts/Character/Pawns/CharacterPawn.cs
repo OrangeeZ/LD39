@@ -167,4 +167,9 @@ public class CharacterPawn : CharacterPawnBase
         _damageSphereController.SetOwnerCharacter(character);
         _damageSphereController.SetActive(isActive);
     }
+
+//    void OnControllerColliderHit(ControllerColliderHit hit)
+//    {
+//        Debug.Log(hit.normal);
+//    }
 }
