@@ -142,6 +142,8 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 82badad0f0eff704b9fe5003e29ba806, type: 2}
+  StartingSecondaryWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe,
+    type: 2}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 11456982, guid: 5118e26566b9f8149ae8c3fa1e8b3715, type: 2}
   _initializeOnStart: 0
@@ -355,6 +357,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -921,6 +924,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -969,6 +973,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -1181,6 +1186,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -1518,6 +1524,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -2361,6 +2368,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -2409,6 +2417,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -2457,6 +2466,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -2505,6 +2515,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -2719,6 +2730,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -2855,6 +2867,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -3001,6 +3014,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1
@@ -3049,6 +3063,7 @@ MonoBehaviour:
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
   _initializeOnStart: 1

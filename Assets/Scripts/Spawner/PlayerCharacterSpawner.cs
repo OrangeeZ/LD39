@@ -17,6 +17,7 @@ public class PlayerCharacterSpawner : MonoBehaviour
     public ItemInfo[] startingItems;
 
     public WeaponInfo startingWeapon;
+    public WeaponInfo StartingSecondaryWeapon;
 
     public CharacterStatusEffectInfo startingStatusEffect;
 
@@ -53,6 +54,14 @@ public class PlayerCharacterSpawner : MonoBehaviour
         if (weaponInfo != null)
         {
             var weapon = weaponInfo.GetItem();
+
+            character.Inventory.AddItem(weapon);
+            weapon.Apply();
+        }
+        
+        if (StartingSecondaryWeapon != null)
+        {
+            var weapon = StartingSecondaryWeapon.GetItem();
 
             character.Inventory.AddItem(weapon);
             weapon.Apply();

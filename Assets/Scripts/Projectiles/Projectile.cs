@@ -67,7 +67,7 @@ public class Projectile : AObject
         _splashRange = splashRange;
 
         transform.position = this.Owner.Pawn.GetWeaponPosition();
-        transform.rotation = this.Owner.Pawn.rotation;
+        transform.rotation = Quaternion.FromToRotation(Vector3.right, direction);
 
         _timer = new AutoTimer(Lifetime);
 
@@ -176,5 +176,6 @@ public class Projectile : AObject
     private void Reflect()
     {
         Direction *= -1;
+        transform.rotation = Quaternion.FromToRotation(Vector3.right, Direction);
     }
 }

@@ -55,7 +55,8 @@ public class AttackStateInfo : CharacterStateInfo
 
         private RangedWeaponInfo.RangedWeapon GetCurrentWeapon()
         {
-            return character.Inventory.GetArmSlotItem(ArmSlotType.Primary) as RangedWeaponInfo.RangedWeapon;
+            return character.Inventory.GetArmSlotItem(ArmSlotType.Primary) as RangedWeaponInfo.RangedWeapon
+                ?? character.Inventory.GetArmSlotItem(ArmSlotType.Secondary) as RangedWeaponInfo.RangedWeapon;
         }
     }
 

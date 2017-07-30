@@ -180,6 +180,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4669341103782852}
+  - component: {fileID: 95956409848707006}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -1095,6 +1096,23 @@ Transform:
   m_Father: {fileID: 4756082347748370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95956409848707006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1332091304675942}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114037763743657642
 MonoBehaviour:
   m_ObjectHideFlags: 1

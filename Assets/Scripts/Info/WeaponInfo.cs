@@ -1,4 +1,5 @@
-﻿using csv;
+﻿using System;
+using csv;
 
 public class WeaponInfo : ItemInfo, ICsvConfigurable
 {
@@ -17,5 +18,6 @@ public class WeaponInfo : ItemInfo, ICsvConfigurable
 
     public virtual void Configure(Values values)
     {
+        SlotType = (ArmSlotType)Enum.Parse(typeof(ArmSlotType), values.Get("SlotType", string.Empty));
     }
 }
