@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d80b4b24a9667c42b6ce7f0035acda3, type: 3}
   m_Name: Eat Character
   m_EditorClassIdentifier: 
-  animatorStateName: Eat Character
+  animatorStateName: Eat
   weaponAnimatorStateName: 
