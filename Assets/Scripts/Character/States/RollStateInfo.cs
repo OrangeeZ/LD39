@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -19,24 +20,43 @@ public class RollStateInfo : CharacterStateInfo
 
         public override bool CanBeSet()
         {
-            return Input.GetButtonDown("Roll");
+            return Input.GetButton("Roll");
         }
 
         public override IEnumerable GetEvaluationBlock()
         {
             var speed = character.Status.MoveSpeed.Value * character.StatModifier;
+            var maxSpeed = speed;
+            
             var impulse = 0f;
-            var moveDirection = Input.GetAxis("Horizontal") * Vector3.right;
 
             character.Pawn.SetDamageSphereActive(true);
+
+            var moveDirection = Vector3.right;//Input.GetAxis("Horizontal") * Vector3.right;
             
-            while (speed > 0)
+            while (Input.GetButton("Roll"))
             {
+                moveDirection = Input.GetAxis("Horizontal") * Vector3.right;
+
+                speed += deltaTime * moveDirection.x.Abs() * maxSpeed;
+                
+                if (moveDirection.x.Abs() < float.Epsilon)
+                {
+                    speed -= deltaTime * character.Status.Info.RollDeceleration;
+                }
+                
+                speed = speed.Clamped(0, maxSpeed);
+
+                if (Input.GetButtonDown("Jump") && impulse == 0)
+                {
+                    impulse = character.Status.Info.JumpSpeed;
+                }
+                
                 character.Pawn.SetSpeed(speed);
                 character.Pawn.MoveHorizontal(moveDirection);
                 character.Pawn.MoveVertical(ref impulse, deltaTime);
-
-                speed -= Time.deltaTime * character.Status.Info.RollDeceleration;
+                
+                Debug.Log($"{moveDirection} {speed}");
                 
                 yield return null;
             }
