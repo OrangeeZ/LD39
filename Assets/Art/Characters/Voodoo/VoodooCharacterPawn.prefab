@@ -1963,7 +1963,7 @@ MonoBehaviour:
   _animationController: {fileID: 114396807450506000}
   _weaponAnimationController: {fileID: 0}
   CanFollowDestination: 0
-  _gunYOffset: 0.5
+  _gunOffset: {x: 2, y: 0, z: 0}
   _weight: 5
   _isGroundedChangeDelay: 0.1
   _characterController: {fileID: 143000010942876986}

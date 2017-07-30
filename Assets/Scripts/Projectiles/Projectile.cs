@@ -39,14 +39,14 @@ public class Projectile : AObject
 
     protected virtual void Update()
     {
-        if (_timer.ValueNormalized >= 1f)
+        if (!_isDestroyed && _timer.ValueNormalized >= 1f)
         {
             OnLifetimeExpire();
         }
 
         position += Direction * Speed * Time.deltaTime;
 
-        if (_isDestroyed && Time.frameCount - _frameCountStart >= 4)
+        if (_isDestroyed && DelayedDestroy && Time.frameCount - _frameCountStart >= 4)
         {
             Destroy(gameObject);
         }
@@ -121,13 +121,15 @@ public class Projectile : AObject
         }
 
         var otherPawn = other.GetComponent<CharacterPawnBase>();
-
+        
         if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null)
         {
             var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
 
             if (canAttackTarget)
             {
+                Debug.Log(otherPawn);
+
                 otherPawn.character.Damage(Damage);
 
                 OnContact(other);

@@ -40,8 +40,7 @@ public class CharacterStateControllerInfo : ScriptableObject
                 .Concat(anyStateTransitions)
                 .Select(_ => stateBehaviourMapping[_]);
 
-            Debug.Log("Transitions from " + each + ":");
-            Debug.Log(targetStates.Aggregate(string.Empty, (total, _) => total + " " + _));
+            Debug.Log("Transitions from " + each + ":"  + targetStates.Aggregate(string.Empty, (total, _) => total + " " + _));
 
             stateBehaviourMapping[each].SetTransitionStates(targetStates);
         }
@@ -52,8 +51,6 @@ public class CharacterStateControllerInfo : ScriptableObject
             UpdateAnimation = UpdateAnimation,
             states = stateBehaviourMapping.Values.ToArray(),
         };
-
-        Debug.Log(stateBehaviourMapping.Values.Aggregate(string.Empty, (total, each) => total + " " + each));
 
         return result;
 #else

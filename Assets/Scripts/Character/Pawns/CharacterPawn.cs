@@ -6,7 +6,7 @@ public class CharacterPawn : CharacterPawnBase
     public bool CanFollowDestination;
 
     [SerializeField]
-    private float _gunYOffset = 0.5f;
+    private Vector3 _gunOffset = Vector3.right;
 
     [SerializeField]
     private float _weight = 1f;
@@ -46,7 +46,7 @@ public class CharacterPawn : CharacterPawnBase
 
     public Vector3 GetWeaponPosition()
     {
-        return position + Vector3.up * _gunYOffset;
+        return position + _gunOffset * _animatorDirection;
     }
 
     public override void MoveHorizontal(Vector3 direction)

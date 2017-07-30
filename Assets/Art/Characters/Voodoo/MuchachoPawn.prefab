@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.354259, y: 6.897584, z: 24.762413}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 402058}
@@ -271,7 +271,7 @@ MonoBehaviour:
   _animationController: {fileID: 0}
   _weaponAnimationController: {fileID: 0}
   CanFollowDestination: 0
-  _gunYOffset: 0.5
+  _gunOffset: {x: 0, y: 0, z: 0}
   _weight: 1
   _isGroundedChangeDelay: 0.2
   _characterController: {fileID: 0}
