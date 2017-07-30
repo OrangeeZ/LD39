@@ -80,9 +80,9 @@ public class Projectile : AObject
         enabled = true;
     }
 
-    public virtual void OnHit()
+    public virtual void OnHit(Collider other)
     {
-        Release();
+        Release(other);
     }
 
     public virtual void OnContact(Collider other)
@@ -91,10 +91,10 @@ public class Projectile : AObject
 
     public virtual void OnLifetimeExpire()
     {
-        Release();
+        Release(null);
     }
 
-    protected virtual void Release()
+    protected virtual void Release(Collider other)
     {
         if (!_splashRange.IsNan() && _splashRange > 0f)
         {
@@ -136,7 +136,7 @@ public class Projectile : AObject
                 otherPawn.character.Damage(Damage);
 
                 OnContact(other);
-                OnHit();
+                OnHit(other);
             }
 
             return;
@@ -162,9 +162,9 @@ public class Projectile : AObject
             }
         }
 
-        if (other.tag == "Environment")
+        if (other.CompareTag("Environment"))
         {
-            OnHit();
+            OnHit(other);
         }
     }
 

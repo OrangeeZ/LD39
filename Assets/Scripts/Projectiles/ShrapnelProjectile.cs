@@ -9,9 +9,9 @@ public class ShrapnelProjectile : Projectile {
 
     public float damageScale = 1f;
 
-    public override void OnHit() {
+    public override void OnHit(Collider other) {
 
-        base.OnHit();
+        base.OnHit(other);
 
         foreach ( var each in childProjectiles ) {
 
@@ -28,7 +28,7 @@ public class ShrapnelProjectile : Projectile {
 
         base.OnLifetimeExpire();
 
-        OnHit();
+        OnHit(null);
     }
 
 }

@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - component: {fileID: 419216}
   - component: {fileID: 13517266}
-  - component: {fileID: 11433014}
+  - component: {fileID: 114944431733702888}
   - component: {fileID: 5438154}
   m_Layer: 0
   m_Name: ProjectileNeedle
@@ -47,22 +47,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11433014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71e974a8a2dd2ba44b7726fcb994d819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Lifetime: 0
-  weight: 1
-  DelayedDestroy: 0
-  NeedsSplashEffect: 0
-  _canRedirectProjectiles: 0
 --- !u!135 &13517266
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -147,6 +131,22 @@ Transform:
   m_Father: {fileID: 419216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 32.892002}
+--- !u!114 &114944431733702888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d87d3354e49e7144a73d2c53799a775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifetime: 0
+  weight: 1
+  DelayedDestroy: 0
+  NeedsSplashEffect: 0
+  _canRedirectProjectiles: 0
 --- !u!212 &212605086631914612
 SpriteRenderer:
   m_ObjectHideFlags: 1
