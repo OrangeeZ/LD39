@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class NeedleProjectile : Projectile
 {
-    protected override void Release(Collider other)
-    {       
-        GetComponent<Collider>().isTrigger = false;
-        enabled = false;
+    public override void OnHit(Collider other)
+    {
+        if (other != null && other.CompareTag("Environment"))
+        {
+            GetComponent<Collider>().isTrigger = false;
+            enabled = false;
+        }
+        else
+        {
+            base.OnHit(other);
+        }
     }
 }
