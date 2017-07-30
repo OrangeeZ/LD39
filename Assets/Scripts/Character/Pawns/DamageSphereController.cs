@@ -24,7 +24,7 @@ public class DamageSphereController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        var otherPawn = other.transform.root.gameObject.GetComponent<CharacterPawn>();
+        var otherPawn = other.GetComponent<CharacterPawnBase>();
         var otherCharacter = otherPawn?.character;
 
         if (otherCharacter != _ownerCharacter && otherCharacter?.TeamId != _ownerCharacter.TeamId)
