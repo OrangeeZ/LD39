@@ -29,6 +29,9 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
        
     [RemoteProperty]
     public CharacterPawn PawnPrefab;
+
+    [RemoteProperty]
+    public float BiteStateHealthThreshold;
     
     [Space]
     [RemoteProperty]
