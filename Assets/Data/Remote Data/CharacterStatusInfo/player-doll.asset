@@ -23,6 +23,7 @@ MonoBehaviour:
   BiteStateHealthThreshold: 0
   BiteStateDuration: 0
   EatStateDuration: 1
+  UsesUnscaledDeltaTime: 1
   AggroRadius: 0
   IdleSounds: []
   DeathSounds: []

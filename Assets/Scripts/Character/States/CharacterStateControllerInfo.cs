@@ -40,7 +40,10 @@ public class CharacterStateControllerInfo : ScriptableObject
                 .Concat(anyStateTransitions)
                 .Select(_ => stateBehaviourMapping[_]);
 
-            Debug.Log("Transitions from " + each + ":"  + targetStates.Aggregate(string.Empty, (total, _) => total + " " + _));
+            if (IsDebug)
+            {
+                Debug.Log("Transitions from " + each + ":"  + targetStates.Aggregate(string.Empty, (total, _) => total + " " + _));                
+            }
 
             stateBehaviourMapping[each].SetTransitionStates(targetStates);
         }

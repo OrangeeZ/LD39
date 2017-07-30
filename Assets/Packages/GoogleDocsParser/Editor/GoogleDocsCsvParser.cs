@@ -177,8 +177,8 @@ public class GoogleDocsCsvParser
             }
 
             var lowerRow = fieldValues[i].ToLower();
-            if (lowerRow == "yes") fieldValues[i] = "true";
-            if (lowerRow == "no") fieldValues[i] = "false";
+            if (lowerRow == "yes" || lowerRow == "y") fieldValues[i] = "true";
+            if (lowerRow == "no" || lowerRow == "n") fieldValues[i] = "false";
 
             valuesDictionary[fieldNames[i].TrimEnd(' ')] = fieldValues[i];
         }

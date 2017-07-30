@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterPawn : CharacterPawnBase
 {
     public bool CanFollowDestination;
-
+    
     [SerializeField]
     private Vector3 _gunOffset = Vector3.right;
 
@@ -22,7 +22,7 @@ public class CharacterPawn : CharacterPawnBase
 
     [SerializeField]
     private Transform _gunTransform;
-
+    
     private Vector3? _destination;
 
     private Transform _turretTarget;
@@ -38,7 +38,7 @@ public class CharacterPawn : CharacterPawnBase
     {
         if (_characterController != null)
         {
-            _characterController.Move(Vector3.down * Time.deltaTime * _weight);
+            _characterController.Move(Vector3.down * DeltaTime * _weight);
 
             if (_characterController.isGrounded)
             {
@@ -54,7 +54,7 @@ public class CharacterPawn : CharacterPawnBase
 
     public override void MoveHorizontal(Vector3 direction)
     {
-        var directionDelta = direction * speed * Time.deltaTime;
+        var directionDelta = direction * speed * DeltaTime;
 
         if (_characterController == null)
         {

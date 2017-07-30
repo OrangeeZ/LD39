@@ -35,6 +35,9 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
 
     [RemoteProperty]
     public float EatStateDuration;
+
+    [RemoteProperty]
+    public bool UsesUnscaledDeltaTime;
     
     [Space]
     [RemoteProperty]

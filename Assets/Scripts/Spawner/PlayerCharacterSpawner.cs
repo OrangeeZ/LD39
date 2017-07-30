@@ -26,7 +26,7 @@ public class PlayerCharacterSpawner : MonoBehaviour
 
     [SerializeField]
     private bool _initializeOnStart;
-
+    
     void Start()
     {
         if (_initializeOnStart)

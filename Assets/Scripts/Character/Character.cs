@@ -47,6 +47,8 @@ public class Character
     public float dropProbability = 0.15f;
     public float speakProbability = 0.15f;
 
+    public bool UsesUnscaledDeltaTime = false;
+
     private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
     public float StatModifier = 1f;
@@ -64,6 +66,7 @@ public class Character
         TeamId = teamId;
         Info = info;
         Inventory = new BasicInventory(this);
+        UsesUnscaledDeltaTime = status.Info.UsesUnscaledDeltaTime;
 
         pawn.SetCharacter(this);
 
@@ -147,8 +150,9 @@ public class Character
 
     private void OnUpdate(long ticks)
     {
-        StateController.Tick(Time.deltaTime);
-        WeaponStateController.Tick(Time.deltaTime);
+        var deltaTime = UsesUnscaledDeltaTime ? Time.unscaledDeltaTime : Time.deltaTime;
+        StateController.Tick(deltaTime);
+        WeaponStateController.Tick(deltaTime);
     }
 
     private void UpdatePawnSpeed(float speed)

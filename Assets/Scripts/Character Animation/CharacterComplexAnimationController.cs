@@ -4,6 +4,17 @@ using System.Collections;
 
 public class CharacterComplexAnimationController : MonoBehaviour
 {
+    public bool UsesUnscaledDeltaTime
+    {
+        set
+        {
+            foreach (var each in _animators)
+            {
+                each.updateMode = value ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.Normal;
+            }
+        }
+    }
+
     [SerializeField]
     private Animator[] _animators;
 

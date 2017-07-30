@@ -1,31 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using csv;
 
 public class GlobalGameInfo : ScriptableObject, ICsvConfigurable
 {
 	[RemoteProperty]
-	public string MaxSpeed;
+	public float TimeAccelerationRate;
 
 	[RemoteProperty]
-	public float StartSpeed;
-
-	[RemoteProperty]
-	public float GlobalSpeedLow;
-
-	[RemoteProperty]
-	public float EnterpriseSpeedEnable;
-
-	[RemoteProperty]
-	public float EnterpriseSpeedDisable;
-
-	[RemoteProperty]
-	public float HeroSpeed;
-
-	[RemoteProperty]
-	public float Jump;
-
-	[RemoteProperty]
-	public float RepairCount;
+	public float StartingTimeScale;
 
 	public void Configure(Values values)
 	{

@@ -2,62 +2,74 @@
 using UnityEngine;
 using System.Collections;
 
-public class CharacterPawnBase : AObject {
+public class CharacterPawnBase : AObject
+{
+    public CharacterComplexAnimationController _animationController;
 
-	protected float speed;
+    public CharacterComplexAnimationController _weaponAnimationController;
+
+    public CharacterComplexAnimationController animatedView { get; private set; }
+
+    public Character character { get; private set; }
+
+    protected float DeltaTime => character != null && character.UsesUnscaledDeltaTime ? Time.unscaledDeltaTime : Time.deltaTime;
+
+    protected float speed;
+
+    [SerializeField]
+    private SphereSensor sensor;
     
-	[SerializeField]
-	private SphereSensor sensor;
-    
-	[SerializeField]
-	public CharacterComplexAnimationController _animationController;
-	public CharacterComplexAnimationController _weaponAnimationController;
+    protected virtual void Start()
+    {
+        animatedView = _animationController;
+    }
 
-	public CharacterComplexAnimationController animatedView { get; private set; }
+    public SphereSensor GetSphereSensor()
+    {
+        return sensor;
+    }
 
-	public Character character { get; private set; }
+    public void SetCharacter(Character character)
+    {
+        this.character = character;
 
-	protected virtual void Start() {
+        if (_animationController != null)
+        {
+            _animationController.UsesUnscaledDeltaTime = character.UsesUnscaledDeltaTime;            
+        }
 
-	    animatedView = _animationController;
-	}
+        if (_weaponAnimationController)
+        {
+            _weaponAnimationController.UsesUnscaledDeltaTime = character.UsesUnscaledDeltaTime;            
+        }
+    }
 
-	public SphereSensor GetSphereSensor() {
+    public virtual void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 
-		return sensor;
-	}
+    public virtual void MoveHorizontal(Vector3 direction)
+    {
+        transform.position += speed * direction * DeltaTime;
+    }
 
-	public void SetCharacter( Character character ) {
+    public virtual void SetDestination(Vector3 destination)
+    {
+        //navMeshAgent.destination = destination;
+    }
 
-		this.character = character;
-	}
-
-	public virtual void SetSpeed( float newSpeed ) {
-
-		speed = newSpeed;
-	}
-
-	public virtual void MoveHorizontal( Vector3 direction ) {
-
-		transform.position += speed * direction * Time.deltaTime;
-	}
-
-	public virtual void SetDestination( Vector3 destination ) {
-
-		//navMeshAgent.destination = destination;
-	}
-
-    public virtual float GetDistanceToDestination() {
-
+    public virtual float GetDistanceToDestination()
+    {
         return float.NaN;
     }
 
-    public virtual Vector3 GetDirectionTo( CharacterPawnBase otherPawn ) {
-
+    public virtual Vector3 GetDirectionTo(CharacterPawnBase otherPawn)
+    {
         return Vector3.forward;
     }
 
-	public virtual void MakeDead() {
-		
-	}
+    public virtual void MakeDead()
+    {
+    }
 }
