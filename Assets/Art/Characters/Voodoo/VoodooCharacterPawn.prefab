@@ -1959,9 +1959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c12a1e2beb48142a26317e3b8e3bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensor: {fileID: 114054578054284722}
   _animationController: {fileID: 114396807450506000}
   _weaponAnimationController: {fileID: 0}
+  sensor: {fileID: 114054578054284722}
   CanFollowDestination: 0
   _gunOffset: {x: 2, y: 0, z: 0}
   _weight: 5

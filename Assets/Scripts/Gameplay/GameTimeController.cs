@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameTimeController : MonoBehaviour
 {
+    public float TimeScaleRate => Time.timeScale;
+    
     [SerializeField]
     private GlobalGameInfo _gameInfo;
 
