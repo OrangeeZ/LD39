@@ -19,6 +19,9 @@ public class Projectile : AObject
 
     public bool NeedsSplashEffect = false;
 
+    [SerializeField]
+    private bool _canRedirectProjectiles = false;
+
     private AutoTimer _timer;
 
     protected Vector3 Direction;
@@ -139,6 +142,15 @@ public class Projectile : AObject
             return;
         }
 
+        if (_canRedirectProjectiles)
+        {
+            var otherProjectile = other.GetComponent<Projectile>();
+            otherProjectile?.SetOwner(Owner);
+            otherProjectile?.Reflect();
+            
+            return;
+        }
+
         OnContact(other);
 
         //if ( other.transform.parent != null ) 
@@ -154,5 +166,15 @@ public class Projectile : AObject
         {
             OnHit();
         }
+    }
+
+    private void SetOwner(Character newOwner)
+    {
+        Owner = newOwner;
+    }
+
+    private void Reflect()
+    {
+        Direction *= -1;
     }
 }

@@ -204,6 +204,7 @@ MonoBehaviour:
   weight: 1
   DelayedDestroy: 1
   NeedsSplashEffect: 0
+  _canRedirectProjectiles: 1
 --- !u!135 &13517266
 SphereCollider:
   m_ObjectHideFlags: 1
