@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbf10925d488514ba2608fed86aab6d, type: 3}
   m_Name: global-game-info
   m_EditorClassIdentifier: 
-  TimeAccelerationRate: 0.1
-  StartingTimeScale: 0.1
+  MaxPower: 100
+  StartingPower: 50
+  PowerDecreaseSpeed: 10

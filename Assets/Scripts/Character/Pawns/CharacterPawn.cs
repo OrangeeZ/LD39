@@ -49,7 +49,8 @@ public class CharacterPawn : CharacterPawnBase
 
     public Vector3 GetWeaponPosition()
     {
-        return _gunTransform.position;
+        Debug.Log(Vector3.Scale(_gunTransform.right, _gunOffset));
+        return _gunTransform.position + _gunOffset * _animatorDirection;//Vector3.Scale(_gunTransform.right, _gunOffset);
     }
 
     public override void MoveHorizontal(Vector3 direction)

@@ -5,18 +5,19 @@ using UniRx;
 
 public class GameplayController : MonoBehaviour
 {
+    public static GameplayController Instance { get; private set; }
+
+    public float CurrentPower { get; private set; }
+    public float CurrentPowerNormalized => CurrentPower / _globalGameInfo.MaxPower;
+    
     [SerializeField]
     private PlayerCharacterSpawner _playerSpawner;
-
-    public PlayerCharacterSpawner PlayerSpawner
-    {
-        get { return _playerSpawner; }
-    }
 
     [SerializeField]
     private SpawnerBase[] _enemySpawners;
 
-    public static GameplayController Instance { get; private set; }
+    [SerializeField]
+    private GlobalGameInfo _globalGameInfo;
 
     void Awake()
     {
@@ -33,6 +34,21 @@ public class GameplayController : MonoBehaviour
         {
             each.Initialize();
         }
+
+        CurrentPower = _globalGameInfo.StartingPower;
+    }
+    
+    public void AddPower(float power)
+    {
+        CurrentPower += power;
+    }
+
+    void Update()
+    {
+        CurrentPower -= _globalGameInfo.PowerDecreaseSpeed * Time.deltaTime;
+        CurrentPower = CurrentPower.Clamped(0, _globalGameInfo.MaxPower);
+
+        Time.timeScale = 1f - CurrentPower / _globalGameInfo.MaxPower;
     }
 
     [ContextMenu("Hook dependencies")]
@@ -41,4 +57,5 @@ public class GameplayController : MonoBehaviour
         _playerSpawner = FindObjectOfType<PlayerCharacterSpawner>();
         _enemySpawners = FindObjectsOfType<SpawnerBase>();
     }
+
 }

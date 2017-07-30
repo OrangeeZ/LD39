@@ -1963,12 +1963,12 @@ MonoBehaviour:
   _weaponAnimationController: {fileID: 0}
   sensor: {fileID: 114054578054284722}
   CanFollowDestination: 0
-  _gunOffset: {x: 2, y: 0, z: 0}
+  _gunOffset: {x: 1, y: 0, z: 0}
   _weight: 5
   _isGroundedChangeDelay: 0.1
   _characterController: {fileID: 143000010942876986}
   _damageSphereController: {fileID: 114418294711578278}
-  _gunTransform: {fileID: 4126005668062562}
+  _gunTransform: {fileID: 4263817401389432}
   _spriteAnimationController: {fileID: 0}
 --- !u!114 &114015173003529264
 MonoBehaviour:

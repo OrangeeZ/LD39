@@ -4,11 +4,14 @@ using csv;
 public class GlobalGameInfo : ScriptableObject, ICsvConfigurable
 {
 	[RemoteProperty]
-	public float TimeAccelerationRate;
+	public float MaxPower;
 
 	[RemoteProperty]
-	public float StartingTimeScale;
+	public float StartingPower;
 
+	[RemoteProperty]
+	public float PowerDecreaseSpeed;
+	
 	public void Configure(Values values)
 	{
 	}

@@ -7,6 +7,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -271,7 +272,7 @@ public class GoogleDocsCsvParser
         }
         else
         {
-            fieldValue = Convert.ChangeType(value, fieldInfo.FieldType);
+            fieldValue = Convert.ChangeType(value, fieldInfo.FieldType, CultureInfo.InvariantCulture);
         }
 
         fieldInfo.SetValue(target, fieldValue);

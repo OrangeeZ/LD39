@@ -8,15 +8,13 @@ public class GameUI : UIScreen
     [SerializeField]
     private Slider _powersBar;
 
-    private GameTimeController _gameTimeController;
-
     void Update()
     {
-        if (_gameTimeController == null)
+        if (GameplayController.Instance == null)
         {
-            _gameTimeController = FindObjectOfType<GameTimeController>();
+            return;
         }
         
-        _powersBar.value = 1f - _gameTimeController.TimeScaleRate;
+        _powersBar.value = GameplayController.Instance.CurrentPowerNormalized;
     }
 }

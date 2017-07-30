@@ -48,11 +48,13 @@ public class EatCharacterStateInfo : CharacterStateInfo
             {
                 yield return null;
             }
+
+            GameplayController.Instance.AddPower(character.Status.Info.PowerPerEat);
         }
 
         private static bool IsBiteable(Character targetCharacter)
         {
-            return targetCharacter.Health.Value <= targetCharacter.Status.Info.BiteStateHealthThreshold;
+            return targetCharacter.Health.Value > 0 && targetCharacter.Health.Value <= targetCharacter.Status.Info.BiteStateHealthThreshold;
         }
     }
 

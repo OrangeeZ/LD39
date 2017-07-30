@@ -33,7 +33,7 @@ public class IsometricCamera : CameraBehaviour {
 
 		transform.position += clampedOffset - offset;
 
-		transform.position = Vector3.Lerp( transform.position, target.position, followTimeNormalized * Time.deltaTime );
+		transform.position = Vector3.Lerp( transform.position, target.position, followTimeNormalized * Time.unscaledDeltaTime );
 		//transform.rotation = Quaternion.Lerp( transform.rotation, target.rotation, followTimeNormalized * Time.deltaTime );
 	}
 

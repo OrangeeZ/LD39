@@ -38,6 +38,9 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
 
     [RemoteProperty]
     public bool UsesUnscaledDeltaTime;
+
+    [RemoteProperty]
+    public float PowerPerEat;
     
     [Space]
     [RemoteProperty]

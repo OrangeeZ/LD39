@@ -144,7 +144,7 @@ MonoBehaviour:
   startingWeapon: {fileID: 11400000, guid: 82badad0f0eff704b9fe5003e29ba806, type: 2}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 11456982, guid: 5118e26566b9f8149ae8c3fa1e8b3715, type: 2}
-  _initializeOnStart: 1
+  _initializeOnStart: 0
 --- !u!4 &50915625
 Transform:
   m_ObjectHideFlags: 0
@@ -1453,7 +1453,7 @@ GameObject:
   - component: {fileID: 1009189156}
   - component: {fileID: 1009189155}
   m_Layer: 0
-  m_Name: GameTimeController
+  m_Name: Gameplay Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1467,10 +1467,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1009189154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec73d6f339b1f2489c32d01af041846, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c0c88dcf6e784849a21a6ae0ffca4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameInfo: {fileID: 11400000, guid: 3df04329c514f3743b14fddb16dafb58, type: 2}
+  _playerSpawner: {fileID: 50915624}
+  _enemySpawners: []
+  _globalGameInfo: {fileID: 11400000, guid: 3df04329c514f3743b14fddb16dafb58, type: 2}
 --- !u!4 &1009189156
 Transform:
   m_ObjectHideFlags: 0
