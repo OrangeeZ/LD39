@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b1afa80f0b145a6f9ccf2bf9c62f, type: 3}
   m_Name: Enemy Weapon Controller
   m_EditorClassIdentifier: 
-  _stateController: {fileID: 9100000, guid: ee2c946344decf748bdf277289f98b78, type: 2}
+  _stateController: {fileID: 9100000, guid: eaf1dce00022fe14d8447d863f4e5c4a, type: 2}
   UpdateAnimation: 0
   IsDebug: 0

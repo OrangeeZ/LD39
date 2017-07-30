@@ -20,6 +20,9 @@ public class CharacterPawn : CharacterPawnBase
     [SerializeField]
     private DamageSphereController _damageSphereController;
 
+    [SerializeField]
+    private Transform _gunTransform;
+
     private Vector3? _destination;
 
     private Transform _turretTarget;
@@ -46,7 +49,7 @@ public class CharacterPawn : CharacterPawnBase
 
     public Vector3 GetWeaponPosition()
     {
-        return position + _gunOffset * _animatorDirection;
+        return _gunTransform.position;
     }
 
     public override void MoveHorizontal(Vector3 direction)

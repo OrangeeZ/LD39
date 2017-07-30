@@ -276,6 +276,7 @@ MonoBehaviour:
   _isGroundedChangeDelay: 0.2
   _characterController: {fileID: 0}
   _damageSphereController: {fileID: 0}
+  _gunTransform: {fileID: 402058}
   _spriteAnimationController: {fileID: 0}
   _navMeshAgent: {fileID: 19567632}
   _spriteRenderer: {fileID: 0}
