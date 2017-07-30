@@ -29,6 +29,8 @@ public class CharacterPawn : CharacterPawnBase
 
     private float _lastGroundedTime = 0f;
 
+    private float _animatorDirection = 1f;
+
     protected virtual void Update()
     {
         if (_characterController != null)
@@ -60,15 +62,17 @@ public class CharacterPawn : CharacterPawnBase
             _characterController.Move(directionDelta);
         }
 
+        _animatorDirection = Mathf.Sign(direction.x);
+
         UpdateSpriteAnimationDirection(direction);
     }
 
     public void MoveVertical(ref float impulse, float deltaTime)
-    {       
+    {
         impulse += Physics.gravity.y * _weight * deltaTime;
 
         impulse = impulse < 0 && IsGrounded() ? 0 : impulse;
-        
+
         var delta = impulse * Vector3.up;
 
         if (_characterController == null)
@@ -124,6 +128,13 @@ public class CharacterPawn : CharacterPawnBase
 
     public void UpdateSpriteAnimationDirection(Vector3 direction)
     {
+        if (_animationController != null)
+        {
+            var scale = Vector3.one;
+            scale.x *= _animatorDirection;//Vector3.Dot(Vector3.one, direction);
+            _animationController.transform.localScale = scale;
+        }
+        
         if (_spriteAnimationController == null)
         {
             return;

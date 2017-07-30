@@ -2,32 +2,32 @@
 using UnityEngine;
 using System.Collections;
 
-public class CharacterComplexAnimationController : MonoBehaviour {
+public class CharacterComplexAnimationController : MonoBehaviour
+{
+    [SerializeField]
+    private Animator[] _animators;
 
-	[SerializeField]
-	private Animator[] animators;
+    private string _lastState = null;
 
-	private string lastState = null;
+    void Reset()
+    {
+        this.GetComponentsInChildren(out _animators, includeInactive: true);
+    }
 
-	void Reset() {
+    public void SetBool(string name, bool value)
+    {
+        if (name.IsNullOrEmpty())
+        {
+            return;
+        }
 
-		this.GetComponentsInChildren( out animators, includeInactive: true );
-	}
+        if (!_lastState.IsNullOrEmpty())
+        {
+            _animators.SetBool(_lastState, false);
+        }
 
-	public void SetBool( string name, bool value ) {
+        _animators.SetBool(name, value);
 
-		if ( name.IsNullOrEmpty() ) {
-
-			return;
-		}
-
-		if ( !lastState.IsNullOrEmpty() ) {
-
-			animators.SetBool( lastState, false );
-		}
-
-		animators.SetBool( name, value );
-		
-		lastState = name;
-	}
+        _lastState = name;
+    }
 }
