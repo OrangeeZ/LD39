@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Expressions;
-using UniRx;
 
 [CreateAssetMenu(menuName = "Create/Status Info")]
 public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
@@ -32,6 +29,12 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
 
     [RemoteProperty]
     public float BiteStateHealthThreshold;
+
+    [RemoteProperty]
+    public float BiteStateDuration;
+
+    [RemoteProperty]
+    public float EatStateDuration;
     
     [Space]
     [RemoteProperty]

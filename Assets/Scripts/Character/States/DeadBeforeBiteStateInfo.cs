@@ -29,11 +29,13 @@ public class DeadBeforeBiteStateInfo : CharacterStateInfo
         public override IEnumerable GetEvaluationBlock()
         {
             _didEnterState = true;
+
+            var timer = new AutoTimer(character.Status.Info.BiteStateDuration);
+            while(timer.ValueNormalized < 1)
+            {
+                yield return null;
+            }
             
-            Debug.Log("Dead before bite!");
-
-            yield return null;
-
             character.Health.Value = 0;
         }
 

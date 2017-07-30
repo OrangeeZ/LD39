@@ -20,6 +20,8 @@ MonoBehaviour:
   RollDamage: 0
   PawnPrefab: {fileID: 11467564, guid: 6638cd8cc6b20ae40b5ffd82959fb911, type: 2}
   BiteStateHealthThreshold: 1
+  BiteStateDuration: 3
+  EatStateDuration: 0
   AggroRadius: 10
   IdleSounds: []
   DeathSounds: []
