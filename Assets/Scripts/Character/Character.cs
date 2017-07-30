@@ -48,6 +48,7 @@ public class Character
     public float speakProbability = 0.15f;
 
     public bool UsesUnscaledDeltaTime = false;
+    public bool EnableWeaponStateController = true;
 
     private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
@@ -152,7 +153,11 @@ public class Character
     {
         var deltaTime = UsesUnscaledDeltaTime ? Time.unscaledDeltaTime : Time.deltaTime;
         StateController.Tick(deltaTime);
-        WeaponStateController.Tick(deltaTime);
+
+        if (EnableWeaponStateController)
+        {
+            WeaponStateController.Tick(deltaTime);
+        }
     }
 
     private void UpdatePawnSpeed(float speed)

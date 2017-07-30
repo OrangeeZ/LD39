@@ -32,9 +32,11 @@ public class RollStateInfo : CharacterStateInfo
 
             character.Pawn.SetDamageSphereActive(true);
 
-            var moveDirection = Vector3.right;//Input.GetAxis("Horizontal") * Vector3.right;
+            var moveDirection = Vector3.right;
+
+            character.EnableWeaponStateController = false;
             
-            while (Input.GetButton("Roll"))
+            while (CanBeSet())
             {
                 moveDirection = Input.GetAxis("Horizontal") * Vector3.right;
 
@@ -60,6 +62,7 @@ public class RollStateInfo : CharacterStateInfo
             }
             
             character.Pawn.SetDamageSphereActive(false);
+            character.EnableWeaponStateController = true;
         }
     }
 
