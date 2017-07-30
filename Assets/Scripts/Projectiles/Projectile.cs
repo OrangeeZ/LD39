@@ -62,7 +62,6 @@ public class Projectile : AObject
         this.CanFriendlyFire = canFriendlyFire;
 
         _splashRange = splashRange;
-        _frameCountStart = Time.frameCount;
 
         transform.position = this.Owner.Pawn.GetWeaponPosition();
         transform.rotation = this.Owner.Pawn.rotation;
@@ -96,7 +95,7 @@ public class Projectile : AObject
     {
         if (!_splashRange.IsNan() && _splashRange > 0f)
         {
-            Helpers.DoSplashDamage(transform.position, _splashRange, Damage,
+            Helpers.DoSplashDamage(transform.position, _splashRange, Damage, 
                 teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId);
 
             if (NeedsSplashEffect)
@@ -106,6 +105,7 @@ public class Projectile : AObject
         }
 
         _isDestroyed = true;
+        _frameCountStart = Time.frameCount;
 
         if (!DelayedDestroy)
         {
@@ -124,7 +124,7 @@ public class Projectile : AObject
         
         if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null)
         {
-            var canAttackTarget = !CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
+            var canAttackTarget = CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
 
             if (canAttackTarget)
             {
