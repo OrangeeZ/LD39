@@ -2,30 +2,30 @@
 using UnityEngine;
 using System.Collections;
 
-namespace AI.Gambits {
+namespace AI.Gambits
+{
+    public abstract class Gambit
+    {
+        protected readonly Character Character;
 
-	public abstract class Gambit {
+        protected Gambit(Character character)
+        {
+            Character = character;
+        }
 
-		protected readonly Character character;
+        public virtual bool Execute()
+        {
+            throw new NotImplementedException();
+        }
+    }
 
-		protected Gambit( Character character ) {
+    public abstract class Gambit<T> : Gambit where T : GambitInfo
+    {
+        protected readonly T Info;
 
-			this.character = character;
-		}
-
-		public virtual bool Execute() {
-
-			throw new NotImplementedException();
-		}
-	}
-
-	public abstract class Gambit<T> : Gambit where T : GambitInfo {
-
-		protected readonly T info;
-
-		protected Gambit( Character character, T info ) : base( character ) {
-
-			this.info = info;
-		}
-	}
+        protected Gambit(Character character, T info) : base(character)
+        {
+             Info = info;
+        }
+    }
 }

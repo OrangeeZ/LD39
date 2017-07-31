@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: strong-muchacho
   m_EditorClassIdentifier: 
   MaxHealth: 3
-  MoveSpeed: 0
+  MoveSpeed: 3
   JumpSpeed: 0
   JumpHeight: 0
   RollSpeed: 0
   RollDeceleration: 0
   RollDamage: 0
-  PawnPrefab: {fileID: 11467564, guid: 6638cd8cc6b20ae40b5ffd82959fb911, type: 2}
+  PawnPrefab: {fileID: 11467564, guid: 2763fea72a1726e4a830e86fe73132c2, type: 2}
   BiteStateHealthThreshold: 1
   BiteStateDuration: 3
   EatStateDuration: 0

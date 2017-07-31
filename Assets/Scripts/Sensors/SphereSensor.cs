@@ -13,6 +13,7 @@ public class SphereSensor : MonoBehaviour, IObservable<CharacterPawnBase>
     private readonly Subject<CharacterPawnBase> _pawnSubject = new Subject<CharacterPawnBase>();
 
     private readonly List<CharacterPawnBase> _nearbyCharacters = new List<CharacterPawnBase>();
+    private Character _ownerCharacter;
 
     void OnEnable()
     {
@@ -37,6 +38,11 @@ public class SphereSensor : MonoBehaviour, IObservable<CharacterPawnBase>
         _collider.radius = radius;
     }
 
+    public void SetCharacter(Character ownerCharacter)
+    {
+        _ownerCharacter = ownerCharacter;
+    }
+
     public IDisposable Subscribe(IObserver<CharacterPawnBase> observer)
     {
         return _pawnSubject.Subscribe(observer);
@@ -46,7 +52,7 @@ public class SphereSensor : MonoBehaviour, IObservable<CharacterPawnBase>
     {
         var otherPawn = other.transform.root.gameObject.GetComponent<CharacterPawnBase>();
 
-        if (otherPawn != null)
+        if (otherPawn != null && otherPawn.Character != _ownerCharacter)
         {
             _pawnSubject.OnNext(otherPawn);
             _nearbyCharacters.Add(otherPawn);

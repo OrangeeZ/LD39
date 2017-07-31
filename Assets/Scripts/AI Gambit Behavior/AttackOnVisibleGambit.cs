@@ -3,49 +3,50 @@ using System.Linq;
 using UniRx;
 using UnityEngine;
 
-namespace AI.Gambits {
+namespace AI.Gambits
+{
+    [CreateAssetMenu(menuName = "Create/Gambits/Attack on visible")]
+    public class AttackOnVisibleGambit : GambitInfo
+    {
+        private class GambitInternal : Gambit
+        {
+            private Character _attackTarget;
 
-	[CreateAssetMenu( menuName = "Create/Gambits/Attack on visible" )]
-	public class AttackOnVisibleGambit : GambitInfo {
+            public GambitInternal(GambitInfo info, Character character)
+                : base(character)
+            {
+                character.Pawn.GetSphereSensor()
+                    .Select(_ => _.Character)
+                    .Where(_ => _ != null)
+                    .Subscribe(OnTargetEnter);
+            }
 
-		private class GambitInternal : Gambit {
-            
-			private Character attackTarget;
+            public override bool Execute()
+            {
+                if (_attackTarget != null)
+                {
+                    Character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination(_attackTarget);
+                    Character.WeaponStateController.GetState<AttackStateInfo.State>().SetTarget(_attackTarget);
 
-			public GambitInternal( GambitInfo info, Character character )
-				: base( character ) {
-                
-				character.Pawn.GetSphereSensor()
-					.Select( _ => _.character )
-					.Where( _=> _ != null )
-					.Subscribe( OnTargetEnter );
-			}
+                    return true;
+                }
 
-			public override bool Execute() {
+                return false;
+            }
 
-				if ( attackTarget != null ) {
+            private void OnTargetEnter(Character target)
+            {
+                if (target.TeamId != Character.TeamId)
+                {
+                    Debug.Log(target.Pawn);
+                    _attackTarget = target;
+                }
+            }
+        }
 
-					character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination( attackTarget );
-					character.WeaponStateController.GetState<AttackStateInfo.State>().SetTarget( attackTarget );
-                    
-					return true;
-				}
-
-				return false;
-			}
-
-			private void OnTargetEnter( Character target ) {
-
-			    if ( target.TeamId != character.TeamId ) {
-
-                    this.attackTarget = target;
-			    }
-			}
-		}
-
-		public override Gambit GetGambit( Character target ) {
-
-			return new GambitInternal( this, target );
-		}
-	}
+        public override Gambit GetGambit(Character target)
+        {
+            return new GambitInternal(this, target);
+        }
+    }
 }

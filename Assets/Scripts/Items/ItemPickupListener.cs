@@ -25,13 +25,13 @@ public class ItemPickupListener : MonoBehaviour {
 
 		if ( itemView != null ) {
 			
-			_pawn.character.Inventory.AddItem( itemView.item );
+			_pawn.Character.Inventory.AddItem( itemView.item );
 
-			itemView.item.SetCharacter( _pawn.character );
+			itemView.item.SetCharacter( _pawn.Character );
 
 			itemView.item.Apply();
 
-			itemView.NotifyPickUp( _pawn.character );
+			itemView.NotifyPickUp( _pawn.Character );
 		}
 	}
 

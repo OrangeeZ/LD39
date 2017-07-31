@@ -142,7 +142,7 @@ public class CharacterPawn : CharacterPawnBase
         if (_animationController != null)
         {
             var scale = Vector3.one;
-            scale.x *= _animatorDirection;//Vector3.Dot(Vector3.one, direction);
+            scale.x *= Mathf.Sign(direction.x);//Vector3.Dot(Vector3.one, direction);
             _animationController.transform.localScale = scale;
         }
         
@@ -164,7 +164,7 @@ public class CharacterPawn : CharacterPawnBase
 
     public void SetDamageSphereActive(bool isActive)
     {
-        _damageSphereController.SetOwnerCharacter(character);
+        _damageSphereController.SetOwnerCharacter(Character);
         _damageSphereController.SetActive(isActive);
     }
 

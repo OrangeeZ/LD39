@@ -12,7 +12,7 @@ namespace AI.Gambits
 
         private class WanderGambit : Gambit<Wander>
         {
-            private float lastExecutionTime = 0f;
+            private float _lastExecutionTime = 0f;
 
             public WanderGambit(Character character, Wander info) : base(character, info)
             {
@@ -20,17 +20,18 @@ namespace AI.Gambits
 
             public override bool Execute()
             {
-                if (Time.time - lastExecutionTime < info.interval)
+                if (Time.time - _lastExecutionTime < Info.interval)
                 {
                     return false;
                 }
+                
+                Debug.Log("Execute");
 
-                var point = character.Pawn.position +
-                            character.Pawn.rotation * Random.insideUnitCircle.normalized.ToXZ() * info.radius;
+                var point = Character.Pawn.position + Vector3.right * Random.Range(-Info.radius, Info.radius);
+Debug.Log(Random.Range(-Info.radius, Info.radius));
+                Character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination(point);
 
-                character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination(point);
-
-                lastExecutionTime = Time.time;
+                _lastExecutionTime = Time.time;
 
                 return true;
             }

@@ -39,7 +39,7 @@ public class ClickInputSource : IInputSource {
 
             if ( hitInfo.collider.GetComponent<CharacterPawnBase>() ) {
 
-                targetsSubject.OnNext( hitInfo.collider.GetComponent<CharacterPawnBase>().character );
+                targetsSubject.OnNext( hitInfo.collider.GetComponent<CharacterPawnBase>().Character );
 
             } else if ( hitInfo.collider.GetComponent<ItemView>() ) {
 

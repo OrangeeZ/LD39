@@ -44,6 +44,8 @@ public class ApproachTargetStateInfo : CharacterStateInfo
             var distanceToDestination =
                 _destination.HasValue ? Vector3.Distance(character.Pawn.position, _destination.Value) : -1f;
 
+//            Debug.Log(distanceToDestination);
+            
             return _destination.HasValue
                    && distanceToDestination > typedInfo._minRange
                    && distanceToDestination < typedInfo._maxRange;
@@ -70,6 +72,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo
             }
 
             var pawn = character.Pawn;
+            pawn.SetSpeed(character.Status.MoveSpeed.Value);
 
             do
             {
@@ -97,6 +100,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo
 
         public void SetDestination(object target)
         {
+//            Debug.Log($"Set destination: {target}");
             if (target is Vector3)
             {
                 _destination = (Vector3) target;

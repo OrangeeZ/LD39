@@ -19,7 +19,7 @@ public class EatCharacterStateInfo : CharacterStateInfo
             //Has biteable character around
 
             var characterSensor = character.Pawn.GetSphereSensor();
-            var nearbyCharacters = characterSensor.NearbyCharacters.Select(_ => _.character);
+            var nearbyCharacters = characterSensor.NearbyCharacters.Select(_ => _.Character);
             
             return CheckInterrupPending() && nearbyCharacters.Any(IsBiteable);
         }
@@ -37,7 +37,7 @@ public class EatCharacterStateInfo : CharacterStateInfo
             Debug.Log("Eat character!");
             
             var characterSensor = character.Pawn.GetSphereSensor();
-            var nearbyCharacters = characterSensor.NearbyCharacters.Select(_ => _.character);
+            var nearbyCharacters = characterSensor.NearbyCharacters.Select(_ => _.Character);
             var biteableCharacters = nearbyCharacters.Where(IsBiteable);
             var closestBiteableCharacter = biteableCharacters.MinBy(_ => Vector3.SqrMagnitude(_.Pawn.position - character.Pawn.position) );
             

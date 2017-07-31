@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c473dae41d540e94184f93f54812368e, type: 3}
   m_Name: Attack Target
   m_EditorClassIdentifier: 
-  animatorStateName: 
+  animatorStateName: Attack
   weaponAnimatorStateName: Attack
+  _attackOnce: 0

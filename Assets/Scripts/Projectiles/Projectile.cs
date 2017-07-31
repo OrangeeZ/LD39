@@ -125,15 +125,15 @@ public class Projectile : AObject
 
         var otherPawn = other.GetComponent<CharacterPawnBase>();
         
-        if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.character != null)
+        if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.Character != null)
         {
-            var canAttackTarget = CanFriendlyFire || otherPawn.character.TeamId != Owner.TeamId;
+            var canAttackTarget = CanFriendlyFire || otherPawn.Character.TeamId != Owner.TeamId;
 
             if (canAttackTarget)
             {
                 Debug.Log(otherPawn);
 
-                otherPawn.character.Damage(Damage);
+                otherPawn.Character.Damage(Damage);
 
                 OnContact(other);
                 OnHit(other);

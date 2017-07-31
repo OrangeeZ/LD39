@@ -10,9 +10,9 @@ public class CharacterPawnBase : AObject
 
     public CharacterComplexAnimationController animatedView { get; private set; }
 
-    public Character character { get; private set; }
+    public Character Character { get; private set; }
 
-    protected float DeltaTime => character != null && character.UsesUnscaledDeltaTime ? Time.unscaledDeltaTime : Time.deltaTime;
+    protected float DeltaTime => Character != null && Character.UsesUnscaledDeltaTime ? Time.unscaledDeltaTime : Time.deltaTime;
 
     protected float speed;
 
@@ -31,7 +31,7 @@ public class CharacterPawnBase : AObject
 
     public void SetCharacter(Character character)
     {
-        this.character = character;
+        Character = character;
 
         if (_animationController != null)
         {
@@ -42,6 +42,8 @@ public class CharacterPawnBase : AObject
         {
             _weaponAnimationController.UsesUnscaledDeltaTime = character.UsesUnscaledDeltaTime;            
         }
+        
+        sensor.SetCharacter(character);
     }
 
     public virtual void SetSpeed(float newSpeed)

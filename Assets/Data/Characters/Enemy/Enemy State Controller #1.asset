@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: 'Enemy State Controller #1'
   m_EditorClassIdentifier: 
   _stateController: {fileID: 9100000, guid: 5c8c266dacaab9143be55b15d6c07f99, type: 2}
-  UpdateAnimation: 0
-  IsDebug: 0
+  UpdateAnimation: 1
+  IsDebug: 1

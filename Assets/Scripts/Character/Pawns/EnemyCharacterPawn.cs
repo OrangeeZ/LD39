@@ -31,7 +31,7 @@ public class EnemyCharacterPawn : CharacterPawn
     {
         if (_navMeshAgent.isActiveAndEnabled)
         {
-            _navMeshAgent.destination = transform.position;
+            _navMeshAgent.isStopped = true;
         }
     }
 

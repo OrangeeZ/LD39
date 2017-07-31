@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatorStateName: Move
   weaponAnimatorStateName: 
-  _minRange: 0.6
-  _maxRange: 20
+  _minRange: 3
+  _maxRange: 10
   _autoActivate: 0
   _clearTargetOnReach: 1
