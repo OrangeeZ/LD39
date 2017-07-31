@@ -166,6 +166,7 @@ public class CharacterPawn : CharacterPawnBase
         if (_animationController != null)
         {
             var scale = Vector3.one;
+            
             _animatorDirection = Mathf.Sign(direction.x);
             scale.x *= _animatorDirection;
             _animationController.transform.localScale = scale;

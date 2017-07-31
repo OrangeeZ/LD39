@@ -12,6 +12,9 @@ public class EnemyCharacterPawn : CharacterPawn
     [SerializeField]
     private float _fadeSpeed = 0.25f;
 
+    [SerializeField]
+    private Vector3 _destination;
+
     public override void SetSpeed(float newSpeed)
     {
         _navMeshAgent.speed = newSpeed;
@@ -19,6 +22,7 @@ public class EnemyCharacterPawn : CharacterPawn
 
     public override void SetDestination(Vector3 destination)
     {
+        _destination = destination;
         _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(destination);
     }
@@ -77,6 +81,7 @@ public class EnemyCharacterPawn : CharacterPawn
     {
         base.Update();
 
-        UpdateSpriteAnimationDirection(_navMeshAgent.destination - transform.position);
+        Debug.Log(_destination - transform.position);
+        UpdateSpriteAnimationDirection(_destination - transform.position);
     }
 }
