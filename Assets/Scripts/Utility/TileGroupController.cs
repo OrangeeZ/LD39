@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Monads;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-[RequireComponent(typeof(BoxCollider))]
+//[RequireComponent(typeof(BoxCollider))]
 [ExecuteInEditMode]
 [SelectionBase]
 public class TileGroupController : MonoBehaviour
@@ -42,12 +45,18 @@ public class TileGroupController : MonoBehaviour
         
         GenerateRenderers();
         GenerateCollider();
+        GeneratePathfinding();
     }
 
     private void GenerateRenderers()
     {
-        var childRenderers = GetComponentsInChildren<SpriteRenderer>();
-        foreach (var each in childRenderers)
+        var removalList = new List<Transform>();
+        foreach (var each in transform)
+        {
+            removalList.Add(each as Transform);
+        }
+
+        foreach (var each in removalList)
         {
             DestroyImmediate(each.gameObject);
         }
@@ -65,12 +74,29 @@ public class TileGroupController : MonoBehaviour
 
     private void GenerateCollider()
     {
+//        var sprite = _sprites[_spriteIndex];
+//        var spriteBounds = sprite.bounds;
+//        var spriteBoundsSize = spriteBounds.size;
+//        spriteBoundsSize.x *= _spriteCount;
+//
+//        GetComponent<BoxCollider>().size = spriteBoundsSize;
+//        GetComponent<BoxCollider>().center = Vector3.right * spriteBoundsSize.x * 0.5f - Vector3.right * sprite.bounds.extents.x;
+    }
+
+    private void GeneratePathfinding()
+    {
         var sprite = _sprites[_spriteIndex];
         var spriteBounds = sprite.bounds;
         var spriteBoundsSize = spriteBounds.size;
         spriteBoundsSize.x *= _spriteCount;
+        spriteBoundsSize.z = 10f;
 
-        GetComponent<BoxCollider>().size = spriteBoundsSize;
-        GetComponent<BoxCollider>().center = Vector3.right * spriteBoundsSize.x * 0.5f - Vector3.right * sprite.bounds.extents.x;
+        var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.GetComponent<Renderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        cube.transform.SetParent(transform);
+        
+        cube.transform.localScale = spriteBoundsSize;
+        cube.transform.localPosition = Vector3.right * spriteBoundsSize.x * 0.5f - Vector3.right * sprite.bounds.extents.x;
+        cube.isStatic = true;
     }
 }
