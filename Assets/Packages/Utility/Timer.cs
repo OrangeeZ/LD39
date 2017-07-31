@@ -38,6 +38,8 @@ public class AutoTimer
     public float Value => _useUnscaledTime ? Time.unscaledTime - _startTime : Time.time - _startTime;
 
     public float ValueNormalized => (Value / _duration).Clamped(0, 1);
+    
+    public bool HasNotExpired => ValueNormalized < 1;
 
     private readonly bool _useUnscaledTime = false;
 

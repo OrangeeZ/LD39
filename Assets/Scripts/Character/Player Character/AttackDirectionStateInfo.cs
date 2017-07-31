@@ -30,8 +30,18 @@ public class AttackDirectionStateInfo : CharacterStateInfo
                 var direction = Input.mousePosition - Camera.main.WorldToScreenPoint(character.Pawn.position);
                 direction = direction.Set(z: 0).normalized;
 
-                weapon?.Attack(direction);
+                character.Pawn.UpdateSpriteAnimationDirection(direction);
 
+                weapon?.Attack(direction);
+                
+                var directionTimer = new AutoTimer(0.1f, useUnscaledTime: true);
+                while (directionTimer.HasNotExpired)
+                {
+                    character.Pawn.UpdateSpriteAnimationDirection(direction);
+
+                    yield return null;
+                }
+                
                 yield return null;
             }
         }
