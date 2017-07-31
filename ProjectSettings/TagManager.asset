@@ -62,3 +62,6 @@ TagManager:
   - name: enemy
     uniqueID: 3474604261
     locked: 0
+  - name: woman
+    uniqueID: 4105663641
+    locked: 0
