@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 95427592906706892}
   - component: {fileID: 114122207741777856}
   - component: {fileID: 114586559656348994}
+  - component: {fileID: 114614724713973586}
   m_Layer: 0
   m_Name: enemy_ranged
   m_TagString: Untagged
@@ -2145,6 +2146,17 @@ MonoBehaviour:
   - {fileID: 101766}
   - {fileID: 150494}
   - {fileID: 187650}
+--- !u!114 &114614724713973586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262980257093524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408b9ce2b21812a4db7a60393f46707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114637564681195918
 MonoBehaviour:
   m_ObjectHideFlags: 1
