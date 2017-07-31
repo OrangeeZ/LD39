@@ -45,10 +45,9 @@ public class RendererGroupsController : MonoBehaviour
     {
         if (_lastRendererGroup != null)
         {
-            var scale = Vector3.one;
-            scale.x *= direction;
-
-            _lastRendererGroup.transform.localScale = scale;
+            var eulerAngles = _lastRendererGroup.transform.localEulerAngles;
+            eulerAngles.y = direction < 0 ? 180f : 0f;
+            _lastRendererGroup.transform.localEulerAngles = eulerAngles;
         }
     }
 }

@@ -244,6 +244,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 19567632}
   _spriteRenderer: {fileID: 0}
   _fadeSpeed: 0.25
+  _destination: {x: 0, y: 0, z: 0}
 --- !u!114 &11477594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,8 +774,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4611504831895572}
-  - component: {fileID: 65642735435108756}
   - component: {fileID: 54769037049248142}
+  - component: {fileID: 135548388451650332}
   m_Layer: 0
   m_Name: bones
   m_TagString: Untagged
@@ -808,9 +809,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4143988449981100}
   - component: {fileID: 114676340270533314}
-  - component: {fileID: 65720760565677558}
   - component: {fileID: 54129870139201722}
   - component: {fileID: 144046118003894860}
+  - component: {fileID: 135769929836280640}
   m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
@@ -1608,30 +1609,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!65 &65642735435108756
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1750123403906968}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.63893044, y: 0.34825993, z: 0.3715124}
-  m_Center: {x: 0.004778087, y: -0.13445753, z: 0}
---- !u!65 &65720760565677558
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1780304130273956}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3928011, y: 0.6393534, z: 0.370939}
-  m_Center: {x: 0.19640067, y: 0.04207045, z: 0}
 --- !u!95 &95958443074846522
 Animator:
   serializedVersion: 3
@@ -1936,8 +1913,8 @@ MonoBehaviour:
   - {fileID: 54806309502176554}
   - {fileID: 54590468947661434}
   _colliders:
-  - {fileID: 65642735435108756}
-  - {fileID: 65720760565677558}
+  - {fileID: 135548388451650332}
+  - {fileID: 135769929836280640}
   - {fileID: 135721065416076916}
   - {fileID: 136235681767388238}
   - {fileID: 136195561793318962}
@@ -2428,6 +2405,18 @@ MonoBehaviour:
     m_RestoreDefaultPose: 1
     targetPosition: {x: 0.07540333, y: -2.056, z: 0}
     flip: 1
+--- !u!135 &135548388451650332
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750123403906968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0.09, y: 0, z: 0}
 --- !u!135 &135721065416076916
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2440,6 +2429,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.15989386
   m_Center: {x: 0.15989386, y: 0, z: 0}
+--- !u!135 &135769929836280640
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780304130273956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.29
+  m_Center: {x: 0.24, y: 0, z: 0}
 --- !u!136 &136195561793318962
 CapsuleCollider:
   m_ObjectHideFlags: 1

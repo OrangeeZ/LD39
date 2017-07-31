@@ -83,7 +83,7 @@ public class CharacterPawn : CharacterPawnBase
 
         if (_rollSpriteRoot != null)
         {
-            _rollSpriteRoot.RotateByLinearMotion(-_animatorDirection * directionDelta.magnitude);
+            _rollSpriteRoot.RotateByLinearMotion(-directionDelta.magnitude);
         }
 
         UpdateSpriteAnimationDirection(direction);
@@ -165,11 +165,8 @@ public class CharacterPawn : CharacterPawnBase
     {
         if (_animationController != null)
         {
-            var scale = Vector3.one;
-            
             _animatorDirection = Mathf.Sign(direction.x);
-            scale.x *= _animatorDirection;
-            _animationController.transform.localScale = scale;
+            _animationController.transform.localRotation = Quaternion.AngleAxis(_animatorDirection < 0 ? 180f : 0f, Vector3.up);
 
             GetComponent<RendererGroupsController>()?.SetAnimationDirection(_animatorDirection);
             GetComponent<ParticleSystemsController>()?.SetAnimationDirection(_animatorDirection);

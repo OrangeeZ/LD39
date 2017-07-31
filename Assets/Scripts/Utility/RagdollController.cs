@@ -40,6 +40,8 @@ public class RagdollController : MonoBehaviour
             each.isKinematic = !isActive;
             each.useGravity = isActive;
             each.ResetInertiaTensor();
+            each.velocity = Vector3.zero;
+            each.angularVelocity = Vector3.zero;
         }
         
         foreach (var each in _colliders)

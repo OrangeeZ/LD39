@@ -81,7 +81,6 @@ public class EnemyCharacterPawn : CharacterPawn
     {
         base.Update();
 
-        Debug.Log(_destination - transform.position);
         UpdateSpriteAnimationDirection(_destination - transform.position);
     }
 }
