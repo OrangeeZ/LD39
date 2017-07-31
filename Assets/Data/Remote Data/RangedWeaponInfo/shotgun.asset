@@ -22,11 +22,13 @@ MonoBehaviour:
   SlotType: 1
   ClipSize: 3
   ReloadDuration: 1.4285715
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 114109496378667656, guid: 27e4e1268b6d5f34b90218385e5a22cc,
+    type: 2}
   _projectileSpeed: 14
   _projectilesPerShot: 3
   _shotConeAngle: 20
-  _sounds: []
+  _sounds:
+  - {fileID: 8300000, guid: 788d46e004abf584c92679ee86440ecc, type: 3}
   _ammoLimit: -1
   _clipSize: 3
   _projectileLifetime: 5

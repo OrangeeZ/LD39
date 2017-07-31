@@ -8,9 +8,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 419216}
+  - component: {fileID: 114109496378667656}
   - component: {fileID: 5438154}
   - component: {fileID: 135033536248849004}
-  - component: {fileID: 114109496378667656}
   m_Layer: 0
   m_Name: ProjectileShotgun
   m_TagString: Untagged
