@@ -28,4 +28,5 @@ MonoBehaviour:
   DestinationUpdateInterval: 1
   AggroRadius: 10
   IdleSounds: []
-  DeathSounds: []
+  DeathSounds:
+  - {fileID: 8300000, guid: 47028fcc192f8554488c17c54a5ee17e, type: 3}
