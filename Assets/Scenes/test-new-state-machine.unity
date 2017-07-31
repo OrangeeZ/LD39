@@ -356,7 +356,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -923,7 +923,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -972,7 +972,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -2367,7 +2367,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 82badad0f0eff704b9fe5003e29ba806, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -2465,7 +2465,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -2514,7 +2514,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -2811,7 +2811,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -2948,7 +2948,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -3095,7 +3095,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}
@@ -3144,7 +3144,7 @@ MonoBehaviour:
   CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
     type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
+  startingWeapon: {fileID: 0}
   StartingSecondaryWeapon: {fileID: 0}
   startingStatusEffect: {fileID: 0}
   cameraBehaviour: {fileID: 0}

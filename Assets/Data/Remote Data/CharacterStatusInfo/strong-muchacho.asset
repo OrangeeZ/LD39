@@ -24,6 +24,7 @@ MonoBehaviour:
   EatStateDuration: 0
   UsesUnscaledDeltaTime: 0
   PowerPerEat: 0
+  StartingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
   AggroRadius: 10
   IdleSounds: []
   DeathSounds: []

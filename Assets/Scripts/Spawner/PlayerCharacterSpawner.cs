@@ -46,10 +46,10 @@ public class PlayerCharacterSpawner : MonoBehaviour
         }
 
         var weaponInfo = startingWeapon;
-//		if ( CharacterStatusInfo != null ) {
-//
-//			startingWeapon = startingWeapon ?? CharacterStatusInfo.BaseWeapon;
-//		}
+		if ( CharacterStatusInfo != null ) {
+
+		    weaponInfo = startingWeapon ?? CharacterStatusInfo.StartingWeapon;
+		}
 
         if (weaponInfo != null)
         {

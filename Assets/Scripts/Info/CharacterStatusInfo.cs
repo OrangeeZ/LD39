@@ -41,6 +41,9 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
 
     [RemoteProperty]
     public float PowerPerEat;
+
+    [RemoteProperty]
+    public RangedWeaponInfo StartingWeapon;
     
     [Space]
     [RemoteProperty]
