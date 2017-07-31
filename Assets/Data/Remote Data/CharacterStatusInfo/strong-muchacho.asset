@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: strong-muchacho
   m_EditorClassIdentifier: 
   MaxHealth: 3
-  MoveSpeed: 5
+  MoveSpeed: 3
   JumpSpeed: 0
   JumpHeight: 0
   RollSpeed: 0

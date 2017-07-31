@@ -30,8 +30,6 @@ public class RollStateInfo : CharacterStateInfo
             
             var impulse = 0f;
 
-            character.Pawn.SetDamageSphereActive(true);
-
             var moveDirection = Vector3.right;
 
             character.EnableWeaponStateController = false;
@@ -58,6 +56,7 @@ public class RollStateInfo : CharacterStateInfo
                 character.Pawn.SetSpeed(speed);
                 character.Pawn.MoveHorizontal(moveDirection);
                 character.Pawn.MoveVertical(ref impulse, deltaTime);
+                character.Pawn.SetDamageSphereActive(character.Pawn.IsGrounded());
                 
                 yield return null;
             }

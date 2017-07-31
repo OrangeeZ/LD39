@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxPower: 100
   StartingPower: 50
-  PowerDecreaseSpeed: 10
+  PowerDecreaseSpeed: 4
