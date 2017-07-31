@@ -16,16 +16,16 @@ public class AttackDirectionStateInfo : CharacterStateInfo
             var isButtonDown = Input.GetMouseButton(0);
             isButtonDown = isButtonDown || Input.GetMouseButton(1);
 
-            return isButtonDown && (Input.mousePosition - Camera.main.WorldToScreenPoint(character.Pawn.position)).magnitude > 0.1f;
+            var weapon = GetWeapon();
+
+            return isButtonDown && !weapon.IsReloading && (Input.mousePosition - Camera.main.WorldToScreenPoint(character.Pawn.position)).magnitude > 0.1f;
         }
 
         public override IEnumerable GetEvaluationBlock()
         {
             while (CanBeSet())
             {
-                var slotType = Input.GetMouseButton(0) ? ArmSlotType.Primary : ArmSlotType.Secondary;
-
-                var weapon = character.Inventory.GetArmSlotItem(slotType) as Weapon;
+                var weapon = GetWeapon();
 
                 var direction = Input.mousePosition - Camera.main.WorldToScreenPoint(character.Pawn.position);
                 direction = direction.Set(z: 0).normalized;
@@ -34,6 +34,13 @@ public class AttackDirectionStateInfo : CharacterStateInfo
 
                 yield return null;
             }
+        }
+
+        private RangedWeaponInfo.RangedWeapon GetWeapon()
+        {
+            var slotType = Input.GetMouseButton(0) ? ArmSlotType.Primary : ArmSlotType.Secondary;
+
+            return character.Inventory.GetArmSlotItem(slotType) as RangedWeaponInfo.RangedWeapon;
         }
     }
 

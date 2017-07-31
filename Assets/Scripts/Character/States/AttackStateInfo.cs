@@ -31,7 +31,7 @@ public class AttackStateInfo : CharacterStateInfo
         {
             var weapon = GetCurrentWeapon();
 
-            return target != null && weapon != null && weapon.CanAttack(target);
+            return target != null && weapon != null && weapon.CanAttack(target) && !weapon.IsReloading;
         }
 
         public override IEnumerable GetEvaluationBlock()
