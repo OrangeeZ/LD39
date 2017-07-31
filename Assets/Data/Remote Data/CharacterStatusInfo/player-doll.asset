@@ -26,6 +26,7 @@ MonoBehaviour:
   UsesUnscaledDeltaTime: 1
   PowerPerEat: 50
   StartingWeapon: {fileID: 0}
+  DestinationUpdateInterval: 0
   AggroRadius: 0
   IdleSounds: []
   DeathSounds: []

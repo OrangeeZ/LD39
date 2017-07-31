@@ -78,11 +78,13 @@ public class ApproachTargetStateInfo : CharacterStateInfo
 
                 pawn.SetDestination(_destination.Value);
 
+                var updateTimer = new AutoTimer(character.Status.Info.DestinationUpdateInterval);
+                while (updateTimer.ValueNormalized < 1)
+                {
+                    yield return null;
+                }
+                
                 yield return null;
-                yield return null;
-
-                Debug.Log(GetMinDistance());
-                Debug.Log(pawn.GetDistanceToDestination());
 
                 //pawn.SetDestination( destination.Value );
             } while (pawn.GetDistanceToDestination() > GetMinDistance() &&

@@ -44,6 +44,9 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
 
     [RemoteProperty]
     public RangedWeaponInfo StartingWeapon;
+
+    [RemoteProperty]
+    public float DestinationUpdateInterval;
     
     [Space]
     [RemoteProperty]
@@ -52,7 +55,7 @@ public class CharacterStatusInfo : ScriptableObject, ICsvConfigurable
     [Space]
     public AudioClip[] IdleSounds;
     public AudioClip[] DeathSounds;
-
+    
     public virtual CharacterStatus GetInstance()
     {
         return new CharacterStatus(this);
