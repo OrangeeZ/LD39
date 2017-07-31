@@ -205,6 +205,7 @@ MonoBehaviour:
   DelayedDestroy: 1
   NeedsSplashEffect: 0
   _canRedirectProjectiles: 1
+  _useDirectionAsStartingPoint: 1
 --- !u!135 &13517266
 SphereCollider:
   m_ObjectHideFlags: 1

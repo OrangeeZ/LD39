@@ -22,6 +22,9 @@ public class Projectile : AObject
     [SerializeField]
     private bool _canRedirectProjectiles = false;
 
+    [SerializeField]
+    private bool _useDirectionAsStartingPoint = false;
+
     private AutoTimer _timer;
 
     protected Vector3 Direction;
@@ -58,15 +61,23 @@ public class Projectile : AObject
     public void Launch(Character owner, Vector3 direction, float speed, float damage, bool canFriendlyFire,
         float splashRange)
     {
-        this.Owner = owner;
-        this.Speed = speed;
-        this.Direction = direction;
-        this.Damage = damage;
-        this.CanFriendlyFire = canFriendlyFire;
+        Owner = owner;
+        Speed = speed;
+        Direction = direction;
+        Damage = damage;
+        CanFriendlyFire = canFriendlyFire;
 
         _splashRange = splashRange;
 
-        transform.position = this.Owner.Pawn.GetWeaponPosition();
+        if (_useDirectionAsStartingPoint)
+        {
+            transform.position = Owner.Pawn.position + direction;
+        }
+        else
+        {
+            transform.position = Owner.Pawn.GetWeaponPosition();    
+        }
+        
         transform.rotation = Quaternion.FromToRotation(Vector3.right, direction);
 
         _timer = new AutoTimer(Lifetime);
