@@ -38,8 +38,25 @@ public class AttackStateInfo : CharacterStateInfo
         {
             var weapon = GetCurrentWeapon();
 
+            var animationEventController = character.Pawn._weaponAnimationController.GetComponent<AnimationEventController>();
+
             while (CanBeSet())
             {
+                if (animationEventController != null)
+                {
+                    Debug.Log("Waiting for trigger");
+
+                    var animationTrigger = false;
+                    animationEventController.AnimationEvents.Take(1).Subscribe(_ => animationTrigger = true);
+                    
+                    while (!animationTrigger)
+                    {
+                        yield return null;
+                    }
+                    
+                    Debug.Log("Triggered!");
+                }
+
                 weapon.Attack(target, character.Status.Info);
 
                 character.Pawn.UpdateSpriteAnimationDirection(weapon.AttackDirection);

@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 95958443074846522}
   - component: {fileID: 114854457000034596}
   - component: {fileID: 114459101242773454}
+  - component: {fileID: 114923874926304588}
   m_Layer: 0
   m_Name: enemy_mele
   m_TagString: Untagged
@@ -2352,6 +2353,17 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4705317131204198}
   m_AttachedIK: {fileID: 114819020303796520}
+--- !u!114 &114923874926304588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181802159970162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408b9ce2b21812a4db7a60393f46707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114975880685534518
 MonoBehaviour:
   m_ObjectHideFlags: 1
