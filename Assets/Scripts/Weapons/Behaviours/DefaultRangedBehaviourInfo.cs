@@ -12,7 +12,7 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo
         {
             get
             {
-                if (_isReloading && Time.timeSinceLevelLoad > _nextAttackTime)
+                if (_isReloading && GetTimestamp() > _nextAttackTime)
                 {
                     _isReloading = false;
                 }
@@ -26,10 +26,12 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo
         private bool _isReloading;
         private float _nextAttackTime;
         private RangedWeaponInfo.RangedWeapon _ownerWeapon;
+        private bool _useUnscaledTime;
 
-        public override void Initialize(IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon)
+        public override void Initialize(IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon, bool useUnscaledTime)
         {
             _ownerWeapon = ownerWeapon;
+            _useUnscaledTime = useUnscaledTime;
 
             AmmoInClip = _ownerWeapon.ClipSize;
         }
@@ -46,17 +48,22 @@ public class DefaultRangedBehaviourInfo : RangedWeaponBehaviourInfo
             if (AmmoInClip == 0)
             {
                 AmmoInClip = _ownerWeapon.ClipSize;
-
-                _nextAttackTime = Time.timeSinceLevelLoad + _ownerWeapon.ReloadDuration;
+                
+                _nextAttackTime = GetTimestamp() + _ownerWeapon.ReloadDuration;
 
                 IsReloading = true;
 
                 return false;
             }
 
-            _nextAttackTime = Time.timeSinceLevelLoad + 1f / _ownerWeapon.BaseAttackSpeed;
+            _nextAttackTime = GetTimestamp() + 1f / _ownerWeapon.BaseAttackSpeed;
 
             return true;
+        }
+
+        private float GetTimestamp()
+        {
+            return _useUnscaledTime ? Time.realtimeSinceStartup : Time.timeSinceLevelLoad;
         }
     }
 

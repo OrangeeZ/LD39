@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 
-public abstract class RangedWeaponBehaviourInfo : ScriptableObject {
-
-	public abstract RangedWeaponBehaviour GetBehaviour();
-
+public abstract class RangedWeaponBehaviourInfo : ScriptableObject
+{
+    public abstract RangedWeaponBehaviour GetBehaviour();
 }
 
-public abstract class RangedWeaponBehaviour {
+public abstract class RangedWeaponBehaviour
+{
+    public virtual bool IsReloading { get; protected set; }
 
-	public virtual bool IsReloading { get; protected set; }
+    public abstract void Initialize(IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon, bool useUnscaledTime = false);
 
-	public abstract void Initialize( IInventory ownerInventory, RangedWeaponInfo.RangedWeapon ownerWeapon );
-
-	public abstract bool TryShoot();
-
+    public abstract bool TryShoot();
 }

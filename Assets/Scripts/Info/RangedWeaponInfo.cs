@@ -101,7 +101,7 @@ public class RangedWeaponInfo : WeaponInfo
             base.SetCharacter(character);
 
             _behaviour = _typedInfo._weaponBehaviourInfo.GetBehaviour();
-            _behaviour.Initialize(Inventory, this);
+            _behaviour.Initialize(Inventory, this, character.UsesUnscaledDeltaTime);
 
             if (_typedInfo._abilityOnPickup != null)
             {
