@@ -235,6 +235,7 @@ MonoBehaviour:
   _weight: 1
   _isGroundedChangeDelay: 0.2
   _characterController: {fileID: 0}
+  _characterControllerSizeController: {fileID: 0}
   _damageSphereController: {fileID: 0}
   _gunTransform: {fileID: 4914502887480626}
   _spriteAnimationController: {fileID: 0}

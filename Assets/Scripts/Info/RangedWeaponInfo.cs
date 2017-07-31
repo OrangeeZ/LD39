@@ -126,7 +126,7 @@ public class RangedWeaponInfo : WeaponInfo
             for (var i = 0; i < _typedInfo._projectilesPerShot; ++i)
             {
                 var projectile = GetProjectileInstance();
-                var targetDirection = (target.Pawn.position - Character.Pawn.position).Set(z: 0).normalized;
+                var targetDirection = (target.Pawn.GetCenter() - Character.Pawn.GetCenter()).Set(z: 0).normalized;
 
                 AttackDirection = targetDirection;
 

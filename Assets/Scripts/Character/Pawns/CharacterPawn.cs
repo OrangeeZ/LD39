@@ -18,6 +18,9 @@ public class CharacterPawn : CharacterPawnBase
     private CharacterController _characterController;
 
     [SerializeField]
+    private CharacterControllerSizeController _characterControllerSizeController;
+
+    [SerializeField]
     private DamageSphereController _damageSphereController;
 
     [SerializeField]
@@ -53,6 +56,11 @@ public class CharacterPawn : CharacterPawnBase
     public Vector3 GetWeaponPosition()
     {
         return _gunTransform.position + _gunOffset * _animatorDirection;
+    }
+
+    public override void SetHeightNormalized(float newNormalizedHeight)
+    {
+        _characterControllerSizeController?.SetHeightNormalized(newNormalizedHeight);
     }
 
     public override void MoveHorizontal(Vector3 direction)
@@ -135,6 +143,18 @@ public class CharacterPawn : CharacterPawnBase
     {
         GetSphereSensor().enabled = false;
         GetComponent<Collider>().enabled = false;
+    }
+
+    public override Vector3 GetCenter()
+    {
+        if (_characterController != null)
+        {
+            return (_characterController.bounds.min);            
+        }
+        else
+        {
+            return base.GetCenter();
+        }
     }
 
     public void UpdateSpriteAnimationDirection(Vector3 direction)

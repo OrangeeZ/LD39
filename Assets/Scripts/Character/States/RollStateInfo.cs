@@ -35,6 +35,7 @@ public class RollStateInfo : CharacterStateInfo
             var moveDirection = Vector3.right;
 
             character.EnableWeaponStateController = false;
+            character.Pawn.SetHeightNormalized(0.5f);
             
             while (CanBeSet())
             {
@@ -63,6 +64,7 @@ public class RollStateInfo : CharacterStateInfo
             
             character.Pawn.SetDamageSphereActive(false);
             character.EnableWeaponStateController = true;
+            character.Pawn.SetHeightNormalized(1f);
         }
     }
 

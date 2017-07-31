@@ -66,9 +66,19 @@ public class CharacterPawnBase : AObject
         return float.NaN;
     }
 
+    public virtual void SetHeightNormalized(float newNormalizedHeight)
+    {
+        
+    }
+
     public virtual Vector3 GetDirectionTo(CharacterPawnBase otherPawn)
     {
         return Vector3.forward;
+    }
+
+    public virtual Vector3 GetCenter()
+    {
+        return transform.position;
     }
 
     public virtual void MakeDead()
