@@ -41,6 +41,8 @@ public class EatCharacterStateInfo : CharacterStateInfo
             
             closestBiteableCharacter.Damage(int.MaxValue);
             
+            character.Pawn.UpdateSpriteAnimationDirection(closestBiteableCharacter.Pawn.position - character.Pawn.position);
+            
             var timer = new AutoTimer(character.Status.Info.EatStateDuration, useUnscaledTime: true);
             var powerPerSecond = character.Status.Info.PowerPerEat / character.Status.Info.EatStateDuration;
             while (timer.ValueNormalized < 1)

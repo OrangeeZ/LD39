@@ -28,7 +28,7 @@ public class MoveStateInfo : CharacterStateInfo
 
         private Vector3 GetMoveDirection()
         {
-            return new Vector3(Input.GetAxis("Horizontal"), 0, 0).ClampMagnitude(1f);
+            return new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0).ClampMagnitude(1f);
         }
     }
 

@@ -21,6 +21,7 @@ public class JumpStateInfo : CharacterStateInfo
 
             while (impulse > 0)
             {
+                character.Pawn.SetSpeed(character.Status.MoveSpeed.Value * character.StatModifier);
                 character.Pawn.MoveHorizontal(GetMoveDirection());
                 character.Pawn.MoveVertical(ref impulse, deltaTime);
 
@@ -30,7 +31,7 @@ public class JumpStateInfo : CharacterStateInfo
 
         private Vector3 GetMoveDirection()
         {
-            return new Vector3(Input.GetAxis("Horizontal"), 0, 0).ClampMagnitude(1f);
+            return new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0).ClampMagnitude(1f);
         }
     }
 

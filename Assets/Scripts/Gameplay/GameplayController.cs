@@ -45,7 +45,7 @@ public class GameplayController : MonoBehaviour
 
     void Update()
     {
-        CurrentPower -= _globalGameInfo.PowerDecreaseSpeed * Time.deltaTime;
+        CurrentPower -= _globalGameInfo.PowerDecreaseSpeed * Time.unscaledDeltaTime;
         CurrentPower = CurrentPower.Clamped(0, _globalGameInfo.MaxPower);
 
         Time.timeScale = 1f - CurrentPower / _globalGameInfo.MaxPower;
