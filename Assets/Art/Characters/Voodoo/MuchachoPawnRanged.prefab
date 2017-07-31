@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationController: {fileID: 114122207741777856}
-  _weaponAnimationController: {fileID: 0}
+  _weaponAnimationController: {fileID: 114122207741777856}
   sensor: {fileID: 11477594}
   CanFollowDestination: 0
   _gunOffset: {x: 1, y: 0, z: 0}
