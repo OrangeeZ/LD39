@@ -2396,7 +2396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 97961ddbd0b964946be328e4a4e3e18e, type: 2}
-  CharacterStatusInfo: {fileID: 11400000, guid: 54ea96c6512a2a349b2ad85367f6e39b,
+  CharacterStatusInfo: {fileID: 11400000, guid: bed0c33dc4899a948833a913da0d525b,
     type: 2}
   startingItems: []
   startingWeapon: {fileID: 0}
@@ -2411,7 +2411,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1483159057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.42, y: 4.69, z: 0}
+  m_LocalPosition: {x: 4.69, y: 2.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1629359042}
@@ -3893,11 +3893,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4046363457620584, guid: 635257717330ac049b6bdbbd85e5b50f, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.5709908
+      value: -0.57099074
       objectReference: {fileID: 0}
     - target: {fileID: 4046363457620584, guid: 635257717330ac049b6bdbbd85e5b50f, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.8209565
+      value: -0.82095647
       objectReference: {fileID: 0}
     - target: {fileID: 4717623632424632, guid: 635257717330ac049b6bdbbd85e5b50f, type: 2}
       propertyPath: m_LocalRotation.z

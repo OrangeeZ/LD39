@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
+  m_Name: witch
+  m_EditorClassIdentifier: 
+  MaxHealth: 10
+  MoveSpeed: 5
+  JumpSpeed: 0
+  JumpHeight: 0
+  RollSpeed: 0
+  RollDeceleration: 0
+  RollDamage: 0
+  PawnPrefab: {fileID: 11467564, guid: c96b72111667bc54aa3f8740269b8f65, type: 2}
+  BiteStateHealthThreshold: 1
+  BiteStateDuration: 3
+  EatStateDuration: 0
+  UsesUnscaledDeltaTime: 0
+  PowerPerEat: 0
+  StartingWeapon: {fileID: 11400000, guid: 1a2ddca4fedb634489af7f0bcd7ded39, type: 2}
+  DestinationUpdateInterval: 0.8
+  AggroRadius: 20
+  IdleSounds: []
+  DeathSounds: []
