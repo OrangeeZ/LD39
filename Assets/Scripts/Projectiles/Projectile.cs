@@ -118,7 +118,7 @@ public class Projectile : AObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_isDestroyed)
+        if (_isDestroyed || !enabled)
         {
             return;
         }

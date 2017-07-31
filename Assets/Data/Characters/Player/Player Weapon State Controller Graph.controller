@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ab625f27c209e4fa827715347c7748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateInfo: {fileID: 11400000, guid: c39e294ad68cb3540abc6f169ff42fa3, type: 2}
+  _stateInfo: {fileID: 11400000, guid: b5b0990fa84458643ba7e579303518e9, type: 2}
 --- !u!114 &114906906682328168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,13 +284,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102014408280945122}
-    m_Position: {x: 144, y: 336, z: 0}
+    m_Position: {x: 168, y: 336, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102433867859548756}
     m_Position: {x: 300, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102370838314627992}
-    m_Position: {x: 396, y: 336, z: 0}
+    m_Position: {x: 420, y: 336, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102266494560975586}
     m_Position: {x: 288, y: -60, z: 0}
