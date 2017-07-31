@@ -26,7 +26,9 @@ MonoBehaviour:
   _projectileSpeed: 0.5
   _projectilesPerShot: 1
   _shotConeAngle: 0
-  _sounds: []
+  _sounds:
+  - {fileID: 8300000, guid: 18dc4427b3e8a9b4b9cd179f2d073dfd, type: 3}
+  - {fileID: 8300000, guid: 0388a76f1010b8b4d8bf4ab1f09e8609, type: 3}
   _ammoLimit: -1
   _ammoAmount: -1
   _projectileLifetime: 0.5
