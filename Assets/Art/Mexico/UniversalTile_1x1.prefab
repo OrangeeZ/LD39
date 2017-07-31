@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4346591706869264}
   - component: {fileID: 114832130776414140}
+  - component: {fileID: 65519557384823120}
   m_Layer: 0
   m_Name: UniversalTile_1x1
   m_TagString: Untagged
@@ -50,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717241388217120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7644536, y: 5.622342, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4657846432609036}
@@ -70,6 +71,18 @@ Transform:
   m_Father: {fileID: 4346591706869264}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65519557384823120
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717241388217120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114832130776414140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +128,7 @@ MonoBehaviour:
   - {fileID: 21300058, guid: 0a0152027c03fb34ca0f2e774859dc17, type: 3}
   - {fileID: 21300060, guid: 0a0152027c03fb34ca0f2e774859dc17, type: 3}
   _spriteIndex: 0
+  _spriteCount: 1
 --- !u!212 &212868989120276608
 SpriteRenderer:
   m_ObjectHideFlags: 1
