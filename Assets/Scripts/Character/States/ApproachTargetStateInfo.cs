@@ -79,6 +79,10 @@ public class ApproachTargetStateInfo : CharacterStateInfo
                 pawn.SetDestination(_destination.Value);
 
                 yield return null;
+                yield return null;
+
+                Debug.Log(GetMinDistance());
+                Debug.Log(pawn.GetDistanceToDestination());
 
                 //pawn.SetDestination( destination.Value );
             } while (pawn.GetDistanceToDestination() > GetMinDistance() &&
@@ -98,6 +102,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo
 
         public void SetDestination(object target)
         {
+            _targetIsCharacter = false;
 //            Debug.Log($"Set destination: {target}");
             if (target is Vector3)
             {
@@ -105,9 +110,22 @@ public class ApproachTargetStateInfo : CharacterStateInfo
             }
             else if (target is Character)
             {
-                _targetIsCharacter = true;
                 var destinationTarget = (target as Character);
-                _destination = destinationTarget.Pawn.transform;
+                var targetPosition = destinationTarget.Pawn.transform.position;
+
+                var distanceToDestination = Vector3.Distance(character.Pawn.position, targetPosition);
+
+//            Debug.Log(distanceToDestination);
+
+                var canBeApproached = distanceToDestination > 0
+                                      && distanceToDestination > GetMinDistance()
+                                      && distanceToDestination < typedInfo._maxRange;
+
+                if (canBeApproached)
+                {
+                    _destination = destinationTarget.Pawn.transform;
+                    _targetIsCharacter = true;
+                }
             }
             else if (target is ItemView)
             {
@@ -122,6 +140,11 @@ public class ApproachTargetStateInfo : CharacterStateInfo
 
         private float GetMinDistance()
         {
+            if (!_targetIsCharacter)
+            {
+                return 1f;
+            }
+
             var primaryWeapon = character.Inventory.GetArmSlotItem(ArmSlotType.Primary);
             var result = primaryWeapon?.info.OfType<RangedWeaponInfo>().AttackRange ?? float.MaxValue;
 

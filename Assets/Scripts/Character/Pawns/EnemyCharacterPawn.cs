@@ -19,6 +19,7 @@ public class EnemyCharacterPawn : CharacterPawn
 
     public override void SetDestination(Vector3 destination)
     {
+        _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(destination);
     }
 

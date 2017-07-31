@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4323f133e84e42b46b78c06f1ab83d5f, type: 3}
   m_Name: Wander
   m_EditorClassIdentifier: 
-  radius: 10
-  interval: 3
+  radius: 3
+  interval: 2
