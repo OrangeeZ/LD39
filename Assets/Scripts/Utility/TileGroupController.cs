@@ -19,6 +19,9 @@ public class TileGroupController : MonoBehaviour
     [SerializeField]
     private int _spriteCount;
 
+    [SerializeField]
+    private bool _hasCollisions = true;
+
     private bool _isDirty = false;
 
     void OnValidate()
@@ -94,6 +97,8 @@ public class TileGroupController : MonoBehaviour
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.GetComponent<Renderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         cube.transform.SetParent(transform);
+
+        cube.GetComponent<BoxCollider>().enabled = _hasCollisions;
         
         cube.transform.localScale = spriteBoundsSize;
         cube.transform.localPosition = Vector3.right * spriteBoundsSize.x * 0.5f - Vector3.right * sprite.bounds.extents.x;
