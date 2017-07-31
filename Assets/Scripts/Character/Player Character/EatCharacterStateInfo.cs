@@ -24,7 +24,7 @@ public class EatCharacterStateInfo : CharacterStateInfo
 
         public override bool CheckInterrupPending()
         {
-            return Input.GetButton("Eat");
+            return Input.GetButtonDown("Eat");
         }
 
         public override IEnumerable GetEvaluationBlock()
@@ -41,13 +41,14 @@ public class EatCharacterStateInfo : CharacterStateInfo
             
             closestBiteableCharacter.Damage(int.MaxValue);
             
-            var timer = new AutoTimer(character.Status.Info.EatStateDuration);
+            var timer = new AutoTimer(character.Status.Info.EatStateDuration, useUnscaledTime: true);
+            var powerPerSecond = character.Status.Info.PowerPerEat / character.Status.Info.EatStateDuration;
             while (timer.ValueNormalized < 1)
             {
+                GameplayController.Instance.AddPower(powerPerSecond * deltaTime);
+
                 yield return null;
             }
-
-            GameplayController.Instance.AddPower(character.Status.Info.PowerPerEat);
         }
 
         private static bool IsBiteable(Character targetCharacter)

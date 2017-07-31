@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StepTimer {
-
-    public float Value {
+public class StepTimer
+{
+    public float Value
+    {
         get { return timerValue; }
     }
 
-    public float ValueNormalized {
+    public float ValueNormalized
+    {
         get { return timerValue / duration; }
     }
 
@@ -15,45 +17,43 @@ public class StepTimer {
 
     private readonly float duration;
 
-    public StepTimer( float duration ) {
-
+    public StepTimer(float duration)
+    {
         this.duration = duration;
     }
 
-    public void Step() {
-
-        Step( Time.deltaTime );
+    public void Step()
+    {
+        Step(Time.deltaTime);
     }
 
-    public void Step( float deltaTime ) {
-
-        timerValue = ( timerValue + deltaTime ).Clamped( 0, duration );
+    public void Step(float deltaTime)
+    {
+        timerValue = (timerValue + deltaTime).Clamped(0, duration);
     }
-
 }
 
-public class AutoTimer {
+public class AutoTimer
+{
+    public float Value => _useUnscaledTime ? Time.unscaledTime - _startTime : Time.time - _startTime;
 
-    public float Value {
-        get { return Time.time - startTime; }
+    public float ValueNormalized => (Value / _duration).Clamped(0, 1);
+
+    private readonly bool _useUnscaledTime = false;
+
+    private readonly float _duration;
+    private float _startTime;
+
+    public AutoTimer(float duration, bool useUnscaledTime = false)
+    {
+        _duration = duration;
+        _useUnscaledTime = useUnscaledTime;
+
+        Reset();
     }
 
-    public float ValueNormalized {
-        get { return ( Value / duration ).Clamped( 0, 1 ); }
+    public void Reset()
+    {
+        _startTime = _useUnscaledTime ? Time.unscaledTime : Time.time;
     }
-
-    private readonly float duration;
-    private float startTime;
-
-    public AutoTimer( float duration ) {
-
-        this.duration = duration;
-        startTime = Time.time;
-    }
-
-    public void Reset() {
-
-        startTime = Time.time;
-    }
-
 }
