@@ -39,7 +39,7 @@ public class CharacterPawn : CharacterPawnBase
 
     protected virtual void Update()
     {
-        if (_characterController != null)
+        if (_characterController != null)    
         {
             _characterController.Move(Vector3.down * DeltaTime * _weight);
 
@@ -142,7 +142,8 @@ public class CharacterPawn : CharacterPawnBase
         if (_animationController != null)
         {
             var scale = Vector3.one;
-            scale.x *= Mathf.Sign(direction.x);//Vector3.Dot(Vector3.one, direction);
+            _animatorDirection = Mathf.Sign(direction.x);
+            scale.x *= _animatorDirection;
             _animationController.transform.localScale = scale;
         }
         

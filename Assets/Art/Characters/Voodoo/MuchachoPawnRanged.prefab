@@ -231,12 +231,12 @@ MonoBehaviour:
   _weaponAnimationController: {fileID: 0}
   sensor: {fileID: 11477594}
   CanFollowDestination: 0
-  _gunOffset: {x: 0, y: 0, z: 0}
+  _gunOffset: {x: 1, y: 0, z: 0}
   _weight: 1
   _isGroundedChangeDelay: 0.2
   _characterController: {fileID: 0}
   _damageSphereController: {fileID: 0}
-  _gunTransform: {fileID: 4790727044613184}
+  _gunTransform: {fileID: 4914502887480626}
   _spriteAnimationController: {fileID: 0}
   _rollSpriteRoot: {fileID: 0}
   _navMeshAgent: {fileID: 19567632}

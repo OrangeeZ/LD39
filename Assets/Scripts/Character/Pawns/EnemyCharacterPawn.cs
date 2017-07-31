@@ -75,7 +75,6 @@ public class EnemyCharacterPawn : CharacterPawn
     {
         base.Update();
 
-        var direction = _navMeshAgent.velocity;
-        UpdateSpriteAnimationDirection(direction);
+        UpdateSpriteAnimationDirection(_navMeshAgent.destination - transform.position);
     }
 }
