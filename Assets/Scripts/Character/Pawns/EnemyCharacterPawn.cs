@@ -43,6 +43,7 @@ public class EnemyCharacterPawn : CharacterPawn
         if (_navMeshAgent.isActiveAndEnabled)
         {
             _navMeshAgent.isStopped = true;
+            _navMeshAgent.enabled = false;
         }
     }
 

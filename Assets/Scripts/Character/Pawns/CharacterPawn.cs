@@ -36,6 +36,9 @@ public class CharacterPawn : CharacterPawnBase
     [SerializeField]
     private RotatingTransform _rollSpriteRoot;
 
+    [SerializeField]
+    private RagdollController _ragdollController;
+
     private float _lastGroundedTime = 0f;
 
     private float _animatorDirection = 1f;
@@ -143,6 +146,7 @@ public class CharacterPawn : CharacterPawnBase
     {
         GetSphereSensor().enabled = false;
         GetComponent<Collider>().enabled = false;
+        _ragdollController?.SetActive(true);
     }
 
     public override Vector3 GetCenter()

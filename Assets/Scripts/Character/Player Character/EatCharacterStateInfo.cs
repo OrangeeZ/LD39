@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
-using NUnit.Framework;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Character States/Eat Character")]

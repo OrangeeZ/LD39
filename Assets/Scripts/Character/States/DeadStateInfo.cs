@@ -27,11 +27,14 @@ public class DeadStateInfo : CharacterStateInfo
         public override IEnumerable GetEvaluationBlock()
         {
             character.Pawn.ClearDestination();
-
+            
             if (stateController == character.StateController)
             {
                 var deathSound = character.Status.Info.DeathSounds.RandomElement();
-                AudioSource.PlayClipAtPoint(deathSound, character.Pawn.position);
+                if (deathSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(deathSound, character.Pawn.position);                    
+                }
 
                 if (1f.Random() <= character.dropProbability && !character.ItemsToDrop.IsNullOrEmpty())
                 {

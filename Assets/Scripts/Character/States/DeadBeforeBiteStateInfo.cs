@@ -23,7 +23,7 @@ public class DeadBeforeBiteStateInfo : CharacterStateInfo
 
         public override bool CanBeSet()
         {
-            return !_didEnterState && character.Health.Value <= character.Status.Info.BiteStateHealthThreshold;
+            return !_didEnterState && character.Health.Value > 0 && character.Health.Value <= character.Status.Info.BiteStateHealthThreshold;
         }
 
         public override IEnumerable GetEvaluationBlock()
