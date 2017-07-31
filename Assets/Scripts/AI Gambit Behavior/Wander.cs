@@ -25,10 +25,7 @@ namespace AI.Gambits
                     return false;
                 }
                 
-                Debug.Log("Execute");
-
                 var point = Character.Pawn.position + Vector3.right * Random.Range(-Info.radius, Info.radius);
-Debug.Log(Random.Range(-Info.radius, Info.radius));
                 Character.StateController.GetState<ApproachTargetStateInfo.State>().SetDestination(point);
 
                 _lastExecutionTime = Time.time;

@@ -2,6 +2,7 @@
 using UnityEngine;
 using UniRx;
 using System.Collections;
+using System.Monads;
 using Packages.EventSystem;
 using Utility;
 
@@ -9,9 +10,6 @@ using Utility;
 public class ApproachTargetStateInfo : CharacterStateInfo
 {
     [Header("Settings")]
-    [SerializeField]
-    private float _minRange = 1.5f;
-
     [SerializeField]
     private float _maxRange = 4f;
 
@@ -45,9 +43,9 @@ public class ApproachTargetStateInfo : CharacterStateInfo
                 _destination.HasValue ? Vector3.Distance(character.Pawn.position, _destination.Value) : -1f;
 
 //            Debug.Log(distanceToDestination);
-            
-            return _destination.HasValue
-                   && distanceToDestination > typedInfo._minRange
+
+            return distanceToDestination > 0
+                   && distanceToDestination > GetMinDistance()
                    && distanceToDestination < typedInfo._maxRange;
         }
 
@@ -83,7 +81,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo
                 yield return null;
 
                 //pawn.SetDestination( destination.Value );
-            } while (pawn.GetDistanceToDestination() > typedInfo._minRange &&
+            } while (pawn.GetDistanceToDestination() > GetMinDistance() &&
                      pawn.GetDistanceToDestination() < typedInfo._maxRange);
 
             //if ( pawn.GetDistanceToDestination() > typedInfo._maxRange ) {
@@ -120,6 +118,17 @@ public class ApproachTargetStateInfo : CharacterStateInfo
             {
                 stateController.TrySetState(this);
             }
+        }
+
+        private float GetMinDistance()
+        {
+            var primaryWeapon = character.Inventory.GetArmSlotItem(ArmSlotType.Primary);
+            var result = primaryWeapon?.info.OfType<RangedWeaponInfo>().AttackRange ?? float.MaxValue;
+
+            var secondaryWeapon = character.Inventory.GetArmSlotItem(ArmSlotType.Secondary);
+            result = Mathf.Min(secondaryWeapon?.info.OfType<RangedWeaponInfo>().AttackRange ?? float.MaxValue, result);
+
+            return Mathf.Max(result, 0);
         }
     }
 
