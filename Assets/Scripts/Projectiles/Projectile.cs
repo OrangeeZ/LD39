@@ -75,9 +75,9 @@ public class Projectile : AObject
         }
         else
         {
-            transform.position = Owner.Pawn.GetWeaponPosition();    
+            transform.position = Owner.Pawn.GetWeaponPosition();
         }
-        
+
         transform.rotation = Quaternion.FromToRotation(Vector3.right, direction);
 
         _timer = new AutoTimer(Lifetime);
@@ -109,7 +109,7 @@ public class Projectile : AObject
     {
         if (!_splashRange.IsNan() && _splashRange > 0f)
         {
-            Helpers.DoSplashDamage(transform.position, _splashRange, Damage, 
+            Helpers.DoSplashDamage(transform.position, _splashRange, Damage,
                 teamToSkip: CanFriendlyFire ? -1 : Owner.TeamId);
 
             if (NeedsSplashEffect)
@@ -134,8 +134,23 @@ public class Projectile : AObject
             return;
         }
 
+        if (_canRedirectProjectiles)
+        {
+            var otherProjectile = other.GetComponent<Projectile>();
+
+            if (otherProjectile != null)
+            {
+                otherProjectile?.SetOwner(Owner);
+                otherProjectile?.Reflect();
+
+                Debug.Log($"Deflect! {this} {otherProjectile}");
+                
+                return;
+            }
+        }
+
         var otherPawn = other.GetComponent<CharacterPawnBase>();
-        
+
         if (otherPawn != null && otherPawn != Owner.Pawn && otherPawn.Character != null)
         {
             var canAttackTarget = CanFriendlyFire || otherPawn.Character.TeamId != Owner.TeamId;
@@ -150,15 +165,6 @@ public class Projectile : AObject
                 OnHit(other);
             }
 
-            return;
-        }
-
-        if (_canRedirectProjectiles)
-        {
-            var otherProjectile = other.GetComponent<Projectile>();
-            otherProjectile?.SetOwner(Owner);
-            otherProjectile?.Reflect();
-            
             return;
         }
 

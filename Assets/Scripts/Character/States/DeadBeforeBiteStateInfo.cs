@@ -29,6 +29,7 @@ public class DeadBeforeBiteStateInfo : CharacterStateInfo
         public override IEnumerable GetEvaluationBlock()
         {
             character.Pawn.ClearDestination();
+            character.EnableWeaponStateController = false;
             
             _didEnterState = true;
 

@@ -45,8 +45,6 @@ public class AttackStateInfo : CharacterStateInfo
                
                 if (animationEventController != null)
                 {
-                    Debug.Log("Waiting for trigger");
-
                     var animationTrigger = false;
                     animationEventController.AnimationEvents.Take(1).Subscribe(_ => animationTrigger = true);
                     
@@ -54,8 +52,6 @@ public class AttackStateInfo : CharacterStateInfo
                     {
                         yield return null;
                     }
-                    
-                    Debug.Log("Triggered!");
                 }
                 
                 var direction = target.Pawn.position - character.Pawn.position;
