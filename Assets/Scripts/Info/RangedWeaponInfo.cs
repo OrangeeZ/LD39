@@ -27,7 +27,7 @@ public class RangedWeaponInfo : WeaponInfo
     private int _ammoLimit = 100;
 
     [SerializeField]
-    private int _ammoAmount = 100;
+    private int _clipSize = 100;
 
     [SerializeField]
     private float _projectileLifetime;
@@ -92,7 +92,7 @@ public class RangedWeaponInfo : WeaponInfo
         public RangedWeapon(RangedWeaponInfo info) : base(info)
         {
             _rangedWeaponInfo = info;
-            AmmoInClip = _rangedWeaponInfo._ammoAmount;
+            AmmoInClip = _rangedWeaponInfo._clipSize;
             ClipSize = info.ClipSize;
         }
 
@@ -214,7 +214,7 @@ public class RangedWeaponInfo : WeaponInfo
             }
 
             var normalizedOffsetIndex = (float) index / totalOffsetCount;
-            var rotator = Quaternion.AngleAxis(Mathf.Lerp(-coneAngle, coneAngle, normalizedOffsetIndex), Vector3.up);
+            var rotator = Quaternion.AngleAxis(Mathf.Lerp(-coneAngle, coneAngle, normalizedOffsetIndex), Vector3.forward);
 
             return rotator * direction;
         }
@@ -239,14 +239,12 @@ public class RangedWeaponInfo : WeaponInfo
         ReloadDuration = 1f / BaseAttackSpeed;
         
         _ammoLimit = values.Get("AmmoLimit", -1);
-        _ammoAmount = values.Get("AmmoAmount", -1);
+        _clipSize = values.Get("ClipSize", -1);
         _projectileSpeed = values.Get("ProjectileSpeed", 0f);
-        _projectilesPerShot = values.Get("BulletsPerBurst", 1);
+        _projectilesPerShot = values.Get("ProjectilesPerShot", 1);
         _projectileLifetime = values.Get("ProjectileLifetime", 1f);
-        _shotConeAngle = values.Get("BurstAngle", 0);
+        _shotConeAngle = values.Get("ShotConeAngle", 0);
         _splashDamageRadius = values.Get("SplashRadius", float.NaN);
         _abilityOnPickup = values.GetScriptableObject<BuffItemInfo>("AbilityOnPickup");
-        
-        ClipSize = values.Get("Clip Size", _projectilesPerShot);        
     }
 }
