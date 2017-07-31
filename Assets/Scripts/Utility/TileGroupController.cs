@@ -20,6 +20,12 @@ public class TileGroupController : MonoBehaviour
     private int _spriteCount;
 
     [SerializeField]
+    private string _tag = "Environment";
+
+    [SerializeField]
+    private string _spriteLayerName = "Objects";
+
+    [SerializeField]
     private bool _hasCollisions = true;
 
     private bool _isDirty = false;
@@ -72,6 +78,7 @@ public class TileGroupController : MonoBehaviour
             spriteRenderer.transform.SetParent(transform);
             spriteRenderer.transform.localPosition = Vector3.right * sprite.bounds.size.x * i;
             spriteRenderer.sprite = sprite;
+            spriteRenderer.sortingLayerID = SortingLayer.NameToID(_spriteLayerName);
         }
     }
 
@@ -103,5 +110,6 @@ public class TileGroupController : MonoBehaviour
         cube.transform.localScale = spriteBoundsSize;
         cube.transform.localPosition = Vector3.right * spriteBoundsSize.x * 0.5f - Vector3.right * sprite.bounds.extents.x;
         cube.isStatic = true;
+        cube.tag = _tag;
     }
 }
