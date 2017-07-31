@@ -7,6 +7,8 @@ public class ParticleSystemsController : MonoBehaviour
     [SerializeField]
     private ParticleSystem[] _particleSystems;
 
+    private float _direction;
+
     void Reset()
     {
         _particleSystems = GetComponentsInChildren<ParticleSystem>(includeInactive: true);
@@ -32,5 +34,17 @@ public class ParticleSystemsController : MonoBehaviour
         {
             particleSystem?.Stop(withChildren: true);
         }
+
+        if (particleSystem != null)
+        {
+            var scale = Vector3.one;
+            scale.x *= _direction;
+            particleSystem.transform.parent.localScale = scale;
+        }
+    }
+
+    public void SetAnimationDirection(float direction)
+    {
+        _direction = direction;
     }
 }

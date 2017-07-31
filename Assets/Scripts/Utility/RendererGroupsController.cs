@@ -13,7 +13,7 @@ public class RendererGroupsController : MonoBehaviour
     private string _startingRendererGroupId;
 
     private RendererGroup _lastRendererGroup;
-    
+
     void Reset()
     {
         _rendererGroups = GetComponentsInChildren<RendererGroup>(includeInactive: true);
@@ -25,7 +25,7 @@ public class RendererGroupsController : MonoBehaviour
         {
             each.SetActive(false);
         }
-        
+
         SetRendererGroupActive(_startingRendererGroupId);
     }
 
@@ -38,6 +38,17 @@ public class RendererGroupsController : MonoBehaviour
             _lastRendererGroup?.SetActive(false);
             targetRendererGroup.SetActive(true);
             _lastRendererGroup = targetRendererGroup;
+        }
+    }
+
+    public void SetAnimationDirection(float direction)
+    {
+        if (_lastRendererGroup != null)
+        {
+            var scale = Vector3.one;
+            scale.x *= direction;
+
+            _lastRendererGroup.transform.localScale = scale;
         }
     }
 }

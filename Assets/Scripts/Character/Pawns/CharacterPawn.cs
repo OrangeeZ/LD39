@@ -169,6 +169,9 @@ public class CharacterPawn : CharacterPawnBase
             _animatorDirection = Mathf.Sign(direction.x);
             scale.x *= _animatorDirection;
             _animationController.transform.localScale = scale;
+
+            GetComponent<RendererGroupsController>()?.SetAnimationDirection(_animatorDirection);
+            GetComponent<ParticleSystemsController>()?.SetAnimationDirection(_animatorDirection);
         }
         
         if (_spriteAnimationController == null)

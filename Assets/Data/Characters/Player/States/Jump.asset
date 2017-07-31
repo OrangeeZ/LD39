@@ -11,6 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c3c59d954743247aca68b3343e71b6, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  animatorStateName: 
+  animatorStateName: Jump
   weaponAnimatorStateName: 
-  _jumpImpulse: 20
