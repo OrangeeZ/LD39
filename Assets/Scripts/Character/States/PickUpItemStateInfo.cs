@@ -30,12 +30,12 @@ public class PickUpItemStateInfo : CharacterStateInfo {
 
 		public override IEnumerable GetEvaluationBlock() {
 
-			var info = this.info as PickUpItemStateInfo;
+			var info = this.Info as PickUpItemStateInfo;
 			var timer = new StepTimer( info.duration );
 
 			while ( timer.ValueNormalized < 1f ) {
 
-				timer.Step( deltaTime );
+				timer.Step( DeltaTime );
 
 				yield return null;
 			}

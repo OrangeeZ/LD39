@@ -111,7 +111,7 @@ public class RangedWeaponInfo : WeaponInfo
             }
         }
 
-        public override void Attack(Character target, CharacterStatusInfo statusInfo)
+        public override void Attack(Character target)
         {
             if (target == null || !IsAttackAvailable)
             {

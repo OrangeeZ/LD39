@@ -4,7 +4,7 @@ using System.Collections;
 
 public abstract class CharacterState
 {
-    public readonly CharacterStateInfo info;
+    public readonly CharacterStateInfo Info;
 
     public IList<CharacterState> PossibleStates => _possibleStates;
 
@@ -14,16 +14,16 @@ public abstract class CharacterState
 
     protected CharacterStateController stateController;
 
-    protected float deltaTime;
+    protected float DeltaTime;
 
     protected CharacterState(CharacterStateInfo info)
     {
-        this.info = info;
+        Info = info;
     }
 
     public void SetDeltaTime(float deltaTime)
     {
-        this.deltaTime = deltaTime;
+        DeltaTime = deltaTime;
     }
 
     public void SetTransitionStates(IEnumerable<CharacterState> states)
@@ -70,16 +70,47 @@ public abstract class CharacterState
         //stateController.character.Pawn.animatedView.Do( OnAnimationUpdate );
     }
 
-    protected virtual void OnAnimationUpdate(CharacterPawn pawn)
+    public void OnStateFinishAnimation()
     {
-        if (pawn._animationController != null)
+        var pawn = character.Pawn;
+
+        if (Info.IsAnimationExclusive)
         {
-            pawn._animationController.SetBool(info.animatorStateName, true);
+            pawn?._animationController?.SetBool(Info.animatorStateName, false);
+        }
+        else
+        {
+            pawn?._animationController?.SetBoolInclusive(Info.animatorStateName, false);
         }
 
-        if (pawn._weaponAnimationController != null)
+        if (Info.IsWeaponAnimationExclusive)
         {
-            pawn._weaponAnimationController.SetBool(info.weaponAnimatorStateName, true);
+            pawn?._weaponAnimationController?.SetBool(Info.weaponAnimatorStateName, false);
+        }
+        else
+        {
+            pawn?._weaponAnimationController?.SetBoolInclusive(Info.weaponAnimatorStateName, false);
+        }
+    }
+
+    protected virtual void OnAnimationUpdate(CharacterPawn pawn)
+    {
+        if (Info.IsAnimationExclusive)
+        {
+            pawn?._animationController?.SetBool(Info.animatorStateName, true);
+        }
+        else
+        {
+            pawn?._animationController?.SetBoolInclusive(Info.animatorStateName, true);
+        }
+
+        if (Info.IsWeaponAnimationExclusive)
+        {
+            pawn?._weaponAnimationController?.SetBool(Info.weaponAnimatorStateName, true);
+        }
+        else
+        {
+            pawn?._weaponAnimationController?.SetBoolInclusive(Info.weaponAnimatorStateName, true);
         }
     }
 }

@@ -23,7 +23,7 @@ public class JumpStateInfo : CharacterStateInfo
             {
                 character.Pawn.SetSpeed(character.Status.MoveSpeed.Value * character.StatModifier);
                 character.Pawn.MoveHorizontal(GetMoveDirection());
-                character.Pawn.MoveVertical(ref impulse, deltaTime);
+                character.Pawn.MoveVertical(ref impulse, DeltaTime);
 
                 yield return null;
             }

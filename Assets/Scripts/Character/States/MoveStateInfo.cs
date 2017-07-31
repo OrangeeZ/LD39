@@ -21,6 +21,7 @@ public class MoveStateInfo : CharacterStateInfo
             {
                 character.Pawn.SetSpeed(character.Status.MoveSpeed.Value * character.StatModifier);
                 character.Pawn.MoveHorizontal(GetMoveDirection());
+                character.Pawn._animationController.SetFloat("RunBlend", GameplayController.Instance.CurrentPowerNormalized);
 
                 yield return null;
             }

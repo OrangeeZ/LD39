@@ -47,7 +47,7 @@ public class EatCharacterStateInfo : CharacterStateInfo
             var powerPerSecond = character.Status.Info.PowerPerEat / character.Status.Info.EatStateDuration;
             while (timer.ValueNormalized < 1)
             {
-                GameplayController.Instance.AddPower(powerPerSecond * deltaTime);
+                GameplayController.Instance.AddPower(powerPerSecond * DeltaTime);
 
                 yield return null;
             }

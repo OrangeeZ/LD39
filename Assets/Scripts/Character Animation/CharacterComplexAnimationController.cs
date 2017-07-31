@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 public class CharacterComplexAnimationController : MonoBehaviour
 {
@@ -40,5 +38,33 @@ public class CharacterComplexAnimationController : MonoBehaviour
         _animators.SetBool(name, value);
 
         _lastState = name;
+    }
+    
+    public void SetBoolInclusive(string name, bool value)
+    {
+        if (name.IsNullOrEmpty())
+        {
+            return;
+        }
+
+        _animators.SetBool(name, value);
+    }
+    
+    public void SetFloat(string name, float value)
+    {
+        if (name.IsNullOrEmpty())
+        {
+            return;
+        }
+
+        foreach (var each in _animators)
+        {
+            if (!each.isActiveAndEnabled)
+            {
+                continue;
+            }
+            
+            each.SetFloat(name, value);
+        }
     }
 }

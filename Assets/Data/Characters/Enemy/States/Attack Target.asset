@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Attack Target
   m_EditorClassIdentifier: 
   animatorStateName: Attack
+  IsAnimationExclusive: 0
   weaponAnimatorStateName: Attack
+  IsWeaponAnimationExclusive: 0
   _attackOnce: 0

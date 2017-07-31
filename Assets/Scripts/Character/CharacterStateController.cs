@@ -46,6 +46,11 @@ public class CharacterStateController
         {
             Debug.Log($"{oldState}->{currentState}");
         }
+        
+        if (UpdateAnimation)
+        {
+            oldState?.OnStateFinishAnimation();
+        }
 
         UpdateEvaluationBlock();
     }
@@ -128,7 +133,7 @@ public class CharacterStateController
 
     public CharacterState GetStateByInfo(CharacterStateInfo info)
     {
-        return states.FirstOrDefault(where => where.info == info);
+        return states.FirstOrDefault(where => where.Info == info);
     }
 
     public T GetState<T>() where T : CharacterState

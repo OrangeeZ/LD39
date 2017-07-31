@@ -24,7 +24,7 @@ public class FallStateInfo : CharacterStateInfo
                 //impulse += Physics.gravity.y * deltaTime;
 
                 character.Pawn.MoveHorizontal(GetMoveDirection());
-                character.Pawn.MoveVertical(ref impulse, deltaTime);
+                character.Pawn.MoveVertical(ref impulse, DeltaTime);
 
                 yield return null;
             }

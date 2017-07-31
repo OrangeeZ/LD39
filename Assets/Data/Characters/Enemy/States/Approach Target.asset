@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Name: Approach Target
   m_EditorClassIdentifier: 
   animatorStateName: Move
+  IsAnimationExclusive: 0
   weaponAnimatorStateName: 
+  IsWeaponAnimationExclusive: 0
   _maxRange: 10
   _autoActivate: 0
   _clearTargetOnReach: 1

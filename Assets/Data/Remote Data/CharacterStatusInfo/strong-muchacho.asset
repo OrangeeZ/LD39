@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
   m_Name: strong-muchacho
   m_EditorClassIdentifier: 
-  MaxHealth: 3
-  MoveSpeed: 3
+  MaxHealth: 5
+  MoveSpeed: 5
   JumpSpeed: 0
   JumpHeight: 0
   RollSpeed: 0
@@ -26,6 +26,6 @@ MonoBehaviour:
   PowerPerEat: 0
   StartingWeapon: {fileID: 11400000, guid: 41e04d285de12834998dd7de23690fbe, type: 2}
   DestinationUpdateInterval: 0.8
-  AggroRadius: 10
+  AggroRadius: 20
   IdleSounds: []
   DeathSounds: []

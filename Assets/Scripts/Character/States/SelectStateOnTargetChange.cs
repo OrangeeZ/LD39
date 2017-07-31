@@ -19,7 +19,7 @@ public class SelectStateOnTargetChange : CharacterStateInfo {
 
 			base.Initialize( stateController );
 
-			states = stateController.states.Where( where => where.info == info ).ToArray();
+			states = stateController.states.Where( where => where.Info == Info ).ToArray();
 
 			//foreach ( var each in states ) {
 

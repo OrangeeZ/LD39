@@ -40,7 +40,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo
         public override bool CanBeSet()
         {
             var distanceToDestination =
-                _destination.HasValue ? Vector3.Distance(character.Pawn.position, _destination.Value) : -1f;
+                _destination.HasValue ? Vector3.Distance(character.Pawn.position.Set(y: 0, z: 0), _destination.Value.Set(y: 0, z: 0)) : -1f;
 
 //            Debug.Log(distanceToDestination);
 
@@ -71,24 +71,26 @@ public class ApproachTargetStateInfo : CharacterStateInfo
 
             var pawn = character.Pawn;
             pawn.SetSpeed(character.Status.MoveSpeed.Value);
+            pawn.SetDestination(_destination.Value);
+
+            var updateTimer = new AutoTimer(character.Status.Info.DestinationUpdateInterval);
 
             do
             {
                 yield return null;
 
-                pawn.SetDestination(_destination.Value);
-
-                var updateTimer = new AutoTimer(character.Status.Info.DestinationUpdateInterval);
-                while (updateTimer.ValueNormalized < 1)
+                if (!updateTimer.HasNotExpired)
                 {
-                    yield return null;
+                    pawn.SetDestination(_destination.Value);
+                    updateTimer.Reset();
+//                    yield return null;
                 }
                 
                 yield return null;
 
                 //pawn.SetDestination( destination.Value );
-            } while (pawn.GetDistanceToDestination() > GetMinDistance() &&
-                     pawn.GetDistanceToDestination() < typedInfo._maxRange);
+            } while (GetDistanceToDestination() > GetMinDistance() &&
+                     GetDistanceToDestination() < typedInfo._maxRange);
 
             //if ( pawn.GetDistanceToDestination() > typedInfo._maxRange ) {
 
@@ -115,7 +117,7 @@ public class ApproachTargetStateInfo : CharacterStateInfo
                 var destinationTarget = (target as Character);
                 var targetPosition = destinationTarget.Pawn.transform.position;
 
-                var distanceToDestination = Vector3.Distance(character.Pawn.position, targetPosition);
+                var distanceToDestination = Vector3.Distance(character.Pawn.position.Set(y: 0, z: 0), targetPosition.Set(y: 0, z: 0));
 
 //            Debug.Log(distanceToDestination);
 
@@ -138,6 +140,11 @@ public class ApproachTargetStateInfo : CharacterStateInfo
             {
                 stateController.TrySetState(this);
             }
+        }
+
+        private float GetDistanceToDestination()
+        {
+            return Vector3.Distance(character.Pawn.position.Set(y: 0, z: 0), _destination.Value.Set(y: 0, z: 0));
         }
 
         private float GetMinDistance()

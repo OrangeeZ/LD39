@@ -42,6 +42,7 @@ public class AttackStateInfo : CharacterStateInfo
 
             while (CanBeSet())
             {
+               
                 if (animationEventController != null)
                 {
                     Debug.Log("Waiting for trigger");
@@ -56,10 +57,12 @@ public class AttackStateInfo : CharacterStateInfo
                     
                     Debug.Log("Triggered!");
                 }
+                
+                var direction = target.Pawn.position - character.Pawn.position;
 
-                weapon.Attack(target, character.Status.Info);
+                weapon.Attack(direction.normalized);
 
-                character.Pawn.UpdateSpriteAnimationDirection(weapon.AttackDirection);
+                character.Pawn.UpdateSpriteAnimationDirection(direction.normalized);
 
                 yield return null;
 

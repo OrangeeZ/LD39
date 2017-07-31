@@ -39,11 +39,11 @@ public class RollStateInfo : CharacterStateInfo
             {
                 moveDirection = Input.GetAxis("Horizontal") * Vector3.right;
 
-                speed += deltaTime * moveDirection.x.Abs() * maxSpeed;
+                speed += DeltaTime * moveDirection.x.Abs() * maxSpeed;
                 
                 if (moveDirection.x.Abs() < float.Epsilon)
                 {
-                    speed -= deltaTime * character.Status.Info.RollDeceleration;
+                    speed -= DeltaTime * character.Status.Info.RollDeceleration;
                 }
                 
                 speed = speed.Clamped(0, maxSpeed);
@@ -55,7 +55,7 @@ public class RollStateInfo : CharacterStateInfo
                 
                 character.Pawn.SetSpeed(speed);
                 character.Pawn.MoveHorizontal(moveDirection);
-                character.Pawn.MoveVertical(ref impulse, deltaTime);
+                character.Pawn.MoveVertical(ref impulse, DeltaTime);
                 character.Pawn.SetDamageSphereActive(character.Pawn.IsGrounded());
                 
                 yield return null;

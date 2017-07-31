@@ -45,7 +45,7 @@ public class CharacterPawn : CharacterPawnBase
 
     protected virtual void Update()
     {
-        if (_characterController != null)    
+        if (_characterController != null && _characterController.enabled)    
         {
             _characterController.Move(Vector3.down * DeltaTime * _weight);
 

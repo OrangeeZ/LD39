@@ -25,7 +25,7 @@ public class UseItemStateInfo : CharacterStateInfo {
 
 			while ( timer.ValueNormalized < 1 ) {
 
-				timer.Step( deltaTime );
+				timer.Step( DeltaTime );
 
 				yield return null;
 			}
