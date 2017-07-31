@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 [ExecuteInEditMode]
+[SelectionBase]
 public class TileGroupController : MonoBehaviour
 {
     [SerializeField]
