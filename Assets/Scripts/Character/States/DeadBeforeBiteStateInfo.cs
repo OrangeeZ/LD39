@@ -28,6 +28,8 @@ public class DeadBeforeBiteStateInfo : CharacterStateInfo
 
         public override IEnumerable GetEvaluationBlock()
         {
+            character.Pawn.ClearDestination();
+            
             _didEnterState = true;
 
             var timer = new AutoTimer(character.Status.Info.BiteStateDuration);
