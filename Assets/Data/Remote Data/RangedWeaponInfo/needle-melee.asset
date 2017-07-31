@@ -29,7 +29,7 @@ MonoBehaviour:
   _sounds: []
   _ammoLimit: -1
   _ammoAmount: -1
-  _projectileLifetime: 0.1
+  _projectileLifetime: 0.5
   _splashDamageRadius: NaN
   _weaponBehaviourInfo: {fileID: 11400000, guid: 14eb3dcf64898a6439ff82ebf62ab140,
     type: 2}

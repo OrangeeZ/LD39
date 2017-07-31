@@ -37,6 +37,12 @@ public class EatCharacterStateInfo : CharacterStateInfo
             var characterSensor = character.Pawn.GetSphereSensor();
             var nearbyCharacters = characterSensor.NearbyCharacters.Select(_ => _.Character);
             var biteableCharacters = nearbyCharacters.Where(IsBiteable);
+            
+            if (biteableCharacters.IsEmpty())
+            {
+                yield break;
+            }
+            
             var closestBiteableCharacter = biteableCharacters.MinBy(_ => Vector3.SqrMagnitude(_.Pawn.position - character.Pawn.position) );
             
             closestBiteableCharacter.Damage(int.MaxValue);
