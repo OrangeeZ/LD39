@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
   m_Name: weak-muchacho
   m_EditorClassIdentifier: 
-  MaxHealth: 22
+  MaxHealth: 18
   MoveSpeed: 6
   JumpSpeed: 0
   JumpHeight: 0

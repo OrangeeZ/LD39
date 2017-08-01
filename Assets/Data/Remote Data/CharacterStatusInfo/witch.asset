@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
   m_Name: witch
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  MoveSpeed: 5
+  MaxHealth: 40
+  MoveSpeed: 7
   JumpSpeed: 0
   JumpHeight: 0
   RollSpeed: 0
@@ -26,6 +26,6 @@ MonoBehaviour:
   PowerPerEat: 0
   StartingWeapon: {fileID: 11400000, guid: 1a2ddca4fedb634489af7f0bcd7ded39, type: 2}
   DestinationUpdateInterval: 0.8
-  AggroRadius: 20
+  AggroRadius: 15
   IdleSounds: []
   DeathSounds: []

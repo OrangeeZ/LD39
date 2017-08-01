@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6128ac0c5673a5143be0dfeebe2ae356, type: 3}
   m_Name: woman
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  MoveSpeed: 5
+  MaxHealth: 15
+  MoveSpeed: 7
   JumpSpeed: 0
   JumpHeight: 0
   RollSpeed: 0
