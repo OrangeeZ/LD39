@@ -79,7 +79,7 @@ public class PlayerCharacterSpawner : MonoBehaviour
             startingStatusEffect.Add(character);
         }
 
-        character.IsPlayerCharacter = true;
+        character.IsPlayerCharacter = characterInfo.name.Contains("Player");
 
         EventSystem.RaiseEvent(new Spawned {Character = character});
     }

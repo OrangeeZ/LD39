@@ -36,6 +36,8 @@ public class DeadBeforeBiteStateInfo : CharacterStateInfo
             var timer = new AutoTimer(character.Status.Info.BiteStateDuration);
             while(timer.ValueNormalized < 1)
             {
+                DisplayBiteTimer.Instance.Display(character, timer.ValueNormalized);
+                
                 yield return null;
             }
             
