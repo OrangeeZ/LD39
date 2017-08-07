@@ -23,7 +23,7 @@ MonoBehaviour:
   ClipSize: 1
   ReloadDuration: 0.5
   ProjectilePrefab: {fileID: 11433014, guid: 48862396712465c409d8375150370077, type: 2}
-  _projectileSpeed: 0.5
+  _projectileSpeed: 0
   _projectilesPerShot: 1
   _shotConeAngle: 0
   _sounds:
@@ -31,7 +31,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0388a76f1010b8b4d8bf4ab1f09e8609, type: 3}
   _ammoLimit: -1
   _clipSize: 1
-  _projectileLifetime: 0.5
+  _projectileLifetime: 0
   _splashDamageRadius: NaN
   _weaponBehaviourInfo: {fileID: 11400000, guid: 14eb3dcf64898a6439ff82ebf62ab140,
     type: 2}

@@ -25,7 +25,9 @@ public class Character
 
     public static List<Character> Instances = new List<Character>();
 
-    public readonly FloatReactiveProperty Health;
+    public ReadOnlyReactiveProperty<float> Health { get; private set; }
+
+    public bool IsDead { get; private set; }
 
     public readonly IInputSource InputSource;
 
@@ -34,6 +36,7 @@ public class Character
     public readonly CharacterPawn Pawn;
 
     public readonly CharacterStateController StateController;
+
     public readonly CharacterStateController WeaponStateController;
 
     public readonly int TeamId;
@@ -54,12 +57,15 @@ public class Character
 
     public float StatModifier = 1f;
 
+    private bool _isInvincible;
+
+    private ReactiveProperty<float> _health;
+
     public Character(CharacterPawn pawn, IInputSource inputSource, CharacterStatus status,
         CharacterStateController stateController, CharacterStateController weaponStateController, int teamId,
         CharacterInfo info)
     {
         Status = status;
-        Health = new FloatReactiveProperty(Status.MaxHealth.Value);
         Pawn = pawn;
         InputSource = inputSource;
         StateController = stateController;
@@ -68,6 +74,10 @@ public class Character
         Info = info;
         Inventory = new BasicInventory(this);
         UsesUnscaledDeltaTime = status.Info.UsesUnscaledDeltaTime;
+        IsDead = false;
+
+        _health = new ReactiveProperty<float>(Status.MaxHealth.Value);
+        Health = _health.ToReadOnlyReactiveProperty();
 
         pawn.SetCharacter(this);
 
@@ -93,11 +103,11 @@ public class Character
     {
         if (health <= 0)
         {
-            EventSystem.RaiseEvent(new Died {Character = this});
+            EventSystem.RaiseEvent(new Died { Character = this });
 
             if (1f.Random() <= speakProbability)
             {
-                EventSystem.RaiseEvent(new Speech {Character = this});
+                EventSystem.RaiseEvent(new Speech { Character = this });
             }
 
             Instances.Remove(this);
@@ -119,20 +129,30 @@ public class Character
 
         if (healAmount > 0)
         {
-            Health.Value += healAmount;
+            _health.Value += healAmount;
         }
     }
 
     public void Damage(float amount)
     {
-        if (Health.Value <= 0)
+        if (Health.Value <= 0 || _isInvincible)
         {
             return;
         }
 
-        Health.Value -= amount;
+        _health.Value -= amount;
 
-        EventSystem.RaiseEvent(new RecievedDamage {Character = this, Damage = amount});
+        EventSystem.RaiseEvent(new RecievedDamage { Character = this, Damage = amount });
+
+        if (!IsEnemy() && _health.Value <= 0)
+        {
+            MakeDead();
+        }
+    }
+
+    public void SetInvincible(bool value)
+    {
+        _isInvincible = value;
     }
 
     public bool IsEnemy()
@@ -145,8 +165,13 @@ public class Character
         (InputSource as IDisposable)?.Dispose();
 
         _compositeDisposable.Dispose();
-        
+
         Health.Dispose();
+    }
+
+    public void MakeDead()
+    {
+        IsDead = true;
     }
 
     private void OnUpdate(long ticks)

@@ -9,48 +9,59 @@ public class DeadBeforeBiteStateInfo : CharacterStateInfo
     private class State : CharacterState<DeadBeforeBiteStateInfo>
     {
         private bool _didEnterState = false;
-        
+
         public State(CharacterStateInfo info) : base(info)
         {
         }
 
-        public override void Initialize(CharacterStateController stateController)
-        {
-            base.Initialize(stateController);
+        // public override void Initialize(CharacterStateController stateController)
+        // {
+        //     base.Initialize(stateController);
 
-            stateController.character.Health.Subscribe(OnHealthChange);
+        //     stateController.character.Health.Subscribe(OnHealthChange);
+        // }
+
+        public override bool CheckInterrupPending()
+        {
+            return CanBeSet();
         }
 
         public override bool CanBeSet()
         {
-            return !_didEnterState && character.Health.Value > 0 && character.Health.Value <= character.Status.Info.BiteStateHealthThreshold;
+            return !_didEnterState && character.Health.Value <= character.Status.Info.BiteStateHealthThreshold;
         }
 
         public override IEnumerable GetEvaluationBlock()
         {
             character.Pawn.ClearDestination();
             character.EnableWeaponStateController = false;
-            
+
             _didEnterState = true;
 
+            character.SetInvincible(true);
+
             var timer = new AutoTimer(character.Status.Info.BiteStateDuration);
-            while(timer.ValueNormalized < 1)
+            while (timer.ValueNormalized < 1)
             {
                 DisplayBiteTimer.Instance.Display(character, timer.ValueNormalized);
-                
+
                 yield return null;
             }
-            
-            character.Health.Value = 0;
+
+            character.EnableWeaponStateController = true;
+
+            character.SetInvincible(false);
+
+            character.Heal(character.Status.Info.MaxHealth);
         }
 
-        private void OnHealthChange(float newHealthValue)
-        {
-            if (CanBeSet())
-            {
-                stateController.TrySetState(this);
-            }
-        }
+        // private void OnHealthChange(float newHealthValue)
+        // {
+        //     if (CanBeSet())
+        //     {
+        //         stateController.TrySetState(this);
+        //     }
+        // }
     }
 
     public override CharacterState GetState()

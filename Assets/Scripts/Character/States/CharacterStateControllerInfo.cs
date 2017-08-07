@@ -35,10 +35,13 @@ public class CharacterStateControllerInfo : ScriptableObject
 
         foreach (var each in states)
         {
+            var currentState = stateBehaviourMapping[each];
+
             var targetStates = each.transitions
                 .Select(_ => _.destinationState)
                 .Concat(anyStateTransitions)
-                .Select(_ => stateBehaviourMapping[_]);
+                .Select(_ => stateBehaviourMapping[_])
+                .Where(_ => _ != currentState);
 
             if (IsDebug)
             {

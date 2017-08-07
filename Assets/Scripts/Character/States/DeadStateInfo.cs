@@ -12,16 +12,21 @@ public class DeadStateInfo : CharacterStateInfo
         {
         }
 
-        public override void Initialize(CharacterStateController stateController)
-        {
-            base.Initialize(stateController);
+        // public override void Initialize(CharacterStateController stateController)
+        // {
+        //     base.Initialize(stateController);
 
-            character.Health.Where(_ => _ <= 0).Subscribe(_ => stateController.TrySetState(this));
+        //     character.Health.Where(_ => _ <= 0).Subscribe(_ => stateController.TrySetState(this));
+        // }
+
+        public override bool CheckInterrupPending()
+        {
+            return CanBeSet();
         }
 
         public override bool CanBeSet()
         {
-            return character.Health.Value <= 0;
+            return character.IsDead;
         }
 
         public override IEnumerable GetEvaluationBlock()

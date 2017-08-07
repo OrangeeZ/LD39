@@ -42,7 +42,6 @@ public class AttackStateInfo : CharacterStateInfo
 
             while (CanBeSet())
             {
-               
                 if (animationEventController != null)
                 {
                     var animationTrigger = false;

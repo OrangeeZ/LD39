@@ -45,7 +45,8 @@ public class EatCharacterStateInfo : CharacterStateInfo
             
             var closestBiteableCharacter = biteableCharacters.MinBy(_ => Vector3.SqrMagnitude(_.Pawn.position - character.Pawn.position) );
             
-            closestBiteableCharacter.Damage(int.MaxValue);
+            // closestBiteableCharacter.Damage(int.MaxValue);
+            closestBiteableCharacter.MakeDead();
             
             character.Pawn.UpdateSpriteAnimationDirection(closestBiteableCharacter.Pawn.position - character.Pawn.position);
             
@@ -61,7 +62,7 @@ public class EatCharacterStateInfo : CharacterStateInfo
 
         private static bool IsBiteable(Character targetCharacter)
         {
-            return targetCharacter.Health.Value > 0 && targetCharacter.Health.Value <= targetCharacter.Status.Info.BiteStateHealthThreshold;
+            return targetCharacter.Health.Value <= targetCharacter.Status.Info.BiteStateHealthThreshold;
         }
     }
 
